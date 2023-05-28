@@ -39,4 +39,8 @@ Route::resource('/category', CategoryController::class);
 Route::resource('/book', BookController::class);
 Route::resource('/comment', CommentController::class);
 
+Route::get('/category2', function () {
+    return Inertia::render('Category');
+})->name('category2');
+
 require __DIR__.'/auth.php';
