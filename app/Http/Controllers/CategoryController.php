@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CategoryController extends Controller
 {
@@ -15,7 +16,9 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        return view('categories.index');
+        $categories = Category::all();
+        // dd($categories);
+        return Inertia::render('Category', ['categories' => $categories ]);
     }
 
     /**
@@ -41,7 +44,7 @@ class CategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        return view('categories.index');
+        return redirect('/category');
     }
 
     /**

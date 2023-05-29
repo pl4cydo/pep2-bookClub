@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -39,8 +40,10 @@ Route::resource('/category', CategoryController::class);
 Route::resource('/book', BookController::class);
 Route::resource('/comment', CommentController::class);
 
-Route::get('/category2', function () {
-    return Inertia::render('Category');
-})->name('category2');
+// Route::get('/category2', function () {
+//     return Inertia::render('Category');
+// })->name('category2');
+
+// Route::get('/category', [CategoryController::class, 'store'])->name('category.store');
 
 require __DIR__.'/auth.php';
