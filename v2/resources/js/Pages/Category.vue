@@ -1,11 +1,8 @@
 <script setup>
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, useForm } from '@inertiajs/vue3';
-
-
+import { ref } from 'vue';
 
 defineProps({
     categories: Array,
@@ -20,19 +17,7 @@ const submit = () => {
     form.name = ''
 }
 
-
-
-// const categories = reactive([]);
-
-// onMounted(async () => {
-//   try {
-//     const response = await axios.get(route('category.index')); // Replace 'axios' with your preferred HTTP client
-//     categories.value = response.data;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// });
-
+const boo = ref(true)
 
 </script>
 
@@ -70,11 +55,16 @@ const submit = () => {
               <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">Categories:</div>
                 <div v-for="category in categories" class="p-6">
-                  <h1 class="text-xl">{{ category.name }}</h1>
+                  <div>
+                    <h1 class="text-xl">{{ category.name }}</h1>
+                    <div v-if="boo">Opaaaa</div>
+
+                    <button @click="boo = false" class="px-4 py-2 ml-4 text-white bg-blue-500 rounded-md hover:bg-blue-600">Vai</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-              
+
     </AuthenticatedLayout>
 </template>
