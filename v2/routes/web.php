@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -37,5 +38,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('/category', CategoryController::class);
+Route::resource('/book', BookController::class);
 
 require __DIR__.'/auth.php';
