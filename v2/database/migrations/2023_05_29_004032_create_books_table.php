@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('writter');
             $table->binary('image', 65535)->nullable();
             $table->foreignId('user_id');
-            $table->string('category_id'); 
+            $table->foreignId('category_id'); 
             $table->boolean('deal')->default(false);
         });
     }

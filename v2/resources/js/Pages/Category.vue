@@ -8,6 +8,7 @@ defineProps({
     categories: Array,
 });
 
+
 const form = useForm({
     name: ''
 });
@@ -63,6 +64,7 @@ const boo = ref(true)
                   Vai
                 </button>
               </div>
+              
             </div>
           </div>
         </div>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class BookController extends Controller
@@ -28,6 +30,7 @@ class BookController extends Controller
     public function create()
     {
         //
+        return Inertia::render('Book/Create/Index');
     }
 
     /**
@@ -38,8 +41,42 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'writter' => 'required',
+            'year' => 'required',
+            'category_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // dd($validatedData);
+
+        $imageName = null;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $image->storeAs('public/images', $imageName);
+        }
+
+        // dd($imageName);
+
+        $book = Book::create([
+            'title' => $request->title,
+            'writter' => $request->writter, // Corrected parameter name
+            'year' => $request->year,
+            'category_id' => $request->category_id,
+            'image' => $imageName,
+            'user_id' => auth()->id(),
+        ]);
+
+        // Debugging output to verify if the book is created
+        dd($book);
+
+        // Return an Inertia response with a redirect to the book index page
+        return Inertia::render('Books/Index');
     }
+
 
     /**
      * Display the specified resource.
