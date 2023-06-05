@@ -71,10 +71,10 @@ class BookController extends Controller
         ]);
 
         // Debugging output to verify if the book is created
-        dd($book);
+        // dd($book);
 
         // Return an Inertia response with a redirect to the book index page
-        return Inertia::render('Books/Index');
+        return redirect(route('book.index'));
     }
 
 

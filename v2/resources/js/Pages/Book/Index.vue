@@ -2,13 +2,10 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm, usePage} from '@inertiajs/vue3';
 
-
 defineProps({
-    categories: {},
+    categories: Array,
     books: Array
 });
-
-const { categories } = usePage().props;
 
 const form = useForm({
     title: '',
@@ -79,12 +76,12 @@ function getImageUrl(image) {
                                         <label for="category_id">Categoria</label>
                                         <input id="category_id" class="input" v-model="form.category_id" />
 
-                                        <!-- <select name="category_id" id="category_id" class="input" v-model="form.category_id">
+                                        <select name="category_id" id="category_id" class="input" v-model="form.category_id">
                                             <option value="">Select a category</option>
                                             <option v-for="category in categories" :value="category.id" :key="category.id">
                                               {{ category.name }}
                                             </option>
-                                        </select> -->
+                                        </select>
                                           
                                       </div>
                                       
@@ -92,7 +89,7 @@ function getImageUrl(image) {
                                 </form>
 
                                 <div v-for="category in categories">
-                                    {{ category  }}
+                                    {{ category.value  }}
                                 </div>
                             </div>
                         </div>
@@ -104,7 +101,9 @@ function getImageUrl(image) {
                                 </div>
                               </div>
                         </div>
-                        <div class="bloco2" ></div>
+                        <div class="bloco2" >
+                        
+                        </div>
                     </div>
                 </div>
             </div>
@@ -126,7 +125,7 @@ function getImageUrl(image) {
         margin-top: 5%;
         border: 1px solid black;
         width: 90%;
-        height: 300px;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

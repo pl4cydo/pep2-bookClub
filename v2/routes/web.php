@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     
     Route::resource('/category', CategoryController::class);
     Route::resource('/book', BookController::class);
+    Route::get('/category2', [CategoryController::class, 'index2'])->name('category2.index2');
 });
 
 
