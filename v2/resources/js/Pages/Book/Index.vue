@@ -1,11 +1,15 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm, usePage} from '@inertiajs/vue3';
+import ListBooks from './ListBooks/Index.vue';
 
 defineProps({
     categories: Array,
     books: Array
 });
+
+// let jorge = ;
+
 
 const form = useForm({
     title: '',
@@ -28,9 +32,9 @@ const handleImageChange = (event) => {
     form.image = event.target.files[0]
 }
 
-function getImageUrl(image) {
-    return image ? asset('storage/images/' + image) : '';
-}
+// function getImageUrl(image) {
+//     return image ? asset('storage/images/' + image) : '';
+// }
 
 </script>
 
@@ -73,9 +77,6 @@ function getImageUrl(image) {
                                         </div>
                                                                             
                                       <div>
-                                        <label for="category_id">Categoria</label>
-                                        <input id="category_id" class="input" v-model="form.category_id" />
-
                                         <select name="category_id" id="category_id" class="input" v-model="form.category_id">
                                             <option value="">Select a category</option>
                                             <option v-for="category in categories" :value="category.id" :key="category.id">
@@ -93,16 +94,18 @@ function getImageUrl(image) {
                                 </div>
                             </div>
                         </div>
+
                         <div class="bloco2" >
-                            <div class="bookshelf">
-                                <div v-for="(book, index) in books" :key="book.id" class="book">
-                                  <img :src="'/storage/images/' + book.image" alt="Book Image">
-                                  <p class="title">{{ book.title }}</p>
-                                </div>
-                              </div>
+                          <div v-for="book in books" :key="book.id" >
+                            <div class="boom">
+                              {{ book }}
+                              <Link class="link" :href="route('book.bookView', { id:book.id })">Link</Link>
+                            </div>
+                          </div>
                         </div>
+
                         <div class="bloco2" >
-                        
+                          <ListBooks :books="books"/>
                         </div>
                     </div>
                 </div>
@@ -112,6 +115,12 @@ function getImageUrl(image) {
 </template>
 
 <style>
+    .boom {
+      border: 1px solid black;
+    }
+    .link {
+      background-color: blue;
+    }
     .bloco {
         border: 1px solid black;
         width: auto;
@@ -162,25 +171,6 @@ function getImageUrl(image) {
         color: aliceblue;
       }
 
-      .bookshelf {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
       
-      .book {
-        width: 150px;
-        margin: 10px;
-        text-align: center;
-      }
-      
-      .book img {
-        width: 100%;
-        height: auto;
-      }
-      
-      .title {
-        margin-top: 5px;
-      }
       
 </style>

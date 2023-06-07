@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use PhpParser\Node\Stmt\Return_;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,14 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Welcome/Index', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
+});
+
+Route::get('listBook', function(){
+    return Inertia::render('ListBooks/Index.vue');
 });
 
 Route::get('/dashboard', function () {
@@ -39,7 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('/category', CategoryController::class);
     Route::resource('/book', BookController::class);
     Route::get('/category2', [CategoryController::class, 'index2'])->name('category2.index2');
+    Route::get('book/bookView/{id}', [BookController::class, 'bookView'])->name('book.bookView');
 });
+
+
 
 
 require __DIR__.'/auth.php';

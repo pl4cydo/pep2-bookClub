@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -19,7 +20,8 @@ class BookController extends Controller
     {
         //
         $books = Book::all();
-        return Inertia::render('Book/Index', ['books' => $books]);
+        $categories = Category::all();
+        return Inertia::render('Book/Index', ['books' => $books, 'categories' => $categories]);
     }
 
     /**
@@ -75,6 +77,20 @@ class BookController extends Controller
 
         // Return an Inertia response with a redirect to the book index page
         return redirect(route('book.index'));
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function bookView($id) 
+    {
+        // dd($id);
+        $books = Book::all();
+        return Inertia::render('Book/BookView/Index', ['id' => $id, 'books' => $books]);
     }
 
 
