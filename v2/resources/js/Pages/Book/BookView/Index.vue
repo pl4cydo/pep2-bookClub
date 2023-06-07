@@ -23,6 +23,7 @@ defineProps({
                             </div>
                             <div>
                                 <p>{{ book.synopsis }}</p>
+                                <p>Deal: {{ book.deal == 0 ? false : true }}</p>
                             </div>
                         </div>
                     </div>
