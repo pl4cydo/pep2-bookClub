@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title');
-            $table->string('year');
+            $table->integer('year');
             $table->string('writter');
+            $table->text('synopsis');
             $table->binary('image', 65535)->nullable();
             $table->foreignId('user_id');
             $table->foreignId('category_id'); 

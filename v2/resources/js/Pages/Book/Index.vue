@@ -15,6 +15,7 @@ const form = useForm({
     title: '',
     year: '',
     writter: '',
+    synopsis: '',
     image: null,
     category_id: ''
 });
@@ -24,6 +25,7 @@ const submit = () => {
     form.title = ''
     form.year = ''
     form.writter = ''
+    form.synopsis = ''
     form.image = null
     form.category_id = ''
 }
@@ -63,7 +65,7 @@ const handleImageChange = (event) => {
                                       
                                       <div>
                                         <label for="year">Year</label>
-                                        <input id="year" class="input" v-model="form.year" />
+                                        <input type="number" id="year" class="input" v-model="form.year" />
                                       </div>
                                       
                                       <div>
@@ -71,10 +73,17 @@ const handleImageChange = (event) => {
                                         <input id="writer" class="input" v-model="form.writter" />
                                       </div>
                                       
-                                        <div>
-                                            <label for="image">Image</label>
-                                            <input id="image" type="file" class="input" @change="handleImageChange" />
-                                        </div>
+                                      <div>
+                                          <label for="image">Image</label>
+                                          <input id="image" type="file" class="input" @change="handleImageChange" />
+                                      </div>
+
+                                      <div>
+                                          <label for="synopsis">Sinopse</label>
+                                          <!-- <input type="textarea" id="synopsis" name="synopsis"> -->
+                                          <textarea name="synopsis" id="synopsis" cols="30" rows="10" v-model="form.synopsis"></textarea>
+
+                                      </div>
                                                                             
                                       <div>
                                         <select name="category_id" id="category_id" class="input" v-model="form.category_id">
@@ -95,14 +104,14 @@ const handleImageChange = (event) => {
                             </div>
                         </div>
 
-                        <div class="bloco2" >
+                        <!-- <div class="bloco2" >
                           <div v-for="book in books" :key="book.id" >
                             <div class="boom">
                               {{ book }}
                               <Link class="link" :href="route('book.bookView', { id:book.id })">Link</Link>
                             </div>
                           </div>
-                        </div>
+                        </div> -->
 
                         <div class="bloco2" >
                           <ListBooks :books="books"/>
@@ -118,9 +127,7 @@ const handleImageChange = (event) => {
     .boom {
       border: 1px solid black;
     }
-    .link {
-      background-color: blue;
-    }
+
     .bloco {
         border: 1px solid black;
         width: auto;

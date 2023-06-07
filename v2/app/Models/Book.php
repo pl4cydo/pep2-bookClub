@@ -12,6 +12,7 @@ class Book extends Model
         'title',
         'year',
         'writter',
+        'synopsis',
         'image',
         'user_id',
         'category_id',

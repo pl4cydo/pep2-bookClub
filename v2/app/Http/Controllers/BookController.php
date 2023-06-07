@@ -46,6 +46,7 @@ class BookController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'writter' => 'required',
+            'synopsis' => 'required',
             'year' => 'required',
             'category_id' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -66,6 +67,7 @@ class BookController extends Controller
         $book = Book::create([
             'title' => $request->title,
             'writter' => $request->writter, // Corrected parameter name
+            'synopsis' => $request->synopsis,
             'year' => $request->year,
             'category_id' => $request->category_id,
             'image' => $imageName,
