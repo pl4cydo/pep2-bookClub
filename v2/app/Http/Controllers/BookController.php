@@ -110,7 +110,7 @@ class BookController extends Controller
     {
         // dd($id);
         $books = Book::all();
-        return Inertia::render('Book/BookView/Index', ['id' => $id, 'books' => $books]);
+        return Inertia::render('Book/Components/BookView', ['id' => $id, 'books' => $books]);
     }
 
 

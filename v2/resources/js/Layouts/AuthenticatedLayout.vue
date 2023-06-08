@@ -8,6 +8,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
 import Createbook from '../Pages/Book/Components/Create.vue'
 import PrimaryButton from '../Components/PrimaryButton.vue';
+import Search from '../Pages/Book/Components/Search.vue'
 
 const showingNavigationDropdown = ref(false);
 
@@ -51,11 +52,15 @@ function changeBoo() {
                             </div>
                         </div>
 
+                        <div class="SeachBloc">
+                            <Search />
+                        </div>
+
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <!-- Settings Dropdown -->
+                            <PrimaryButton :onclick="changeBoo" >Novo Livro</PrimaryButton>
                             <div class="ml-3 relative flex">
-                                <h1>aqui</h1>
-                                <PrimaryButton :onclick="changeBoo" >Novo Livro</PrimaryButton>
+                                <!-- <h1>aqui</h1> -->
 
                                 <Dropdown align="right" width="48">
                                     <template #trigger>
@@ -157,10 +162,15 @@ function changeBoo() {
         display: flex;
         width: 100vw;
         justify-content: center;
-
+        align-items: center;
     }
     .vasco {
         min-height: 100vh;
         width: 100%;
+    }
+
+    .SeachBloc{
+        height: 100%;
+        width: 40%;
     }
 </style>
