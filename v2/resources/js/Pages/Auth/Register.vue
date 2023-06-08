@@ -10,6 +10,8 @@ const form = useForm({
     name: '',
     email: '',
     password: '',
+    phoneNumber: '',
+    instagram: '',
     password_confirmation: '',
     terms: false,
 });
@@ -50,6 +52,36 @@ const submit = () => {
                     type="email"
                     class="mt-1 block w-full"
                     v-model="form.email"
+                    required
+                    autocomplete="username"
+                />
+
+                <InputError class="mt-2" :message="form.errors.email" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="phoneNumber" value="Phone Number" />
+
+                <TextInput
+                    id="phoneNumber"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.phoneNumber"
+                    required
+                    autocomplete="username"
+                />
+
+                <InputError class="mt-2" :message="form.errors.email" />
+            </div>
+            
+            <div class="mt-4">
+                <InputLabel for="instagram" value="Instagram" />
+
+                <TextInput
+                    id="instagram"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.instagram"
                     required
                     autocomplete="username"
                 />

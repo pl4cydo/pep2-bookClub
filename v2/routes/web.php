@@ -40,9 +40,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     Route::resource('/category', CategoryController::class);
-    Route::resource('/book', BookController::class);
     Route::get('/category2', [CategoryController::class, 'index2'])->name('category2.index2');
     Route::get('book/bookView/{id}', [BookController::class, 'bookView'])->name('book.bookView');
+    Route::get('book/search/{name}', [BookController::class, 'bookSearch'])->name('book.bookSearch');
+    Route::resource('/book', BookController::class);
 });
 
 

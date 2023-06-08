@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
-import BookList from '../Book/ListBooks/Index.vue'
+import BookList from '../Book/Components/ListBooks.vue'
 
 defineProps({
     canLogin: Boolean,

@@ -21,7 +21,19 @@ class BookController extends Controller
         //
         $books = Book::all();
         $categories = Category::all();
-        return Inertia::render('Book/Index', ['books' => $books, 'categories' => $categories]);
+        return Inertia::render('Book/BookIndex', ['books' => $books, 'categories' => $categories]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @param  \Illuminate\Http\Request
+     * @return \Illuminate\Http\Response
+     */
+    public function bookSearch($name) {
+        // dd("opa");
+        $books = Book::where('title', $name)->get();
+        // dd($books);
+        return $books;
     }
 
     /**
@@ -43,6 +55,14 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request->title,
+        //    $request->writter,
+        //    $request->synopsis,
+        //    $request->year,
+        //    $request->category_id,
+        // );
+
         $validatedData = $request->validate([
             'title' => 'required',
             'writter' => 'required',
@@ -71,13 +91,11 @@ class BookController extends Controller
             'year' => $request->year,
             'category_id' => $request->category_id,
             'image' => $imageName,
-            'user_id' => auth()->id(),
+            'user_id' => auth()->id()
         ]);
 
-        // Debugging output to verify if the book is created
         // dd($book);
 
-        // Return an Inertia response with a redirect to the book index page
         return redirect(route('book.index'));
     }
 

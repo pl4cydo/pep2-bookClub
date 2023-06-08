@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "watch": "vue-cli-service serve --watch"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
@@ -16,5 +17,8 @@
         "tailwindcss": "^3.2.1",
         "vite": "^4.0.0",
         "vue": "^3.2.41"
+    },
+    "dependencies": {
+        "watch": "^1.0.2"
     }
 }

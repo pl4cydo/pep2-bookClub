@@ -1,7 +1,12 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm, usePage} from '@inertiajs/vue3';
-import ListBooks from './ListBooks/Index.vue';
+import ListBooks from './Components/ListBooks.vue';
+import PrimaryButton from '../../Components/PrimaryButton.vue';
+// import Createbook from './Create/Index.vue'
+import { ref } from 'vue';
+import Createbook from './Components/Create.vue'
+import Search from './Components/Search.vue';
 
 defineProps({
     categories: Array,
@@ -9,6 +14,13 @@ defineProps({
 });
 
 // let jorge = ;
+
+// let boo = ref(false);
+
+// function changeBoo(){
+//   boo.value = !boo.value;
+//   console.log(boo)
+// }
 
 
 const form = useForm({
@@ -44,18 +56,25 @@ const handleImageChange = (event) => {
     <Head title="Book" />
 
     <AuthenticatedLayout>
-        <!-- <template #header>
+        <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Book</h2>
-        </template> -->
+        </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <!-- <div class="p-6 text-gray-900">You're logged in!</div> -->
                     <div class="bloco">
+
+                      <div class="bloco2">
+                        <!-- <PrimaryButton :onclick="changeBoo" >Novo Livro</PrimaryButton> -->
+                        <!-- <Createbook /> -->
+                        <Search />
+                      </div>
+
                         <div class="bloco2" >
                             <h1>Adicionar livros</h1>
-                            <Link :href="route('book.create')">Link</Link>
+                            <!-- <Link :href="route('book.create')">Link</Link> -->
                             <div>
                                 <form name="bookForm" @submit.prevent="submit">
                                     <div>
@@ -113,6 +132,8 @@ const handleImageChange = (event) => {
                           </div>
                         </div> -->
 
+                          <!-- <Createbook :categories="categories" v-if="boo"/> -->
+
                         <div class="bloco2" >
                           <ListBooks :books="books"/>
                         </div>
@@ -123,15 +144,17 @@ const handleImageChange = (event) => {
     </AuthenticatedLayout>
 </template>
 
-<style>
+<style scoped>
     .boom {
       border: 1px solid black;
     }
 
+    
+
     .bloco {
         border: 1px solid black;
         width: auto;
-        height: 2000px;
+        height: auto;
         display: flex;
         flex-direction: column;
         /*justify-content: center; */
