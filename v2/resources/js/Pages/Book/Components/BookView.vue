@@ -5,7 +5,9 @@ import Comment from '../../Comment/Comment.vue';
 import { onMounted, ref } from 'vue';
 
 let a = defineProps({
-    books: Array
+    books: Array,
+    comments: Array,
+    userBook: Array
 })
 
 let ab = a.books[0].id
@@ -32,7 +34,6 @@ const submit = () => {
                     <!-- <h1>{{ id }}</h1> -->
 
                     <div class="bookView">
-                        {{ books[0].id }}
                         <div class="imgBloc">
                             <h1 class="title">{{ books[0].title }}</h1>
                             <img :src="'/storage/images/' + books[0].image" alt="Books Image">
@@ -46,24 +47,29 @@ const submit = () => {
                     </div>
 
                     <div class="comment">
+                        <div class="commentForm">
+
+                            <form name="commentForm" @submit.prevent="submit">
+                                <legend>Escreva um comentario</legend>
+                                <textarea rows="4" cols="80" name="comments" id="comments" v-model="form.comments">
+                                    </textarea>
+                                <!-- <input type="text" name="books_id" id="books_id" v-model="form.book_id" > -->
+                                <button>Send</button>
+                            </form>
+
+                        </div>
 
                         <div class="commentFlow">
-                            <div class="commentForm"> 
-
-                                <form name="commentForm" @submit.prevent="submit">
-                                    <legend>Escreva um comentario</legend>
-                                    <textarea 
-                                        rows="4" 
-                                        cols="80" 
-                                        name="comments" 
-                                        id="comments" 
-                                        v-model="form.comments" 
-                                        >
-                                    </textarea>
-                                    <!-- <input type="text" name="books_id" id="books_id" v-model="form.book_id" > -->
-                                    <button>Send</button>
-                                </form>
-                                
+                            <div v-for=" comment in comments">
+                                <!-- <div v-for=" userB in userBook">
+                                    <div v-if="comment.user_id == userB.id">
+                                        {{ userBook.name }}
+                                    </div>
+                                </div> -->
+                                {{ comment.id }} {{ books.id }}
+                                <div v-if="comment.book_id == books.id">
+                                    {{ comment.comment }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -110,6 +116,10 @@ const submit = () => {
 }
 
 .comment {
+    border: 1px solid black;
+}
+
+.commentFlow {
     border: 1px solid black;
 }
 </style>

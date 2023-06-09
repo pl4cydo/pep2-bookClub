@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -108,8 +109,11 @@ class BookController extends Controller
     public function bookView($id) 
     {
         // dd($id);
+        $user = User::All();
+        // dd($user);
+        $comments = Comment::All();
         $books = Book::where('id', $id)->get();
-        return Inertia::render('Book/Components/BookView', ['books' => $books]);
+        return Inertia::render('Book/Components/BookView', ['books' => $books, 'comments' => $comments, 'userBook' => $user]);
     }
 
 
