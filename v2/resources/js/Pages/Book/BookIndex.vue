@@ -23,28 +23,28 @@ defineProps({
 // }
 
 
-const form = useForm({
-    title: '',
-    year: '',
-    writter: '',
-    synopsis: '',
-    image: null,
-    category_id: ''
-});
+// const form = useForm({
+//     title: '',
+//     year: '',
+//     writter: '',
+//     synopsis: '',
+//     image: null,
+//     category_id: ''
+// });
 
-const submit = () => {
-    form.post(route('book.store'))
-    form.title = ''
-    form.year = ''
-    form.writter = ''
-    form.synopsis = ''
-    form.image = null
-    form.category_id = ''
-}
+// const submit = () => {
+//     form.post(route('book.store'))
+//     form.title = ''
+//     form.year = ''
+//     form.writter = ''
+//     form.synopsis = ''
+//     form.image = null
+//     form.category_id = ''
+// }
 
-const handleImageChange = (event) => {
-    form.image = event.target.files[0]
-}
+// const handleImageChange = (event) => {
+//     form.image = event.target.files[0]
+// }
 
 // function getImageUrl(image) {
 //     return image ? asset('storage/images/' + image) : '';
@@ -76,7 +76,7 @@ const handleImageChange = (event) => {
                             <h1>Adicionar livros</h1>
                             <!-- <Link :href="route('book.create')">Link</Link> -->
                             <div>
-                                <form name="bookForm" @submit.prevent="submit">
+                                <!-- <form name="bookForm" @submit.prevent="submit">
                                     <div>
                                         <label for="title">Title</label>
                                         <input id="title" class="input" v-model="form.title" />
@@ -99,7 +99,6 @@ const handleImageChange = (event) => {
 
                                       <div>
                                           <label for="synopsis">Sinopse</label>
-                                          <!-- <input type="textarea" id="synopsis" name="synopsis"> -->
                                           <textarea name="synopsis" id="synopsis" cols="30" rows="10" v-model="form.synopsis"></textarea>
 
                                       </div>
@@ -115,7 +114,7 @@ const handleImageChange = (event) => {
                                       </div>
                                       
                                     <button type="submit" class="button" > Send </button>
-                                </form>
+                                </form> -->
 
                                 <div v-for="category in categories">
                                     {{ category.value  }}

@@ -38,7 +38,7 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->comments, $request->book_id);
+        // dd($request->comments, $request->book_id);
 
         User::find(Auth::user()->id)
             ->comments()
@@ -47,7 +47,7 @@ class CommentController extends Controller
                 'book_id' => $request->book_id,
             ]);
 
-        return redirect('/dashboard');
+        return redirect('/book/bookView/' . strval($request->book_id));
     }
 
     /**
