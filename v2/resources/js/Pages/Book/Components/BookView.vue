@@ -48,7 +48,7 @@ const submit = () => {
                                         <form name="commentForm" @submit.prevent="submit">
                                             <legend>Escreva um comentario</legend>
                                             <textarea rows="4" cols="80" name="comments" id="comments" v-model="form.comments"></textarea>
-                                            <input type="text" name="book_id" id="book_id" v-model="form.book_id" :value="book.id">
+                                            <input type="text" name="book_id" id="book_id" v-model="form.book_id" >
                                             <button>Send</button>
                                         </form>
                                     </div>
@@ -87,6 +87,11 @@ const submit = () => {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .imgBloc img {
+        height: 500px;
+        width: 320px;
     }
 
     .infBloc {

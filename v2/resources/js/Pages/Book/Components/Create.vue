@@ -40,6 +40,10 @@ const submit = () => {
     form.category_id = ''
 }
 
+const handleImageChange = (event) => {
+    form.image = event.target.files[0]
+}
+
 </script>
 
 <template>
@@ -73,8 +77,8 @@ const submit = () => {
                             </div>
     
                             <div>
-                                <label for="writter">Writer</label>
-                                <input id="writter" class="input" v-model="form.writter" />
+                                <label for="writer">Writer</label>
+                                <input id="writer" class="input" v-model="form.writter" />
                             </div>
     
                             <div>

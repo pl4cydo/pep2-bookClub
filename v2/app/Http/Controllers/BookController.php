@@ -59,6 +59,7 @@ class BookController extends Controller
         //    $request->synopsis,
         //    $request->year,
         //    $request->category_id,
+        //    $request->image
         // );
 
         $validatedData = $request->validate([
