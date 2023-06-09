@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::get('book/bookView/{id}', [BookController::class, 'bookView'])->name('book.bookView');
     Route::get('book/search/{name}', [BookController::class, 'bookSearch'])->name('book.bookSearch');
     Route::resource('/book', BookController::class);
+    Route::resource('/comments', CommentController::class);
 });
 
 

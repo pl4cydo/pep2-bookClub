@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->longText('comment');    
-            $table->bigInteger('likeComment');    
-            $table->bigInteger('unlikeComment');    
+            $table->bigInteger('likeComment')->default(0);    
+            $table->bigInteger('unlikeComment')->default(0);    
             $table->foreignId('user_id');    
             $table->foreignId('book_id');
         });

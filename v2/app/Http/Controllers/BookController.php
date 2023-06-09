@@ -30,9 +30,7 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function bookSearch($name) {
-        // dd("opa");
         $books = Book::where('title', $name)->get();
-        // dd($books);
         return $books;
     }
 
