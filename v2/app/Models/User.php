@@ -24,6 +24,7 @@ class User extends Authenticatable
         'instagram',
         'phoneNumber',
         'password',
+        'is_admin'
     ];
 
     /**

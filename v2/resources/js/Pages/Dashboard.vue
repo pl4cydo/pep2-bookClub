@@ -1,6 +1,11 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
+
+
+
+// let a = $page.props.auth.user.name
+
 </script>
 
 <template>
@@ -15,6 +20,8 @@ import { Head } from '@inertiajs/vue3';
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">You're logged in!</div>
+                    <h1>{{ $page.props.auth.user.name }}</h1>
+                    <h1>{{ $page.props.auth.user.is_admin }}</h1>
                 </div>
             </div>
         </div>

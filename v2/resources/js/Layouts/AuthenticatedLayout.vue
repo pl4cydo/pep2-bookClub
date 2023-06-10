@@ -40,7 +40,7 @@ function changeBoo() {
                                     Dashboarddsdd
                                 </NavLink>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div v-if="$page.props.auth.user.is_admin" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink :href="route('category.index')" :active="route().current('category.index')">
                                     Category
                                 </NavLink>
