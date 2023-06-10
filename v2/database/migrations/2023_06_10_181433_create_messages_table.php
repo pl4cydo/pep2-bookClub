@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->longText('textMessage');
+            $table->text('email');
+            $table->binary('imageMessage', 65535)->nullable();
+            $table->foreignId('user_id');
         });
     }
 
