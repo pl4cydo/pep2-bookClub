@@ -1,7 +1,33 @@
 <script setup>
-import { ref } from 'vue';
+import axios from 'axios';
+import { onMounted, ref } from 'vue';
 
+const Messages = ref([]);
 let num = ref(0);
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('/message');
+    Messages.value = response.data;
+} catch (error) {
+    console.error(error);
+}   
+    // console.log(Messages.value[0])
+    notificationChange(Messages.value)
+    // console.log(Messages.value[0].notification)
+});
+
+const notificationChange = (a) => {
+    for(let i = 0; i < a.length; i++) {
+        if(!(a[i].notification)){
+            num.value++
+        }
+        // console.log(a[i].notification)
+    }
+    console.log(num.value)
+}
+
+
 </script>
 
 <template>
@@ -11,6 +37,7 @@ let num = ref(0);
         </div>
         <div class="msg"></div>
         <button :onclick="() => num++">D</button>
+        <!-- {{ Messages }} -->
     </div>
 </template>
 

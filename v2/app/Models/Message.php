@@ -13,5 +13,6 @@ class Message extends Model
         'email',
         'imageMessage',
         'user_id',
+        'notification'
     ];
 }
