@@ -5,11 +5,16 @@ import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
 import { Head } from '@inertiajs/vue3';
 import InfoPerfil from './Partials/InfoPerfil.vue';
+import PersonalBooks from '../Book/Components/PersonalBooks.vue';
+
 
 defineProps({
     mustVerifyEmail: Boolean,
     status: String,
+    books: Array,
+    user: Number
 });
+
 </script>
 
 <template>
@@ -25,6 +30,10 @@ defineProps({
 
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                     <InfoPerfil />
+                </div>
+
+                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <PersonalBooks :books="books" :user="user"/>
                 </div>
 
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">

@@ -3,6 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useForm } from '@inertiajs/vue3';
 import Comment from '../../Comment/Comment.vue';
 import { onMounted, ref } from 'vue';
+import PrimaryButton from '../../../Components/PrimaryButton.vue';
 
 let a = defineProps({
     books: Array,
@@ -54,21 +55,22 @@ const submit = () => {
                                 <textarea rows="4" cols="80" name="comments" id="comments" v-model="form.comments">
                                     </textarea>
                                 <!-- <input type="text" name="books_id" id="books_id" v-model="form.book_id" > -->
-                                <button>Send</button>
+                                <PrimaryButton class="PrimaryButton">Send</PrimaryButton>
                             </form>
 
                         </div>
 
                         <div class="commentFlow">
                             <div v-for=" comment in comments">
-                                <!-- <div v-for=" userB in userBook">
-                                    <div v-if="comment.user_id == userB.id">
-                                        {{ userBook.name }}
+                                <div class="commentlist" v-if="comment.book_id == ab">
+                                    <div v-for=" userB in userBook">
+                                        <div v-if="comment.user_id == userB.id">
+                                            <h1>{{ userB.name }}:</h1>
+                                        </div>
                                     </div>
-                                </div> -->
-                                {{ comment.id }} {{ books.id }}
-                                <div v-if="comment.book_id == books.id">
-                                    {{ comment.comment }}
+                                    <div>
+                                        <h1> {{ comment.comment }}</h1>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -121,5 +123,14 @@ const submit = () => {
 
 .commentFlow {
     border: 1px solid black;
+}
+
+.commentlist {
+    display: flex;
+    margin: 15px;
+}
+
+.PrimaryButton {
+    height: 50px;
 }
 </style>
