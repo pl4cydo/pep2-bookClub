@@ -15,6 +15,7 @@ class MessageController extends Controller
     public function index()
     {
         //
+        return Message::all();
     }
 
     /**
@@ -36,6 +37,28 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'textMessage' => 'required',
+            'email' => 'required',
+            'imageMessage' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $imageName = null;
+
+        if ($request->hasFile('imageMessage')) {
+            $image = $request->file('imageMessage');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $image->storeAs('public/images', $imageName);
+        }
+
+        $comment = Message::create([
+            'textMessage' => $request->textMessage,
+            'email' => $request->email,
+            'imageMessage' => $imageName,
+            'user_id' => auth()->id()
+        ]);
+
+        return redirect(route('profile.edit'));
     }
 
     /**

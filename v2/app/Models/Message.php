@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     use HasFactory;
-    
+    protected $fillable = [
+        'textMessage',
+        'email',
+        'imageMessage',
+        'user_id',
+    ];
 }

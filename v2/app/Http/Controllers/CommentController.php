@@ -45,7 +45,7 @@ class CommentController extends Controller
             ->create([
                 'comment' => $request->comments,
                 'book_id' => $request->book_id,
-            ]);
+        ]);
 
         return redirect('/book/bookView/' . strval($request->book_id));
     }
