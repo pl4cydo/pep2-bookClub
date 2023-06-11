@@ -12,8 +12,12 @@ defineProps({
     <h1>List Books</h1>
     <div class="bookshelf">
         <div v-for="book in books" :key="book.id" class="book">
-          <Link class="link" :href="route('book.bookView', { id:book.id })"><img :src="'/storage/images/' + book.image" alt="Book Image"></Link>
-          <p class="title">{{ book.title }}</p>
+          <Link class="link" :href="route('book.bookView', { id:book.id })">
+            <img :src="'/storage/images/' + book.image" alt="Book Image">
+          </Link>
+          <p class="title">
+            {{ book.title }}
+          </p>
         </div>
     </div>
 </template>

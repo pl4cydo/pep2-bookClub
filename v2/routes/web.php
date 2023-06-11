@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -54,6 +55,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/message', MessageController::class);
     
+    Route::resource('favorite', FavoriteController::class);
 });
 
 

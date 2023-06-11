@@ -24,26 +24,6 @@ onMounted(async () => {
 
 </script>
 
-<!-- <template>
-    <h1>Self Comments</h1>
-    <div v-for="comment in comments" >
-        <div v-if="$page.props.auth.user.id == comment.user_id">
-            <div class="flex">
-                <h1>Comment:</h1>
-                <p> {{ comment.comment }} </p>
-            </div>
-            <div class="flex">
-                <h1>Nome:</h1>
-                <p> {{ comment.user_id }} </p>
-            </div>
-            <div class="flex">
-                <h1>Book:</h1>
-                <p> {{ comment.book_id }} </p>
-            </div>
-        </div>
-    </div>
-</template> -->
-
 <template>
     <!-- <h1>Self Comments</h1> -->
     <div class="bloco">
@@ -51,7 +31,6 @@ onMounted(async () => {
           <thead>
             <tr>
               <th>Comment</th>
-              <th>Nome</th>
               <th>Book</th>
             </tr>
           </thead>
@@ -91,7 +70,7 @@ onMounted(async () => {
         justify-content: space-between;
     }
 
-    td {
+    td, th {
         margin: 20px;
     }
 

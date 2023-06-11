@@ -4,6 +4,7 @@ import { useForm } from '@inertiajs/vue3';
 import Comment from '../../Comment/Comment.vue';
 import { onMounted, ref } from 'vue';
 import PrimaryButton from '../../../Components/PrimaryButton.vue';
+import ButtonFav from '../../Favorite/Component/ButtonFav.vue';
 
 let a = defineProps({
     books: Array,
@@ -25,6 +26,8 @@ const submit = () => {
 }
 
 
+
+
 </script>
 
 <template >
@@ -43,6 +46,7 @@ const submit = () => {
                         <div class="infBloc">
                             <p>{{ books[0].synopsis }}</p>
                             <p>Deal: {{ books[0].deal == 0 ? false : true }}</p>
+                            <ButtonFav :bookId="books[0].id"/>
                         </div>
 
                     </div>
