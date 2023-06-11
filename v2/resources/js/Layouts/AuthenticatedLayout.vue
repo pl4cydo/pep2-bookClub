@@ -9,6 +9,7 @@ import { Link } from '@inertiajs/vue3';
 import Createbook from '../Pages/Book/Components/Create.vue'
 import PrimaryButton from '../Components/PrimaryButton.vue';
 import Search from '../Pages/Book/Components/Search.vue'
+import IconMessage from '../Pages/Messages/Component/IconMessage.vue'
 
 const showingNavigationDropdown = ref(false);
 
@@ -54,6 +55,10 @@ function changeBoo() {
 
                         <div class="SeachBloc">
                             <Search />
+                        </div>
+
+                        <div v-if="$page.props.auth.user.is_admin">
+                            <IconMessage />
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">

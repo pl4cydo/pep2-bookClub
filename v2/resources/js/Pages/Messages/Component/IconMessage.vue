@@ -1,4 +1,5 @@
 <script setup>
+import { Link } from '@inertiajs/vue3';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 
@@ -31,12 +32,15 @@ const notificationChange = (a) => {
 </script>
 
 <template>
+
     <div class="blocoMsg">
         <div v-if="num > 0" class="notfic">
             <p>{{ num }}</p>
         </div>
-        <div class="msg"></div>
-        <button :onclick="() => num++">D</button>
+        <Link :href="route('message.create')">
+            <div class="msg"></div>
+        </Link>
+        <!-- <button :onclick="() => num++">D</button> -->
         <!-- {{ Messages }} -->
     </div>
 </template>
@@ -45,15 +49,19 @@ const notificationChange = (a) => {
     .blocoMsg {
         width: 100px;
         padding: 1rem;
-        background-color: #fff;
+      /*  background-color: #fff;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
         border-radius: 0.5rem;
         display: flex;
+     */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .msg {
-        height: 50px;
-        width: 50px;
+        height: 45px;
+        width: 45px;
         border: 1px solid blue;
         border-radius: 50%;
         margin-left: 5px;
@@ -76,6 +84,8 @@ const notificationChange = (a) => {
         justify-content: center;
         color: white;
         position: absolute;
+        margin-top: -30px;
+        margin-left: -30px;
     }
 
     button {

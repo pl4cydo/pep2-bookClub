@@ -37,18 +37,22 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-    Route::resource('/category', CategoryController::class);
     Route::get('/category2', [CategoryController::class, 'index2'])->name('category2.index2');
+    Route::resource('/category', CategoryController::class);
+
+    Route::resource('/book', BookController::class);
     Route::get('book/bookView/{id}', [BookController::class, 'bookView'])->name('book.bookView');
     Route::get('book/search/{name}', [BookController::class, 'bookSearch'])->name('book.bookSearch');
-    Route::resource('/book', BookController::class);
+
     Route::resource('/comments', CommentController::class);
 
     Route::resource('/message', MessageController::class);
+    
 });
 
 

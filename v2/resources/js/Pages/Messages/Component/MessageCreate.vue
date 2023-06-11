@@ -22,8 +22,8 @@ const handleImageChange = (event) => {
 </script>
 
 <template>
-
     <form name="messageForm" class="formMessage" @submit.prevent="submit">
+        <h1>Mensagem para o adms</h1>
 
         <div>
             <label for="email">Email</label>

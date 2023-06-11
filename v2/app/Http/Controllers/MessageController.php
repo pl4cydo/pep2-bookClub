@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class MessageController extends Controller
 {
@@ -26,6 +27,8 @@ class MessageController extends Controller
     public function create()
     {
         //
+        // dd('aaa');
+        return Inertia::render('Messages/Message');
     }
 
     /**
@@ -70,6 +73,7 @@ class MessageController extends Controller
     public function show(Message $message)
     {
         //
+        
     }
 
     /**
