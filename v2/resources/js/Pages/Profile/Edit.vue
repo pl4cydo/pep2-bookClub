@@ -9,6 +9,7 @@ import PersonalBooks from '../Book/Components/PersonalBooks.vue';
 import IconMessage from '../Messages/Component/IconMessage.vue';
 import Message from '../Messages/Message.vue';
 import SelfComments from '../Comment/Components/SelfComments.vue';
+import FavBook from '../Favorite/Component/FavBooks.vue'
 
 
 defineProps({
@@ -33,9 +34,9 @@ defineProps({
 
                 <!-- <IconMessage /> -->
 
-                <!-- <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <Message />
-                </div> -->
+                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <FavBook />
+                </div>
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                     <SelfComments />
                 </div>

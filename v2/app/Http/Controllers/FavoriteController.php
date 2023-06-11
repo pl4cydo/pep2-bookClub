@@ -56,6 +56,20 @@ class FavoriteController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *      
+     * @return \Illuminate\Http\Response
+     */
+    public function favBooks ()
+    {
+        //
+        $user_id = auth()->id();
+        $fav = Favorite::where('user_id', $user_id)->get();
+        return $fav;
+    }
+
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Favorite  $favorite
