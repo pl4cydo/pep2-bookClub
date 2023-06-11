@@ -63,7 +63,7 @@ function changeBoo() {
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <!-- Settings Dropdown -->
-                            <PrimaryButton :onclick="changeBoo" >Novo Livro</PrimaryButton>
+                            <PrimaryButton :onclick="changeBoo">Novo Livro</PrimaryButton>
                             <div class="ml-3 relative flex">
                                 <!-- <h1>aqui</h1> -->
 
@@ -162,20 +162,21 @@ function changeBoo() {
 </template>
 
 <style scoped>
-    .jorge {
-        background-color: aqua;
-        display: flex;
-        width: 100vw;
-        justify-content: center;
-        align-items: center;
-    }
-    .vasco {
-        min-height: 100vh;
-        width: 100%;
-    }
+.jorge {
+    background-color: aqua;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
 
-    .SeachBloc{
-        height: 100%;
-        width: 40%;
-    }
+.vasco {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.SeachBloc {
+    height: 100%;
+    width: 40%;
+}
 </style>
