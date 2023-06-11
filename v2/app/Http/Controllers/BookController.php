@@ -27,6 +27,16 @@ class BookController extends Controller
 
     /**
      * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listBooks()
+    {
+        return Book::all();
+    }
+
+    /**
+     * Display a listing of the resource.
      * @param  \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */

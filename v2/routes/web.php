@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/book', BookController::class);
     Route::get('book/bookView/{id}', [BookController::class, 'bookView'])->name('book.bookView');
     Route::get('book/search/{name}', [BookController::class, 'bookSearch'])->name('book.bookSearch');
+    Route::get('listBooks', [BookController::class, 'listBooks'])->name('book.listBooks');
 
     Route::resource('/comments', CommentController::class);
 
