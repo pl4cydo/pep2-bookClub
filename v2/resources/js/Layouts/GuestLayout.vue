@@ -5,25 +5,21 @@ import { Link } from '@inertiajs/vue3';
 
 <template>
     <header class="header">
-
         <div id="title">
             <h1>Book</h1>
             <h1>Club</h1>
         </div>
 
-
     </header>
 
     <div class="min-h-screen flex flex-col items-center pt-6 sm:pt-0 bg-gray-800">
         <!-- <div>
-            <Link href="/">
-                <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
-            </Link>
-        </div> -->
+                    <Link href="/">
+                        <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
+                    </Link>
+                </div> -->
 
-        <div
-            class="sm:max-w-md mt-2 px-6 py-4 shadow-md overflow-hidden sm:rounded-lg"
-        >
+        <div class="sm:max-w-md mt-2 px-6 py-4 shadow-md overflow-hidden sm:rounded-lg">
             <slot />
         </div>
     </div>
