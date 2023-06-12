@@ -121,6 +121,12 @@ const submit = () => {
 .input-btn {
     background-color: #3e3ec5;
 }
+
+.input-btn:hover {
+    background-color: white;
+    color: #3e3ec5;
+    transition: 0.8s ease;
+}
 .input {
     border-radius: 0;
     position: relative;
