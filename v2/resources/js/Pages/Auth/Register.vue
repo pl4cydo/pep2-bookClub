@@ -134,3 +134,8 @@ const submit = () => {
         </form>
     </GuestLayout>
 </template>
+
+<style scoped>
+
+
+</style>
