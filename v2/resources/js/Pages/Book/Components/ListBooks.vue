@@ -27,6 +27,7 @@ defineProps({
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        color: black;
       }
       
       .book {

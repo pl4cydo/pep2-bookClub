@@ -62,7 +62,7 @@ const notificationChange = (a) => {
     .msg {
         height: 45px;
         width: 45px;
-        border: 1px solid blue;
+        border: 1px solid white;
         border-radius: 50%;
         margin-left: 5px;
     }

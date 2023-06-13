@@ -72,13 +72,15 @@ const searchBooks = async () => {
         border-radius: 20px;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
+        border: 1px solid white;
+        border-left: none; 
     }
 
     .searchDiv button:hover {
         background-color:#3e3ec5;
         color: white;
         transition: 0.8s ease;
-        border: 1px solid #3e3ec5;
+ 
     }
     .searchDiv input {
         color: white;

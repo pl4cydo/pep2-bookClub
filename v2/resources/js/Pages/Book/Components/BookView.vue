@@ -32,7 +32,7 @@ const submit = () => {
 
 <template >
     <AuthenticatedLayout>
-        <div class="py-12">
+        <div class="py-12 text-black">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <!-- <h1>{{ id }}</h1> -->
@@ -91,6 +91,7 @@ const submit = () => {
     flex-direction: column;
     width: 100%;
     height: auto;
+    color: black;
 }
 
 .bookView {
