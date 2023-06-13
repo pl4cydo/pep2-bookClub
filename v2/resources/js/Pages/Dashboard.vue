@@ -2,21 +2,9 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import BookSlider from './Book/Components/BookSlider.vue'
 
-const margin = ref('0px')
 
-
-const next = () => {
-    const currentMargin = parseInt(margin.value);
-    margin.value = (currentMargin - 400) + 'px';
-}   
-
-const back = () => {
-    const currentMargin = parseInt(margin.value);
-    console.log(currentMargin)
-    if(currentMargin < 0)
-    margin.value = (currentMargin + 400) + 'px';
-}   
 
 
 
@@ -48,27 +36,8 @@ const back = () => {
                             <img class="highlights-img fade" src="http://placehold.it/760x259">
                         </div>
 
-                        <h1 class="categories-title">Bungas</h1>
-                        <div class="small-slider-container">
-                            <div class="small-slider" :style="{ left: margin }">
-                                <img class="small-slider-img" src="http://placehold.it/140x200">
-                                <img class="small-slider-img" src="http://placehold.it/140x200">
-                                <img class="small-slider-img" src="http://placehold.it/140x200">
-                                <img class="small-slider-img" src="http://placehold.it/140x200">
-                                <img class="small-slider-img" src="http://placehold.it/140x200">
-                                <img class="small-slider-img" src="http://placehold.it/140x200">
-                                <img class="small-slider-img" src="http://placehold.it/140x200">
-                                <img class="small-slider-img" src="http://placehold.it/140x200">
-                                <img class="small-slider-img" src="http://placehold.it/140x200">
-                                <img class="small-slider-img" src="http://placehold.it/140x200">
-                                <img class="small-slider-img" src="http://placehold.it/140x200">
-                                <img class="small-slider-img" src="http://placehold.it/140x200">
-                            </div>
-                            <div class="small-button-container">
-                                <button id="prev-button" @click="back()" class="prev-button">&lt;</button>
-                                <button id="next-button" @click="next()" class="next-button">&gt;</button>
-                            </div>
-                        </div>
+                        <BookSlider />
+                        
                     </div>
                 </div>
             </div>
@@ -123,55 +92,4 @@ const back = () => {
     }
 }
 
-.small-slider-container {
-    overflow: hidden;
-    position: relative;
-}
-
-.small-slider {
-    display: flex;
-    scroll-behavior: smooth;
-    position: relative;
-    align-items: center;
-    width: auto;
-    transition: 0.8s ease;
-}
-
-.small-slider-img {
-    width: 140px;
-    height: 200px;
-    margin-right: 10px;
-    transition: transform .10s;
-    border: solid blueviolet;
-}
-
-.small-slider-img:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-.small-button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    left: 10px;
-    z-index: 1;
-}
-
-.prev-button,
-.next-button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: blueviolet;
-    cursor: pointer;
-}
-
-#prev-button {
-    left: 10px;
-}
-
-#next-button {
-    right: 10px;
-}
 </style>
