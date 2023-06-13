@@ -2,9 +2,16 @@
 import { Link } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
 
+
+let a = defineProps({
+    category: Object
+})
+
+
 const margin = ref('0px')
 const books = ref([]);
 const count = ref(0)
+// const cateogori = ref(category)
 
 
 const next = () => {
@@ -40,20 +47,27 @@ onMounted(() => {
 </script>
 
 <template>
-    <h1 class="categories-title">Bungas</h1>
+    <h1 class="categories-title">Livros</h1>
     <div class="small-slider-container">
         <div class="small-slider" :style="{ left: margin }">
             <div class="books" v-for="book in books" :key="book.id">
-                <Link :href="route('book.bookView', { id: book.id })">
-                <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
-                <p class="title">{{ book.title }}</p>
-                </Link>
+                <div v-if="book.category_id == category.a">
+                    <Link :href="route('book.bookView', { id: book.id })">
+                        <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
+                        <p class="title">{{ book.title }}</p>
+                    </Link>
+                </div>
             </div>
         </div>
         <div class="small-button-container">
             <button id="prev-button" @click="back()" class="prev-button">&lt;</button>
             <button id="next-button" @click="next()" class="next-button">&gt;</button>
         </div>
+        <!-- <div v-if="cateogory.">
+
+        </div> -->
+        {{ category.a }}
+
     </div>
 </template>
   

@@ -36,7 +36,10 @@ import BookSlider from './Book/Components/BookSlider.vue'
                             <img class="highlights-img fade" src="http://placehold.it/760x259">
                         </div>
 
-                        <BookSlider />
+                        <BookSlider :category="{ a: 1 }"/>
+                        <BookSlider :category="{ a: 2 }"/>
+                        <BookSlider :category="{ a: 3 }"/>
+
                         
                     </div>
                 </div>
