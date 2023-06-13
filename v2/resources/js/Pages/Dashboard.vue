@@ -1,11 +1,14 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import BookSlider from './Book/Components/BookSlider.vue'
 
 
 
+onMounted(() => {
+    list();
+})
 
 
 // let a = $page.props.auth.user.name
@@ -28,19 +31,26 @@ import BookSlider from './Book/Components/BookSlider.vue'
                         <h1>{{ $page.props.auth.user.name }}</h1>
                         <h1>{{ $page.props.auth.user.is_admin }}</h1> -->
 
-                        <!-- <h2 class="highlights-title">Tchucas</h2>
+                        <h2 class="highlights-title">Tchucas</h2>
                         <div class="highlights-slider" >
                             <img class="highlights-img fade" src="http://placehold.it/760x256">
                             <img class="highlights-img fade" src="http://placehold.it/760x257">
                             <img class="highlights-img fade" src="http://placehold.it/760x258">
                             <img class="highlights-img fade" src="http://placehold.it/760x259">
+                        </div>
+
+
+                        <!-- {{ categories }} -->
+                        <!-- <div v-for="category in categories">
+                            {{ category.id  }}
+                            <BookSlider :category="{ a: category[1].id }"/>
                         </div> -->
 
-                        <BookSlider :category="{ a: 1 }"/>
-                        <BookSlider :category="{ a: 2 }"/>
-                        <BookSlider :category="{ a: 3 }"/>
+                        <BookSlider :categoryNumber="{ a: null }"/>
+                        <BookSlider :categoryNumber="{ a: 1 }"/>
+                        <BookSlider :categoryNumber="{ a: 2 }"/>
+                        <BookSlider :categoryNumber="{ a: 3 }"/>
 
-                        
                     </div>
                 </div>
             </div>
@@ -50,6 +60,7 @@ import BookSlider from './Book/Components/BookSlider.vue'
 
 <style scoped>
 .bloco {
+    color: white;
     background-color: #1f2937;
     overflow: hidden;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);

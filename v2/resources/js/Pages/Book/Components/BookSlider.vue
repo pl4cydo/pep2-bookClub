@@ -2,9 +2,20 @@
 import { Link } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
 
+const categories = ref([]);
+
+const listCategory = async () => {
+    try {
+        const response = await axios.get('/category2');
+        categories.value = response.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 
 let a = defineProps({
-    category: Object
+    categoryNumber: Object
 })
 
 
@@ -42,16 +53,34 @@ const list = async () => {
 
 onMounted(() => {
     list()
+    listCategory()
 })
 
 </script>
 
 <template>
-    <h1 class="categories-title">Livros</h1>
+    <div class="flex">
+        <h1 class="mr-1">
+            Livros 
+        </h1> 
+        <div v-for="category in categories">
+            <div v-if="categoryNumber.a != null">
+                <h1 v-if="category.id == categoryNumber.a">
+                  de:   {{category.name }}
+                </h1>
+            </div>
+        </div>
+    </div>
     <div class="small-slider-container">
         <div class="small-slider" :style="{ left: margin }">
             <div class="books" v-for="book in books" :key="book.id">
-                <div v-if="book.category_id == category.a">
+                <div v-if="categoryNumber.a != null && book.category_id == categoryNumber.a">
+                    <Link :href="route('book.bookView', { id: book.id })">
+                    <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
+                    <p class="title">{{ book.title }}</p>
+                    </Link>
+                </div>
+                <div v-if="categoryNumber.a == null">
                     <Link :href="route('book.bookView', { id: book.id })">
                     <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
                     <p class="title">{{ book.title }}</p>
@@ -65,7 +94,7 @@ onMounted(() => {
         </div>
         <!-- <div v-if="cateogory.">
 
-            </div> -->
+                </div> -->
     </div>
 </template>
   
