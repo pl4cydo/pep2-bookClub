@@ -53,8 +53,8 @@ onMounted(() => {
             <div class="books" v-for="book in books" :key="book.id">
                 <div v-if="book.category_id == category.a">
                     <Link :href="route('book.bookView', { id: book.id })">
-                        <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
-                        <p class="title">{{ book.title }}</p>
+                    <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
+                    <p class="title">{{ book.title }}</p>
                     </Link>
                 </div>
             </div>
@@ -65,9 +65,7 @@ onMounted(() => {
         </div>
         <!-- <div v-if="cateogory.">
 
-        </div> -->
-        {{ category.a }}
-
+            </div> -->
     </div>
 </template>
   
@@ -75,8 +73,11 @@ onMounted(() => {
 .small-slider-container {
     overflow: hidden;
     position: relative;
-    border: 1px solid black;
+    /*background-color: #1f2937; */
     width: 100%;
+    border-radius: 8px;
+    border: 1px solid white;
+    color: rgb(255, 255, 255);
 }
 
 .small-slider {
@@ -95,7 +96,7 @@ onMounted(() => {
     height: 200px;
     margin-right: 10px;
     transition: transform 0.1s;
-    border: solid blueviolet;
+    border: solid white;
 }
 
 .small-slider-img:hover {
@@ -116,7 +117,7 @@ onMounted(() => {
     background: none;
     border: none;
     font-size: 24px;
-    color: blueviolet;
+    color: white;
     cursor: pointer;
 }
 
