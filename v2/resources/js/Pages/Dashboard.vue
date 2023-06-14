@@ -6,9 +6,9 @@ import BookSlider from './Book/Components/BookSlider.vue'
 
 
 
-onMounted(() => {
-    list();
-})
+// onMounted(() => {
+//     list();
+// })
 
 
 // let a = $page.props.auth.user.name
@@ -42,8 +42,8 @@ onMounted(() => {
 
                         <!-- {{ categories }} -->
                         <!-- <div v-for="category in categories">
-                            {{ category.id  }}
-                            <BookSlider :category="{ a: category[1].id }"/>
+                            {{ category.id }}
+                            <BookSlider :categoryNumber="{ a: category.id }" />
                         </div> -->
 
                         <BookSlider :categoryNumber="{ a: null }"/>

@@ -125,6 +125,7 @@ const handleImageChange = (event) => {
     width: 100vw;
     /* background-color: aquamarine; */
     position: absolute;
+    z-index: 99;
     display: flex;
     backdrop-filter: blur(2px);
     justify-content: center;
@@ -132,8 +133,8 @@ const handleImageChange = (event) => {
 
 .formPopUp {
     margin-top: 5%;
-    height: 700px;
-    width: 900px;
+    height: 500px;
+    width: 700px;
 }
 
 .formHeader {

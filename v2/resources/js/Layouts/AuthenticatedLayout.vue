@@ -24,6 +24,7 @@ function changeBoo() {
 
 <template>
     <div>
+        <Createbook v-if="boo" />
         <div class="vasco">
             <nav class="header">
                 <!-- Primary Navigation Menu -->
@@ -150,7 +151,7 @@ function changeBoo() {
             </main>
 
         </div>
-        <Createbook v-if="boo" />
+        
     </div>
 </template>
 
