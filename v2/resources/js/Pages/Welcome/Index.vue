@@ -88,7 +88,7 @@ defineProps({
 #register-btn,
 #login-btn {
     margin-right: 10px;
-    border: 2px solid #3e3ec5;
+    border: 2px solid white;
     border-radius: 8px;
     padding: 10px;
     transition: 0.5s;

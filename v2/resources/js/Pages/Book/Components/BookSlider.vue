@@ -4,6 +4,44 @@ import axios from 'axios';
 import { onMounted, ref } from 'vue';
 
 const categories = ref([]);
+const margin = ref('0px')
+const books = ref([]);
+const count = ref(0);
+const countNext = ref(0);
+// const cateogori = ref(category)
+
+let a = defineProps({
+    categoryNumber: Object
+})
+
+const next = () => {
+    const currentMargin = parseInt(margin.value);
+    if (count.value > 7 && countNext.value > 0) {
+        margin.value = (currentMargin - 150) + 'px';
+        countNext.value--;
+        console.log(countNext.value);
+    }
+}
+
+const back = () => {
+    const currentMargin = parseInt(margin.value);
+    console.log(currentMargin)
+    if (currentMargin < 0){
+        countNext.value++;
+        margin.value = (currentMargin + 150) + 'px';
+    }
+}
+
+
+const list = async () => {
+    try {
+        const responseBook = await axios.get('listBooks');
+        books.value = responseBook.data;
+        count.value = books.value.length
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 const listCategory = async () => {
     try {
@@ -14,47 +52,17 @@ const listCategory = async () => {
     }
 }
 
-
-let a = defineProps({
-    categoryNumber: Object
-})
-
-
-const margin = ref('0px')
-const books = ref([]);
-const count = ref(0)
-// const cateogori = ref(category)
-
-
-const next = () => {
-    const currentMargin = parseInt(margin.value);
-    margin.value = (currentMargin - 145) + 'px';
-    if (count > 7) {
-    }
-}
-
-const back = () => {
-    const currentMargin = parseInt(margin.value);
-    console.log(currentMargin)
-    if (currentMargin < 0)
-        margin.value = (currentMargin + 145) + 'px';
-}
-
-
-const list = async () => {
-    try {
-        const responseBook = await axios.get('listBooks');
-        books.value = responseBook.data;
+onMounted( async () => {
+    await list()
+    await listCategory()
+    // console.log(books.value.length)
+    if(a.categoryNumber.a) {
+        count.value = books.value.filter(book => book.category_id == a.categoryNumber.a).length
+    } else {
         count.value = books.value.length
-        console.log(count.value)
-    } catch (error) {
-        console.error(error);
     }
-}
-
-onMounted(() => {
-    list()
-    listCategory()
+    countNext.value = count.value < 7 ? (count.value - 7) * -1 : count.value - 7;
+    console.log(count.value, countNext.value)
 })
 
 </script>
@@ -74,7 +82,7 @@ onMounted(() => {
     </div>
     <div class="small-slider-container">
         <div class="small-slider" :style="{ left: margin }">
-            <div class="books" v-for="book in books" :key="book.id">
+            <div class="books" v-for="(book, index) in books" :key="book.id">
                 <div v-if="categoryNumber.a != null && book.category_id == categoryNumber.a">
                     <Link :href="route('book.bookView', { id: book.id })">
                     <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
@@ -93,6 +101,7 @@ onMounted(() => {
             <button id="prev-button" @click="back()" class="prev-button">&lt;</button>
             <button id="next-button" @click="next()" class="next-button">&gt;</button>
         </div>
+        <!-- <p>Total de livros renderizados: {{ renderedBooksCount }}</p> -->
         <!-- <div v-if="cateogory.">
 
                 </div> -->
