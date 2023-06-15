@@ -1,0 +1,198 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(34, 34, 34);
+  color: white;
+  font-family: poppinsregular;
+}
+
+nav {
+  background-color: rgb(83, 79, 79);
+  color: white;
+  font-family: poppinsregular;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 20px;
+  width: 100%;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: poppinsregular;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+#title {
+  flex-direction: column;
+  line-height: 15px;
+  font-size: 15px;
+}
+
+li {
+  display: inline-block;
+  margin: 20px;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: rgb(6, 87, 134);
+  transition: 0.3s all;
+}
+
+input.search-input {
+  border: none;
+  border-radius: 15px;
+  width: 329px;
+  height: 33px;
+  align-items: center;
+  margin: 10px;
+}
+
+img {
+  height: 42px;
+  width: 50px;
+  flex-direction: column;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 20px;
+}
+
+div.cardperfil {
+  width: 390px;
+  margin: 0 auto;
+  padding: 10px;
+  margin: 50px 5px;
+  text-align: center;
+  border-radius: 15px;
+  flex: 1;
+  align-items: center;
+}
+
+div.cardcoment1 {
+  border: 2px solid rgb(83, 79, 79);
+  width: 921px;
+  height: 207px;
+  margin: 5px 5px;
+  text-align: left;
+  border-radius: 15px;
+}
+
+div.cardcoment2 {
+  border: 2px solid rgb(83, 79, 79);
+  width: 921px;
+  height: 207px;
+  margin: 5px 5px;
+  text-align: left;
+  border-radius: 15px;
+}
+
+div.cardcoment3 {
+  border: 2px solid rgb(83, 79, 79);
+  width: 921px;
+  height: 207px;
+  margin: 5px 5px;
+  text-align: left;
+  border-radius: 15px;
+}
+
+div.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+div.cardbook-container{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+div.cardcoment1,
+div.cardcoment2 {
+  flex-basis: calc(50% - 10px);
+}
+
+section.coment {
+  padding: 10px;
+}
+
+section.top img {
+  height: 296px;
+  width: 300px;
+}
+
+form [type="submit"] {
+  height: 31px;
+  width: 293px;
+  background-color: rgb(6, 87, 134);
+  color: white;
+}
+
+form [type="submit"]:hover {
+  cursor: pointer;
+  color: white;
+}
+
+section.top h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+input {
+  height: 42px;
+  border-radius: 10px;
+  font-size: 15px;
+  width: 342px;
+  color: rgb(34, 34, 34);
+  background-color: white;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 10px;
+}
+
+p {
+  border: 2px solid rgb(83, 79, 79);
+  border-radius: 15px;
+  margin-bottom: 5px;
+}
+
+#insta{
+  background-color: rgb(83, 79, 79);
+  border: 1px solid rgb(6, 87, 134);
+  height: 90px;
+  width: 300px;
+  border-radius: 15px;
+  margin:5px 5px;
+  flex-direction: column;  
+  align-items: center;
+  display: inline-flex;
+
+}
+
+.img-book {
+  margin-bottom: 5px;
+  margin-left: 10px;
+  width: 125px;
+  height: 132px;
+}
+

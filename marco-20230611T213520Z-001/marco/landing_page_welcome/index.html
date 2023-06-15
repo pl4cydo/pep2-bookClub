@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/styles/style.css" rel="stylesheet">
+    <link href="/styles/media.css" rel="stylesheet">
+    <title>index</title>
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>Book</h1>
+            <h1>Club</h1>
+        </div>
+
+        <ul>
+            <a href="/donate.html"><li>Donate</li></a>
+            <a href="/welcome.html"><li>Welcome</li></a>
+            <a href="#" id="login-btn"><li>Login</li></a>
+            <a href="#" id="register-btn"><li>Register</li></a>
+        </ul>
+    </header>
+    
+    <main>
+        <aside>
+            <h2><span>Create your account</span></h2>
+            <h2>in Book club</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+            </p>
+        </aside>
+
+        <article>
+            <img src="./components/images/logo.png" alt="Book-logo">
+        </article>
+    </main>
+
+<!-- Login Pop-up -->
+<div class="popup" id="login-popup">
+    <div class="popup-content">
+        <span class="popup-close">&times;</span>
+        <h2>Login</h2>
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <input class="input-btn" type="submit" value="Login">
+            <span id="switch-popup">New account?</span>
+        </form>
+    </div>
+</div>
+
+<!-- Register Pop-up -->
+<div class="popup" id="register-popup">
+    <div class="popup-content">
+        <span class="popup-close">&times;</span>
+        <h2>Register</h2>
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <input class="input-btn" type="submit" value="Register">
+            <span id="switch-popup">Already has a account?</span>
+        </form>
+    </div>
+</div>   
+<script>
+//Show/hide login e register pop-ups//
+const loginButton = document.getElementById('login-btn');
+const regButton = document.getElementById('register-btn');
+const regPopup = document.getElementById('register-popup');
+const loginPopup = document.getElementById('login-popup');
+const closePopup = document.querySelectorAll('.popup-close');
+const switchPopupBtns = document.querySelectorAll('#switch-popup');
+
+loginButton.addEventListener('click', function() {
+    loginPopup.classList.add('show-popup');
+});
+
+regButton.addEventListener('click', function() {
+    regPopup.classList.add('show-popup');
+});
+
+closePopup.forEach(function(closeBtn) {
+    closeBtn.addEventListener('click', function() {
+        loginPopup.classList.remove('show-popup');
+        regPopup.classList.remove('show-popup');
+    });
+});
+
+switchPopupBtns.forEach(function(switchBtn) {
+    switchBtn.addEventListener('click', function() {
+        loginPopup.classList.toggle('show-popup');
+        regPopup.classList.toggle('show-popup');
+    });
+});
+//----------------------////----------------------//
+</script>
+</body>
+</html>

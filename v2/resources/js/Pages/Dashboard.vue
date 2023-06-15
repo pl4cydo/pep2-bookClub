@@ -3,6 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
 import BookSlider from './Book/Components/BookSlider.vue'
+import Banner from '../Pages/Banner/component/Banner.vue'
 
 
 
@@ -27,24 +28,8 @@ import BookSlider from './Book/Components/BookSlider.vue'
             <div class="max-w-7xl mx-auto">
                 <div class="bloco">
                     <div class="blocoN">
-                        <!-- <div class="p-6 text-gray-900">You're logged in!</div>
-                        <h1>{{ $page.props.auth.user.name }}</h1>
-                        <h1>{{ $page.props.auth.user.is_admin }}</h1> -->
 
-                        <h2 class="highlights-title">Tchucas</h2>
-                        <div class="highlights-slider" >
-                            <img class="highlights-img fade" src="http://placehold.it/760x256">
-                            <img class="highlights-img fade" src="http://placehold.it/760x257">
-                            <img class="highlights-img fade" src="http://placehold.it/760x258">
-                            <img class="highlights-img fade" src="http://placehold.it/760x259">
-                        </div>
-
-
-                        <!-- {{ categories }} -->
-                        <!-- <div v-for="category in categories">
-                            {{ category.id }}
-                            <BookSlider :categoryNumber="{ a: category.id }" />
-                        </div> -->
+                        <Banner />
 
                         <BookSlider :categoryNumber="{ a: null }"/>
                         <BookSlider :categoryNumber="{ a: 1 }"/>
@@ -77,32 +62,4 @@ import BookSlider from './Book/Components/BookSlider.vue'
     flex-direction: column;
     align-items: center;
 }
-
-.highlights-slider {
-    max-width: fit-content;
-    display: flex;
-    border: solid blueviolet;
-    overflow: hidden;
-}
-
-.highlights-img {
-    width: 760px;
-    height: 256px;
-}
-
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@keyframes fade {
-    from {
-        opacity: .4
-    }
-
-    to {
-        opacity: 1
-    }
-}
-
 </style>
