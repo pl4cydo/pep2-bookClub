@@ -42,8 +42,8 @@ const submit = () => {
         background-color: #e0e0e0;
     }
 
-    #favButton.favorited {
-        background-color: #ffcc00;
-        color: #fff;
+    #favButton {
+        background-color: white;
+        color: black;
     }
 </style>
