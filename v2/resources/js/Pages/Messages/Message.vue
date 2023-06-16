@@ -1,8 +1,11 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import MessageCreate from './Component/MessageCreate.vue'
-import MessageFlow from './Component/MessageFlow.vue'
+import MessageFlowUnviewed from './Component/MessageFlowUnviewed.vue'
+import MessageFlowViewed from './Component/MessageFlowViewed.vue';
+import { ref } from 'vue';
 
+const change = ref(false)
 
 </script>
 
@@ -10,12 +13,20 @@ import MessageFlow from './Component/MessageFlow.vue'
     <AuthenticatedLayout>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="messageBloco">
                         <div>
-                            <h1>Messages!</h1>
+                            <button class="button" @click="change = false">Caixa de Mensagens</button>
+                            <button class="button" @click="change = true">Mensagens Vistas</button>
+                        </div>
+
+                        <div v-if="!change">
                             <!-- <MessageCreate /> -->
-                            <MessageFlow />
+                            <MessageFlowUnviewed />
+                        </div>
+
+                        <div v-if="change">
+                            <MessageFlowViewed />
                         </div>
                     </div>
                 </div>
@@ -26,18 +37,22 @@ import MessageFlow from './Component/MessageFlow.vue'
 
 <style scoped>
 
-
-.formMessage {
+.messageBloco {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
 }
 
-.formMessage div {
-    margin: 10px;
+.button {
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
-.messageBloco{
+.button:hover {
+    border-bottom: 1px solid white;
+    transition: 0.8s ease;
+}
+
+.messageBloco {
     display: flex;
     justify-content: center;
 }

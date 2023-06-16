@@ -2,6 +2,7 @@
 import { Link } from '@inertiajs/vue3';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
+import { EnvelopeIcon } from '@heroicons/vue/24/solid';
 
 const Messages = ref([]);
 let num = ref(0);
@@ -38,7 +39,7 @@ const notificationChange = (a) => {
             <p>{{ num }}</p>
         </div>
         <Link :href="route('message.create')">
-            <div class="msg"></div>
+            <EnvelopeIcon class="msg"  />
         </Link>
         <!-- <button :onclick="() => num++">D</button> -->
         <!-- {{ Messages }} -->
@@ -60,22 +61,21 @@ const notificationChange = (a) => {
     }
     
     .msg {
-        height: 45px;
-        width: 45px;
-        border: 1px solid white;
+        margin-top: 10px;
+        width: 35px;
         border-radius: 50%;
         margin-left: 5px;
     }
 
     .msg:hover {
-        background-color: blue;
+        background-color: #3e3ec5;
         transition: 0.8s ease;
     }
 
     .notfic {
         background-color: red;
-        height: 25px;
-        min-width: 25px;
+        height: 20px;
+        min-width: 20px;
         width: auto;
         border: 3px solid red;
         border-radius: 50%;
@@ -84,8 +84,9 @@ const notificationChange = (a) => {
         justify-content: center;
         color: white;
         position: absolute;
-        margin-top: -30px;
+        margin-top: -20px;
         margin-left: -30px;
+        font-size: 15px;
     }
 
     button {

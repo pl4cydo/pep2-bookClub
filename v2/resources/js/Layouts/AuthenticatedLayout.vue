@@ -37,16 +37,16 @@ function changeBoo() {
                         </div>
                         <!-- Navigation Links -->
                         <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboarddsdd
+                            Início
                         </NavLink>
-                        <div v-if="$page.props.auth.user.is_admin" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <!-- <div v-if="$page.props.auth.user.is_admin" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                             <NavLink :href="route('category.index')" :active="route().current('category.index')">
                                 Category
                             </NavLink>
-                        </div>
-                        <NavLink :href="route('book.index')" :active="route().current('book.index')">
+                        </div> -->
+                        <!-- <NavLink :href="route('book.index')" :active="route().current('book.index')">
                             Book
-                        </NavLink>
+                        </NavLink> -->
                     </div>
 
                     <div class="SeachBloc">

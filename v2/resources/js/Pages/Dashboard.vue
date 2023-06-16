@@ -17,7 +17,7 @@ import Banner from '../Pages/Banner/component/Banner.vue'
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="Início" />
 
     <AuthenticatedLayout>
         <template #header>
