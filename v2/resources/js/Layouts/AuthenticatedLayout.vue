@@ -80,6 +80,10 @@ function changeBoo() {
 
                             <template  #content>
                                 <DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>
+                                <div v-if="$page.props.auth.user.is_admin">
+                                    <DropdownLink :href="route('category.index')"> Category </DropdownLink>
+                                    <DropdownLink :href="route('message.create')"> Message </DropdownLink>
+                                </div>
                                 <DropdownLink :href="route('logout')" method="post" as="button">
                                     Log Out
                                 </DropdownLink>
@@ -249,16 +253,18 @@ function changeBoo() {
 
 .button {
     color: white;
-    border: 1px solid white;
+    border-bottom: 1px solid white;
+    border-radius: 50px;
     padding: 15px;
+    border-left: none;
+    border-top-left-radius: 0%;
+    border-bottom-left-radius: 0%;
 }
 
 
 .button:hover {
-    border-radius: 6px;
+    border-top: 1px solid white;
+    transition: 1s ease;
     background-color: #3e3ec5;
-    color: white;
-    transition: 0.8s ease;
-    border: 1px solid #3e3ec5;
 }
 </style>

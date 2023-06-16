@@ -65,7 +65,7 @@ const open = ref(false);
                 style="display: none; background-color: black"
                 @click="open = false"
             >
-                <div class="rounded-md ring-1 ring-black ring-opacity-5 bg-gray-800 " :class="contentClasses">
+                <div class="rounded-md ring-1 ring-black ring-opacity-5 p-2" :class="contentClasses">
                     <slot name="content" />
                 </div>
             </div>
