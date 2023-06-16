@@ -56,11 +56,11 @@ const jj = () => {
 }
 
 
-// onMounted(() => {
-//     setInterval(() => {
-//         jj()
-//     }, 2000)
-// })
+onMounted(() => {
+    setInterval(() => {
+        jj()
+    }, 5000)
+})
 
 
 

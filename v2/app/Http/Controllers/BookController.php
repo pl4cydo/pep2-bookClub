@@ -120,10 +120,11 @@ class BookController extends Controller
     {
         // dd($id);
         $user = User::All();
+        $categories = Category::All();
         // dd($user);
         $comments = Comment::All();
         $books = Book::where('id', $id)->get();
-        return Inertia::render('Book/Components/BookView', ['books' => $books, 'comments' => $comments, 'userBook' => $user]);
+        return Inertia::render('Book/Components/BookView', ['books' => $books, 'comments' => $comments, 'userBook' => $user, 'categories' => $categories]);
     }
 
 

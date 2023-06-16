@@ -1,6 +1,7 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
+import { HeartIcon  } from '@heroicons/vue/24/solid'
 
 
 let a = defineProps({
@@ -25,25 +26,25 @@ const submit = () => {
 
 <template>
     <form name="favForm" @submit.prevent="submit">
-        <button id="favButton">Add to Favorites</button>
+        <button id="favButton">
+            <HeartIcon class="heart" />
+        </button>
     </form>
 </template>
 
 <style scoped>
     #favButton {
-        background-color: #f0f0f0;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
+        height: 40px;
+        width: 40px;
         cursor: pointer;
     }
 
-    #favButton:hover {
-        background-color: #e0e0e0;
+    .heart{
+        color: red;
+        width: 40px;
     }
 
-    #favButton {
-        background-color: white;
-        color: black;
+    #heart:hover {
+        color: white;
     }
 </style>
