@@ -6,7 +6,7 @@ import MessageCreate from '../Messages/Component/MessageCreate.vue';
 </script>
 
 <template>
-    <Head title="Book" />
+    <Head title="Doar" />
 
     <AuthenticatedLayout>
         <template #header>
@@ -14,9 +14,18 @@ import MessageCreate from '../Messages/Component/MessageCreate.vue';
         </template>
 
         <div class="py-12 text-white">
-            <div class="bloco">
-                <h1>Doar Livros</h1>
-                <MessageCreate />
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bloco">
+                    <div class="blocoLeft">
+                        <div class="left">
+                            <h1>Doar Livros</h1>
+                            <p class="mt-3">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+                        </div>
+                    </div>
+                    <div class="blocoRigth">
+                        <MessageCreate />
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -24,12 +33,24 @@ import MessageCreate from '../Messages/Component/MessageCreate.vue';
 </template>
 
 <style scoped>
-
 .bloco {
     overflow: hidden;
     border: 1px solid white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 0.25rem;
-  }
-  
+    display: flex;
+}
+
+.blocoLeft {
+    width: 50%;
+}
+
+.left {
+    padding: 30px;
+    text-align: justify;
+}
+
+.blocoRigth {
+    width: 50%;
+}
 </style>
