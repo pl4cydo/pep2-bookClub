@@ -84,6 +84,7 @@ function changeBoo() {
                                     <DropdownLink :href="route('category.index')"> Category </DropdownLink>
                                     <DropdownLink :href="route('message.create')"> Message </DropdownLink>
                                 </div>
+                                <DropdownLink :href="route('message.donate')"> Doar </DropdownLink>
                                 <DropdownLink :href="route('logout')" method="post" as="button">
                                     Log Out
                                 </DropdownLink>

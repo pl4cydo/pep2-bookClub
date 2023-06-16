@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/comments', CommentController::class);
 
     Route::resource('/message', MessageController::class);
+    Route::get('donate', [MessageController::class, 'donate'])->name('message.donate');
     
     Route::resource('favorite', FavoriteController::class);
 
