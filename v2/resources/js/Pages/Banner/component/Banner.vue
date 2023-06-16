@@ -5,40 +5,40 @@ const countS = ref(3);
 const marginS = ref('0px');
 const banners = ref([
     {
-        title: 'Banner 1',
+        title: 'Banner 1 (ad)',
         info: 'Informações do banner 1',
-        valor: 'Valor do banner 1',
+        valor: '2,01',
         link: 'Link do banner 1',
         empresa: 'Empresa do banner 1',
-        backgroundColor: 'Cor de fundo do banner 1',
-        ad: 'Anúncio do banner 1'
+        backgroundColor: 'white',
+        ad: 1
     },
     {
-        title: 'Banner 2',
+        title: 'Informativo 2',
         info: 'Informações do banner 2',
-        valor: 'Valor do banner 2',
+        valor: '',
         link: 'Link do banner 2',
-        empresa: 'Empresa do banner 2',
-        backgroundColor: 'Cor de fundo do banner 2',
-        ad: 'Anúncio do banner 2'
+        empresa: '',
+        backgroundColor: 'black',
+        ad: 0
     },
     {
-        title: 'Banner 3',
+        title: 'Informativo 3',
         info: 'Informações do banner 3',
-        valor: 'Valor do banner 3',
+        valor: '2,03',
         link: 'Link do banner 3',
         empresa: 'Empresa do banner 3',
-        backgroundColor: 'Cor de fundo do banner 3',
-        ad: 'Anúncio do banner 3'
+        backgroundColor: 'white',
+        ad: 0
     },
     {
-        title: 'Banner 4',
+        title: 'Banner 4 (ad)',
         info: 'Informações do banner 4',
-        valor: 'Valor do banner 4',
+        valor: '2,04',
         link: 'Link do banner 4',
         empresa: 'Empresa do banner 4',
-        backgroundColor: 'Cor de fundo do banner 4',
-        ad: 'Anúncio do banner 4'
+        backgroundColor: 'black',
+        ad: 1
     }
 ]);
 
@@ -46,12 +46,15 @@ const jj = () => {
     const currentMarginS = parseInt(marginS.value);
     if (countS.value > 0) {
         marginS.value = (currentMarginS - 760) + 'px';
+        console.log(marginS.value)
         countS.value--
+        console.log(countS.value)
     } else {
         marginS.value = '0px';
         countS.value = 3
     }
 }
+
 
 // onMounted(() => {
 //     setInterval(() => {
@@ -65,43 +68,96 @@ const jj = () => {
 
 <template>
     <h2 class="highlights-title">Tchucas</h2>
-    <div class="highlights-slider">
-        <div class="boxSlider" v-for="banner, index in banners" :style="{ marginLeft: marginS }" >
-            <!-- {{ banner }} -->
-            <div class="banner">
-                {{ index }}
+    <div class="highlights-slider"  >
+        <div class="test" :style="{ marginLeft: marginS }">
+            <div class="boxSlider" v-for="banner in banners"  >
+                <div class="banner" >
+                    <div class="bannerLeft">
+                        <div class="imgBook">
+
+                        </div>
+                    </div>
+                    <div class="bannerRight">
+                        <div class="infoBanner">
+                            <h1 class="margin10">{{ banner.title }}</h1>
+                            <h1 class="margin10">{{ banner.info }}</h1>
+                            <div v-if="banner.ad"> 
+                                <h1 class="margin10">{{ banner.valor }}</h1>
+                                <h1 class="margin10">{{ banner.empresa }}</h1>
+                            </div>
+                            <a class="margin10" href="#">{{ banner.link }}</a>
+                        </div>
+                    </div>
+                    <!-- <img src="http://placehold.it/760x256"> -->
+                </div>
             </div>
-            <!-- <img class="highlights-img" src="http://placehold.it/760x256">
-            <img class="highlights-img" src="http://placehold.it/760x257">
-            <img class="highlights-img" src="http://placehold.it/760x258">
-            <img class="highlights-img" src="http://placehold.it/760x259"> -->
         </div>
     </div>
     <button @click="jj()"> > </button>
 </template>
 
-<style setup>
+<style scoped>
 .highlights-slider {
     display: flex;
     border: 1px solid white;
-    overflow: hidden;
     width: 760px;
+    overflow: hidden;
+    position: relative;
+}
 
+.test {
+    display: flex;
+    transition: 0.8s ease;
 }
 
 .boxSlider {
     display: flex;
-    width: auto;
-    transition: 0.8s ease;
+    flex-direction: row;
 }
 
-.banner, .highlights-img {
+.banner {
     width: 760px;
     height: 256px;
-    animation-name: fade;
-    animation-duration: 1.5s;
-    background-color: blueviolet;
+    margin-left: 0%;
+    display: flex;
+    /* animation-name: fade;
+    animation-duration: 1.5s; 
+    background-color: blueviolet; */
 }
+
+.bannerLeft {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgBook {
+    border: 1px solid white;
+    width: 95%;
+    height: 90%;
+}
+
+.bannerRight {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infoBanner {
+    border: 1px solid white;
+    width: 95%;
+    height: 90%;
+}
+
+.margin10 {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
 
 @keyframes fade {
     from {
