@@ -125,9 +125,13 @@ onMounted( async () => {
     position: relative;
     align-items: center;
     height: 250px;
-    width: 2000px;
+    width: 5000px;
     transition: 0.8s ease;
     max-width: none;
+}
+
+.books {
+    width: auto;
 }
 
 .small-slider-img {
