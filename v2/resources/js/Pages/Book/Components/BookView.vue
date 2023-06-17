@@ -211,5 +211,6 @@ const submit = () => {
     background-color: transparent;
     border: 2px solid white;
     color: white;
+    resize: none;
 }
 </style>

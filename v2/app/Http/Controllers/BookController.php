@@ -106,7 +106,7 @@ class BookController extends Controller
 
         // dd($book);
 
-        return redirect(route('book.index'));
+        return redirect(route('dashboard'));
     }
 
 

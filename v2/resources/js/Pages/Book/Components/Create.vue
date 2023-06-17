@@ -84,8 +84,8 @@ const handleImageChange = (event) => {
 
                             <label class="label" for="category_id">Categoria</label>
                             <select name="category_id" id="category_id" class="input" v-model="form.category_id">
-                                <option value="1">Select a category</option>
-                                <option v-for="category in categories" :value="category.id" :key="category.id">
+                                <option class="option" value="1">Select a category</option>
+                                <option class="option" v-for="category in categories" :value="category.id" :key="category.id">
                                     {{ category.name }}
                                 </option>
                             </select>
@@ -197,6 +197,7 @@ const handleImageChange = (event) => {
     margin-top: 10px;
     margin-left: 30px;
     background-color: transparent;
+    resize: none;
 }
 
 .button {
@@ -219,6 +220,10 @@ const handleImageChange = (event) => {
     position: absolute;
     font-size: 12px;
     margin-top: -25px;
+}
+
+.option {
+    background-color: #3e3ec5; 
 }
 
 .input {

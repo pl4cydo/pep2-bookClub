@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('favorite', FavoriteController::class);
 
     Route::get('favBooks', [FavoriteController::class, 'favBooks'])->name('favorite.favBooks');
+    
 });
 
 
