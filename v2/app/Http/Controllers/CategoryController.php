@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -92,12 +93,22 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, category $category)
+    public function update(Request $request, $id)
     {
         //
-        $category->name = $request->name;
-        $category->save();
-        return view('categories.index');
+        // dd($request->name);
+
+        $category = Category::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255'
+        ]);
+
+        $category->update([
+            'name' => $request->input('name')
+        ]);
+
+        return redirect('/category');
     }
 
     /**
@@ -106,10 +117,11 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(category $category)
+    public function destroy($id)
     {
         //
-        $category->delete();
-        return view('categories.index');
+        // dd($id);
+        Category::find($id)->delete();
+        return redirect()->route('category.index');
     }
 }
