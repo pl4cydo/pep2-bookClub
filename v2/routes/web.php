@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
@@ -62,6 +63,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('favorite', FavoriteController::class);
 
     Route::get('favBooks', [FavoriteController::class, 'favBooks'])->name('favorite.favBooks');
+
+    Route::resource('/banner', BannerController::class);
+    Route::get('bannerlist', [BannerController::class, 'list'])->name('banner.list');
     
 });
 

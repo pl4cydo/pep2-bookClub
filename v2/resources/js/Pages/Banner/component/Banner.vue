@@ -1,62 +1,75 @@
 <script setup>
+import { Link } from '@inertiajs/vue3';
+import axios from 'axios';
 import { onMounted, ref } from 'vue';
 
-const countS = ref(3);
+const countS = ref(null);
 const marginS = ref('0px');
-const banners = ref([
-    {
-        title: 'Banner 1 (ad)',
-        info: 'Informações do banner 1',
-        valor: '2,01',
-        link: 'Link do banner 1',
-        empresa: 'Empresa do banner 1',
-        backgroundColor: 'white',
-        ad: 1
-    },
-    {
-        title: 'Informativo 2',
-        info: 'Informações do banner 2',
-        valor: '',
-        link: 'Link do banner 2',
-        empresa: '',
-        backgroundColor: 'black',
-        ad: 0
-    },
-    {
-        title: 'Informativo 3',
-        info: 'Informações do banner 3',
-        valor: '2,03',
-        link: 'Link do banner 3',
-        empresa: 'Empresa do banner 3',
-        backgroundColor: 'white',
-        ad: 0
-    },
-    {
-        title: 'Banner 4 (ad)',
-        info: 'Informações do banner 4',
-        valor: '2,04',
-        link: 'Link do banner 4',
-        empresa: 'Empresa do banner 4',
-        backgroundColor: 'black',
-        ad: 1
+const banners = ref([])
+// const banners = ref([
+//     {
+//         title: 'Banner 1 (ad)',
+//         info: 'Informações do banner 1',
+//         valor: '2,01',
+//         link: 'Link do banner 1',
+//         empresa: 'Empresa do banner 1',
+//         backgroundColor: 'white',
+//         ad: 1
+//     },
+//     {
+//         title: 'Informativo 2',
+//         info: 'Informações do banner 2',
+//         valor: '',
+//         link: 'Link do banner 2',
+//         empresa: '',
+//         backgroundColor: 'black',
+//         ad: 0
+//     },
+//     {
+//         title: 'Informativo 3',
+//         info: 'Informações do banner 3',
+//         valor: '2,03',
+//         link: 'Link do banner 3',
+//         empresa: 'Empresa do banner 3',
+//         backgroundColor: 'white',
+//         ad: 0
+//     },
+//     {
+//         title: 'Banner 4 (ad)',
+//         info: 'Informações do banner 4',
+//         valor: '2,04',
+//         link: 'Link do banner 4',
+//         empresa: 'Empresa do banner 4',
+//         backgroundColor: 'black',
+//         ad: 1
+//     }
+// ]);
+
+const listBanner = async () => {
+    try {
+        const response = await axios.get('bannerlist');
+        banners.value = response.data;
+        countS.value = banners.value.length - 1
+    } catch (error) {
+        console.error(error)
     }
-]);
+}
+
 
 const jj = () => {
     const currentMarginS = parseInt(marginS.value);
     if (countS.value > 0) {
         marginS.value = (currentMarginS - 760) + 'px';
-        console.log(marginS.value)
         countS.value--
-        console.log(countS.value)
     } else {
         marginS.value = '0px';
-        countS.value = 3
+        countS.value = banners.value.length - 1
     }
 }
 
 
 onMounted(() => {
+    listBanner()
     setInterval(() => {
         jj()
     }, 5000)
@@ -68,27 +81,29 @@ onMounted(() => {
 
 <template>
     <h2 class="highlights-title">Tchucas</h2>
-    <div class="highlights-slider"  >
+    <div class="highlights-slider">
         <div class="test" :style="{ marginLeft: marginS }">
-            <div class="boxSlider" v-for="banner in banners"  >
-                <div class="banner" >
+            <div class="boxSlider" v-for="banner in banners">
+                <div class="banner">
                     <div class="bannerLeft">
-                        <div class="imgBook">
-
+                        <div class="imgBanner">
+                            <img :src="'/storage/images/' + banner.image" alt="Book Image" class="small-slider-img">
                         </div>
                     </div>
                     <div class="bannerRight">
                         <div class="infoBanner">
                             <h1 class="margin10">{{ banner.title }}</h1>
-                            <h1 class="margin10">{{ banner.info }}</h1>
-                            <div v-if="banner.ad"> 
-                                <h1 class="margin10">{{ banner.valor }}</h1>
-                                <h1 class="margin10">{{ banner.empresa }}</h1>
+                            <h1 class="margin10">Informações: {{ banner.info }}</h1>
+                            <div v-if="banner.ad">
+                                <p class="margin10">Preço: {{ banner.value }}</p>
+                                <p class="margin10">Empresa: {{ banner.company }}</p>
+                                <div class="ml-3 m-4">
+                                    <!-- {{ banner.link }} -->
+                                    <a :href="banner.link" target="_blank">Clique aqui!</a>
+                                </div>
                             </div>
-                            <a class="margin10" href="#">{{ banner.link }}</a>
                         </div>
                     </div>
-                    <!-- <img src="http://placehold.it/760x256"> -->
                 </div>
             </div>
         </div>
@@ -133,10 +148,18 @@ onMounted(() => {
     justify-content: center;
 }
 
-.imgBook {
+.imgBanner {
     border: 1px solid white;
     width: 95%;
     height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgBanner img {
+    max-height: 95%;
+
 }
 
 .bannerRight {
@@ -145,6 +168,7 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 13px;
 }
 
 .infoBanner {

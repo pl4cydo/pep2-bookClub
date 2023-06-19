@@ -83,6 +83,7 @@ function changeBoo() {
                                 <div v-if="$page.props.auth.user.is_admin">
                                     <DropdownLink :href="route('category.index')"> Category </DropdownLink>
                                     <DropdownLink :href="route('message.create')"> Message </DropdownLink>
+                                    <DropdownLink :href="route('banner.index')"> Banner </DropdownLink>
                                 </div>
                                 <DropdownLink :href="route('message.donate')"> Doar </DropdownLink>
                                 <DropdownLink :href="route('logout')" method="post" as="button">

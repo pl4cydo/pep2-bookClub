@@ -19,13 +19,13 @@ const next = () => {
     if (count.value > 7 && countNext.value > 0) {
         margin.value = (currentMargin - 150) + 'px';
         countNext.value--;
-        console.log(countNext.value);
+        // console.log(countNext.value);
     }
 }
 
 const back = () => {
     const currentMargin = parseInt(margin.value);
-    console.log(currentMargin)
+    // console.log(currentMargin)
     if (currentMargin < 0){
         countNext.value++;
         margin.value = (currentMargin + 150) + 'px';
@@ -62,7 +62,7 @@ onMounted( async () => {
         count.value = books.value.length
     }
     countNext.value = count.value < 7 ? (count.value - 7) * -1 : count.value - 7;
-    console.log(count.value, countNext.value)
+    // console.log(count.value, countNext.value)
 })
 
 </script>

@@ -38,6 +38,7 @@ const submit = () => {
     form.synopsis = ''
     form.image = null
     form.category_id = ''
+    location.reload();
 }
 
 const handleImageChange = (event) => {
