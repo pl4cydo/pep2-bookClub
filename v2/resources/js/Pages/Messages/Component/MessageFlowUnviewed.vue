@@ -1,4 +1,6 @@
 <script setup>
+
+import { useForm } from '@inertiajs/vue3';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 
@@ -9,10 +11,21 @@ onMounted(async () => {
     try {
         const response = await axios.get('/message');
         Messages.value = response.data;
+        
+        console.log(Messages)
     } catch (error) {
         console.error(error);
     }
 });
+
+const form = useForm({})
+
+const messageUpdate = (id) => {
+    form.put(route('message.update', id)), {
+        _method: 'PUT',
+    }
+    location.reload();
+}
 
 
 </script>
@@ -29,7 +42,9 @@ onMounted(async () => {
                         <h1>Message:</h1>
                         <p>{{ message.textMessage }}</p>
                     </div>
-                    <button class="button">Marcar como Visto</button>
+                    <form name="messageUpdate" @submit.prevent="messageUpdate(message.id)" >
+                        <button class="button">Marcar como Visto</button>
+                    </form>
                 </div>
                 <div class="imageMessage">
                     <img :src="'/storage/images/' + message.imageMessage" alt="Message Image">
@@ -47,12 +62,12 @@ onMounted(async () => {
 
 .messages {
     height: auto;
-    border: 1px solid white;
     display: flex;
 }
 
 .bloco {
     width: 90%;
+    border: 1px solid white;
     display: flex;
     justify-content: space-between;
 }

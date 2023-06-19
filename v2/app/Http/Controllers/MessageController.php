@@ -106,9 +106,18 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Message $message)
+    public function update($id)
     {
         //
+        // dd($id); 
+        $message = Message::findOrFail($id);
+
+        $message->update([
+            'notification' => !($message->notification)
+        ]);
+
+        return back();
+        // return redirect('message/create');
     }
 
     /**
