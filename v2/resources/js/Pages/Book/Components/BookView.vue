@@ -65,6 +65,7 @@ const commentDestroy = (a) => {
                                     <p class="flex">Status:
                                         <CheckCircleIcon v-if="!(books[0].deal)" class="check" />
                                     </p>
+
                                     <ButtonFav :bookId="books[0].id" />
                                 </div>
                                 <p class="mt-2 mb-3">Cometário do proprietário: " " </p>

@@ -1,14 +1,14 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { Link, useForm } from '@inertiajs/vue3';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 
 const favs = ref([]);
 const books = ref([]);
+const form = useForm({});
 
 const favsBooks = async () => {
     try {
-
         const responseBook = await axios.get('listBooks');
         books.value = responseBook.data;
 
@@ -18,6 +18,14 @@ const favsBooks = async () => {
         console.error(error);
     }
 }
+
+const favDestroy = (id) => {
+    if(confirm('Como é, amigo?')) {
+        form.delete(route('favorite.destroy', id))
+        location.reload()
+    }
+}
+
 
 onMounted(() => {
     favsBooks()
@@ -39,6 +47,9 @@ onMounted(() => {
                     <p class="title">
                         {{ book.title }}
                     </p>
+                    <form name="favDestroy" @submit.prevent="favDestroy(fav.id)">
+                        <button class="button" >Destroy</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -46,6 +57,13 @@ onMounted(() => {
 </template>
 
 <style scoped>
+
+.button {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+}
 .bookshelf {
     display: flex;
     flex-wrap: wrap;

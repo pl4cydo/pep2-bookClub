@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Favorite;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -63,6 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('favorite', FavoriteController::class);
 
     Route::get('favBooks', [FavoriteController::class, 'favBooks'])->name('favorite.favBooks');
+    Route::get('listFav', [FavoriteController::class, 'listFav'])->name('favorite.listFav');
 
     Route::resource('/banner', BannerController::class);
     Route::get('bannerlist', [BannerController::class, 'list'])->name('banner.list');

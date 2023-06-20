@@ -18,6 +18,18 @@ class FavoriteController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listFav()
+    {
+        //
+        return Favorite::all();
+    }
+
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -98,8 +110,10 @@ class FavoriteController extends Controller
      * @param  \App\Models\Favorite  $favorite
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Favorite $favorite)
+    public function destroy($id)
     {
         //
+        Favorite::find($id)->delete();
+        return redirect()->route('profile.edit');
     }
 }
