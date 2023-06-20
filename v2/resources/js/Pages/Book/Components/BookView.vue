@@ -28,6 +28,14 @@ const submit = () => {
     form.comments = ''
 }
 
+const commentDestroy = (a) => {
+    console.log(a)
+    if(confirm("Como que é, amigo?")) {
+        form.delete(route('comments.destroy', a))
+    }
+    location.reload();
+}
+
 </script>
 
 <template >
@@ -91,8 +99,14 @@ const submit = () => {
                                                 <h1>{{ userB.name }}:</h1>
                                             </div>
                                         </div>
-                                        <div>
+                                        <div class="option">
                                             <h1> {{ comment.comment }}</h1>
+                                            <div v-if="a.books[0].user_id == $page.props.auth.user.id || $page.props.auth.user.is_admin">   
+                                                <!-- {{ comment.id }} -->
+                                                <form @submit.prevent="commentDestroy(comment.id)">
+                                                    <button >Deletar</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -176,6 +190,12 @@ const submit = () => {
     align-items: center;
 }
 
+.option {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .commentFlow {
     width: 70%;
 }
@@ -193,6 +213,7 @@ const submit = () => {
 .commentlist {
     display: flex;
     margin: 15px;
+    width: 100%;
 }
 
 .PrimaryButton {
