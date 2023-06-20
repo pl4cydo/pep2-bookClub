@@ -207,9 +207,7 @@ const handleImageChange = (event) => {
     border: 1px solid white;
     margin-left: 40px;
     width: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 10px   ;
 }
 
 .button:hover {

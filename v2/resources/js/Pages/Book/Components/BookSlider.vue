@@ -26,7 +26,7 @@ const next = () => {
 const back = () => {
     const currentMargin = parseInt(margin.value);
     // console.log(currentMargin)
-    if (currentMargin < 0){
+    if (currentMargin < 0) {
         countNext.value++;
         margin.value = (currentMargin + 150) + 'px';
     }
@@ -52,11 +52,11 @@ const listCategory = async () => {
     }
 }
 
-onMounted( async () => {
+onMounted(async () => {
     await list()
     await listCategory()
     // console.log(books.value.length)
-    if(a.categoryNumber.a) {
+    if (a.categoryNumber.a) {
         count.value = books.value.filter(book => book.category_id == a.categoryNumber.a).length
     } else {
         count.value = books.value.length
@@ -70,12 +70,12 @@ onMounted( async () => {
 <template>
     <div class="flex">
         <h1 class="mr-1">
-            Livros 
-        </h1> 
+            Livros
+        </h1>
         <div v-for="category in categories">
             <div v-if="categoryNumber.a != null">
                 <h1 v-if="category.id == categoryNumber.a">
-                  de:   {{category.name }}
+                    de: {{ category.name }}
                 </h1>
             </div>
         </div>
@@ -83,16 +83,16 @@ onMounted( async () => {
     <div class="small-slider-container">
         <div class="small-slider" :style="{ left: margin }">
             <div class="books" v-for="(book, index) in books" :key="book.id">
-                <div v-if="categoryNumber.a != null && book.category_id == categoryNumber.a">
+                <div class="blocoBook" v-if="categoryNumber.a != null && book.category_id == categoryNumber.a">
                     <Link :href="route('book.bookView', { id: book.id })">
-                    <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
-                    <p class="title">{{ book.title }}</p>
+                        <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
+                        <p class="title">{{ book.title }}</p>
                     </Link>
                 </div>
-                <div v-if="categoryNumber.a == null">
+                <div class="blocoBook" v-if="categoryNumber.a == null">
                     <Link :href="route('book.bookView', { id: book.id })">
-                    <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
-                    <p class="title">{{ book.title }}</p>
+                        <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
+                        <p class="title">{{ book.title }}</p>
                     </Link>
                 </div>
             </div>
@@ -170,6 +170,16 @@ onMounted( async () => {
 
 #next-button {
     right: 10px;
+}
+
+
+.blocoBook {
+  /*  border: 1px solid white;*/
+    text-overflow: clip;
+    overflow: hidden;
+    width: 140px;
+    height: 230px;
+    margin: 5px;
 }
 </style>
   
