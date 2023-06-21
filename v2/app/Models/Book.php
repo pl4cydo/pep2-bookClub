@@ -16,6 +16,7 @@ class Book extends Model
         'image',
         'user_id',
         'category_id',
+        'selfComment'
     ];
 
     public function user()

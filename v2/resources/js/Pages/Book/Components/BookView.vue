@@ -68,7 +68,7 @@ const commentDestroy = (a) => {
 
                                     <ButtonFav :bookId="books[0].id" />
                                 </div>
-                                <p class="mt-2 mb-3">Cometário do proprietário: " " </p>
+                                <p class="mt-2 mb-3">Cometário do proprietário: {{ books[0].selfComment }} </p>
                                 <p>Sinopse: "{{ books[0].synopsis }}"</p>
                             </div>
                         </div>

@@ -70,7 +70,8 @@ class BookController extends Controller
         //    $request->synopsis,
         //    $request->year,
         //    $request->category_id,
-        //    $request->image
+        //    $request->image,
+        //    $request->selfComment
         // );
 
         $validatedData = $request->validate([
@@ -79,6 +80,7 @@ class BookController extends Controller
             'synopsis' => 'required',
             'year' => 'required',
             'category_id' => 'required',
+            'selfComment' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -101,6 +103,7 @@ class BookController extends Controller
             'year' => $request->year,
             'category_id' => $request->category_id,
             'image' => $imageName,
+            'selfComment' => $request->selfComment,
             'user_id' => auth()->id()
         ]);
 

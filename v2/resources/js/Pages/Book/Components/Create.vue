@@ -27,7 +27,8 @@ const form = useForm({
     writter: '',
     synopsis: '',
     image: null,
-    category_id: ''
+    category_id: '',
+    selfComment: ''
 });
 
 const submit = () => {
@@ -38,7 +39,8 @@ const submit = () => {
     form.synopsis = ''
     form.image = null
     form.category_id = ''
-    location.reload();
+    form.selfComment = ''
+    // location.reload();
 }
 
 const handleImageChange = (event) => {
@@ -102,7 +104,11 @@ const handleImageChange = (event) => {
                     <div class="formRigth">
                         <div>
                             <label class="label" for="synopsis">Sinopse</label>
-                            <textarea class="textarea" name="synopsis" id="synopsis" cols="25" rows="5" v-model="form.synopsis"></textarea>
+                            <textarea class="textarea" name="synopsis" id="synopsis" cols="25" rows="3" v-model="form.synopsis"></textarea>
+                        </div>
+                        <div>
+                            <label class="label" for="selfComment">Comentário sobre o estado do livro</label>
+                            <textarea class="textarea" name="seflComment" id="seflComment" cols="25" rows="2" v-model="form.selfComment"></textarea>
                         </div>
                         <button type="submit" class="button"> Novo Livro </button>
                     </div>
@@ -115,6 +121,7 @@ const handleImageChange = (event) => {
 
 <style scoped>
 .container {
+    
     margin-top: 0%;
     height: 100%;
     width: 100vw;
