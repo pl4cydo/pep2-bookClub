@@ -142,10 +142,11 @@ onMounted(async () => {
     border: solid white;
 }
 
+/*
 .small-slider-img:hover {
     cursor: pointer;
     transform: scale(1.1);
-}
+} */
 
 .small-button-container {
     display: flex;
@@ -179,7 +180,14 @@ onMounted(async () => {
     overflow: hidden;
     width: 140px;
     height: 230px;
+    padding-top: 10px;
     margin: 5px;
 }
+
+.blocoBook:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 </style>
   
