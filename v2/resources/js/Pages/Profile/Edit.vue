@@ -30,41 +30,79 @@ defineProps({
 
         <div class="py-12 text-black">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+                <div class="bloco">
+                    <div class="left">
+                        <div class="info">
 
+                        </div>
+                        <div class="contact">
+
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div>
+                            <FavBook />
+                        </div>
+                        <!-- <div >
+                            <SelfComments />
+                        </div>
+
+                        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                            <InfoPerfil />
+                        </div>
+
+                        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                            <PersonalBooks :books="books" :user="user" />
+                        </div>
+
+                        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                            <UpdateProfileInformationForm :must-verify-email="mustVerifyEmail" :status="status"
+                                class="max-w-xl" />
+                        </div>
+
+                        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                            <UpdatePasswordForm class="max-w-xl" />
+                        </div>
+
+                        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                            <DeleteUserForm class="max-w-xl" />
+                        </div> -->
+                    </div>
+
+                </div>
                 <!-- <IconMessage /> -->
 
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <FavBook />
-                </div>
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <SelfComments />
-                </div>
 
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <InfoPerfil />
-                </div>
-
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <PersonalBooks :books="books" :user="user" />
-                </div>
-
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <UpdateProfileInformationForm :must-verify-email="mustVerifyEmail" :status="status" class="max-w-xl" />
-                </div>
-
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <UpdatePasswordForm class="max-w-xl" />
-                </div>
-
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <DeleteUserForm class="max-w-xl" />
-                </div>
             </div>
         </div>
     </AuthenticatedLayout>
 </template>
 
 <style scoped>
+.bloco {
+    width: 100%;
+    height: auto;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    width: 30%;
+    height: 600px;
+    border: 1px solid white;
+}
+
+.right {
+    width: 70%;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+
+
 .blocoMsg {
     padding: 1rem;
     background-color: #fff;
