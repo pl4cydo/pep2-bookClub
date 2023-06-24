@@ -3,6 +3,7 @@ import { useForm } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
 import { HeartIcon } from '@heroicons/vue/24/solid'
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 const fav = ref([])
 
@@ -22,7 +23,12 @@ onMounted(() => {
 
 const submit = () => {
     form.post(route('favorite.store'))
-    alert("Favoritado")
+    Swal.fire(
+        'Favoritado!',
+        'You clicked the button!',
+        'success'
+    )
+    // alert("Favoritado")
 }
 
 const favs = async () => {

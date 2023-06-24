@@ -121,16 +121,16 @@ const handleImageChange = (event) => {
 
 <style scoped>
 .container {
-    
-    margin-top: 0%;
+    top: 0;
     height: 100%;
-    width: 100vw;
+    width: 100%;
     /* background-color: aquamarine; */
-    position: absolute;
-    z-index: 99;
+    position: fixed;
+    z-index: 9998;
     display: flex;
     backdrop-filter: blur(2px);
     justify-content: center;
+    transition: 0.8s ease;
 }
 
 .formPopUp {
@@ -139,7 +139,9 @@ const handleImageChange = (event) => {
     width: 700px;
     border: 1px solid white;
     background-color: #1f2937;
+    transition: all 0.3s ease;
 }
+
 
 .formHeader {
     border-bottom: none;

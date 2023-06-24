@@ -11,7 +11,6 @@ import Message from '../Messages/Message.vue';
 import SelfComments from '../Comment/Components/SelfComments.vue';
 import FavBook from '../Favorite/Component/FavBooks.vue'
 
-
 defineProps({
     mustVerifyEmail: Boolean,
     status: String,
@@ -46,15 +45,11 @@ defineProps({
                 </div>
 
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <PersonalBooks :books="books" :user="user"/>
+                    <PersonalBooks :books="books" :user="user" />
                 </div>
 
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <UpdateProfileInformationForm
-                        :must-verify-email="mustVerifyEmail"
-                        :status="status"
-                        class="max-w-xl"
-                    />
+                    <UpdateProfileInformationForm :must-verify-email="mustVerifyEmail" :status="status" class="max-w-xl" />
                 </div>
 
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
@@ -70,38 +65,37 @@ defineProps({
 </template>
 
 <style scoped>
+.blocoMsg {
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    display: flex;
+}
 
-    .blocoMsg {
-        padding: 1rem;
-        background-color: #fff;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-        border-radius: 0.5rem;
-        display: flex;
-    }
+.msg {
+    height: 50px;
+    width: 50px;
+    border: 1px solid blue;
+    border-radius: 50%;
+    margin-left: 5px;
+}
 
-    .msg {
-        height: 50px;
-        width: 50px;
-        border: 1px solid blue;
-        border-radius: 50%;
-        margin-left: 5px;
-    }
-    
-    .msg:hover {
-        background-color: blue;
-        transition: 0.8s ease;
-    }
-    
-    .notfic {
-        background-color: #fff;
-        height: 25px;
-        width: 25px;
-        border: 3px solid red;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: red;
-        position: absolute;
-    }
+.msg:hover {
+    background-color: blue;
+    transition: 0.8s ease;
+}
+
+.notfic {
+    background-color: #fff;
+    height: 25px;
+    width: 25px;
+    border: 3px solid red;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    position: absolute;
+}
 </style>

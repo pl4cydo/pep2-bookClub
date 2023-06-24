@@ -6,7 +6,9 @@ import { onMounted, ref } from 'vue';
 import PrimaryButton from '../../../Components/PrimaryButton.vue';
 import ButtonFav from '../../Favorite/Component/ButtonFav.vue';
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/solid'
+import Swal from 'sweetalert2'
 
+const boo = ref(false);
 
 let a = defineProps({
     books: Array,
@@ -30,10 +32,21 @@ const submit = () => {
 
 const commentDestroy = (a) => {
     console.log(a)
-    if(confirm("Como que é, amigo?")) {
-        form.delete(route('comments.destroy', a))
-    }
-    location.reload();
+    Swal.fire({
+        title: 'Você tem certeza?',
+        text: "Você não pode reverter isso",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.delete(route('comments.destroy', a))
+            location.reload();
+        }
+    })
+
 }
 
 </script>
@@ -50,16 +63,27 @@ const commentDestroy = (a) => {
                             <img class="m-5" :src="'/storage/images/' + books[0].image" alt="Books Image">
                         </div>
                         <div class="test2">
+
                             <div class="intraTest2">
-                                <h1 class="title">{{ books[0].title }}</h1>
+                                <div class="titleBloco">
+                                    <h1 class="title">{{ books[0].title }}</h1>
+                                    <div
+                                        v-if="a.books[0].user_id == $page.props.auth.user.id || $page.props.auth.user.is_admin">
+                                        <button class="opcoes">Opções</button>
+                                        <div v-if="boo">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                                 <p> Publicado em: {{ books[0].year }} </p>
-                                <div v-for="user in userBook" >
-                                    <p v-if="user.id == books[0].user_id " class="mt-2 mb-3">
+                                <div v-for="user in userBook" v-bind:key="user.id">
+                                    <p v-if="user.id == books[0].user_id" class="mt-2 mb-3">
                                         Proprietário: {{ user.name }}
                                     </p>
                                 </div>
-                                <div v-for="category in categories">
-                                    <h3 v-if="category.id == books[0].category_id" class="mt2 mb-3">Categoria: {{ category.name }}</h3>
+                                <div v-for="category in categories" v-bind:key="category.id">
+                                    <h3 v-if="category.id == books[0].category_id" class="mt2 mb-3">Categoria: {{
+                                        category.name }}</h3>
                                 </div>
                                 <div class="dealFav">
                                     <p class="flex">Status:
@@ -71,6 +95,7 @@ const commentDestroy = (a) => {
                                 <p class="mt-2 mb-3">Cometário do proprietário: {{ books[0].selfComment }} </p>
                                 <p>Sinopse: "{{ books[0].synopsis }}"</p>
                             </div>
+
                         </div>
                     </div>
 
@@ -93,19 +118,20 @@ const commentDestroy = (a) => {
 
                         <div class="commentFlow">
                             <div class="comment2">
-                                <div v-for=" comment in comments">
+                                <div v-for=" comment in comments" v-bind:key="comment.id">
                                     <div class="commentlist" v-if="comment.book_id == ab">
-                                        <div v-for=" userB in userBook">
+                                        <div v-for=" userB in userBook" v-bind:key="userB.id">
                                             <div v-if="comment.user_id == userB.id">
                                                 <h1>{{ userB.name }}:</h1>
                                             </div>
                                         </div>
                                         <div class="option">
                                             <h1> {{ comment.comment }}</h1>
-                                            <div v-if="a.books[0].user_id == $page.props.auth.user.id || $page.props.auth.user.is_admin">   
+                                            <div
+                                                v-if="a.books[0].user_id == $page.props.auth.user.id || $page.props.auth.user.is_admin">
                                                 <!-- {{ comment.id }} -->
                                                 <form @submit.prevent="commentDestroy(comment.id)">
-                                                    <button >Deletar</button>
+                                                    <button>Deletar</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -114,7 +140,6 @@ const commentDestroy = (a) => {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -130,6 +155,25 @@ const commentDestroy = (a) => {
     width: 30px;
     height: 30px;
 
+}
+
+.titleBloco {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.opcoes {
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 6px;
+    margin-right: 5px;
+}
+
+.opcoes:hover {
+    background-color: #3e3ec5;
+    transition: 0.8s ease;
 }
 
 .bookView {
