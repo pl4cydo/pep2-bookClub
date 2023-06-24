@@ -32,12 +32,7 @@ defineProps({
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <div class="bloco">
                     <div class="left">
-                        <div class="info">
-
-                        </div>
-                        <div class="contact">
-
-                        </div>
+                        <InfoPerfil />
                     </div>
                     <div class="right">
                         <div>
@@ -48,7 +43,7 @@ defineProps({
                         </div>
 
                         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                            <InfoPerfil />
+                            
                         </div>
 
                         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
@@ -91,6 +86,9 @@ defineProps({
     width: 30%;
     height: 600px;
     border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
 }
 
 .right {
@@ -100,8 +98,6 @@ defineProps({
     flex-direction: column;
     padding: 20px;
 }
-
-
 
 .blocoMsg {
     padding: 1rem;
