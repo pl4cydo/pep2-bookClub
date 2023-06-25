@@ -68,31 +68,32 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="flex">
-        <h1 class="mr-1">
-            Livros
-        </h1>
-        <div v-for="category in categories" v-bind:key="category.id">
-            <div v-if="categoryNumber.a != null">
-                <h1 v-if="category.id == categoryNumber.a">
-                    de: {{ category.name }}
-                </h1>
+
+    <div class="small-slider-container">
+        <div class="flex">
+            <h1 class="mr-1">
+                Livros
+            </h1>
+            <div v-for="category in categories" v-bind:key="category.id">
+                <div v-if="categoryNumber.a != null">
+                    <h1 v-if="category.id == categoryNumber.a">
+                        de: {{ category.name }}
+                    </h1>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="small-slider-container">
         <div class="small-slider" :style="{ left: margin }">
             <div class="books" v-for="(book) in books" :key="book.id">
                 <div class="blocoBook" v-if="categoryNumber.a != null && book.category_id == categoryNumber.a">
                     <Link :href="route('book.bookView', { id: book.id })">
-                        <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
-                        <p class="title">{{ book.title }}</p>
+                    <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
+                    <p class="title">{{ book.title }}</p>
                     </Link>
                 </div>
                 <div class="blocoBook" v-if="categoryNumber.a == null">
                     <Link :href="route('book.bookView', { id: book.id })">
-                        <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
-                        <p class="title">{{ book.title }}</p>
+                    <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
+                    <p class="title">{{ book.title }}</p>
                     </Link>
                 </div>
             </div>
@@ -101,22 +102,24 @@ onMounted(async () => {
             <button id="prev-button" @click="back()" class="prev-button">&lt;</button>
             <button id="next-button" @click="next()" class="next-button">&gt;</button>
         </div>
-        <!-- <p>Total de livros renderizados: {{ renderedBooksCount }}</p> -->
-        <!-- <div v-if="cateogory.">
-
-                </div> -->
     </div>
 </template>
   
 <style scoped>
+
+
+
 .small-slider-container {
     overflow: hidden;
     position: relative;
     /*background-color: #1f2937; */
     width: 100%;
     border-radius: 8px;
-    border: 1px solid white;
+    background-color: #1f2937;
     color: rgb(255, 255, 255);
+    box-shadow: 5px 5px 5px #131820;
+    margin: 10px;
+    padding: 20px;
 }
 
 .small-slider {
@@ -139,6 +142,8 @@ onMounted(async () => {
     height: 200px;
     margin-right: 10px;
     transition: transform 0.1s;
+    box-shadow: 5px 5px 5px #131820;
+    border-radius: 6px;
     border: solid white;
 }
 
@@ -175,7 +180,7 @@ onMounted(async () => {
 
 
 .blocoBook {
-  /*  border: 1px solid white;*/
+    /*  border: 1px solid white;*/
     text-overflow: clip;
     overflow: hidden;
     width: 140px;
@@ -186,8 +191,8 @@ onMounted(async () => {
 
 .blocoBook:hover {
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.05);
+    transition: 300ms ease;
 }
-
 </style>
   

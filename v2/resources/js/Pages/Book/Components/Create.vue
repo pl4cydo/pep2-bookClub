@@ -131,6 +131,7 @@ const handleImageChange = (event) => {
     top: 0;
     height: 100%;
     width: 100%;
+    max-width: none;
     /* background-color: aquamarine; */
     position: fixed;
     z-index: 9998;

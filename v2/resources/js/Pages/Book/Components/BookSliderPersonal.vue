@@ -113,6 +113,7 @@ onMounted(async () => {
     overflow: hidden;
     position: relative;
     /*background-color: #1f2937; */
+    
     width: 100%;
     border-radius: 8px;
     border: 1px solid white;

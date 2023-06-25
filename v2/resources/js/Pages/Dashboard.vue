@@ -24,7 +24,7 @@ import Banner from '../Pages/Banner/component/Banner.vue'
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
         </template>
 
-        <div class="py-12 text-black ">
+        <div class="py-5 text-black ">
             <div class="max-w-7xl mx-auto">
                 <div class="bloco">
                     <div class="blocoN">
@@ -46,7 +46,7 @@ import Banner from '../Pages/Banner/component/Banner.vue'
 <style scoped>
 .bloco {
     color: white;
-    background-color: #1f2937;
+    background-color: #2b384b;
     overflow: hidden;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     border-radius: 0.25rem;

@@ -83,7 +83,7 @@ onMounted(() => {
     <h2 class="highlights-title">Tchucas</h2>
     <div class="highlights-slider">
         <div class="test" :style="{ marginLeft: marginS }">
-            <div class="boxSlider" v-for="banner in banners">
+            <div class="boxSlider" v-for="banner in banners" v-bind:key="banner.id">
                 <div class="banner">
                     <div class="bannerLeft">
                         <div class="imgBanner">
@@ -113,11 +113,13 @@ onMounted(() => {
 
 <style scoped>
 .highlights-slider {
+    background-color: #1f2937;
     display: flex;
-    border: 1px solid white;
     width: 760px;
     overflow: hidden;
     position: relative;
+    border-radius: 6px;
+    box-shadow: 5px 5px 5px #131820; 
 }
 
 .test {
@@ -135,6 +137,7 @@ onMounted(() => {
     height: 256px;
     margin-left: 0%;
     display: flex;
+
     /* animation-name: fade;
     animation-duration: 1.5s; 
     background-color: blueviolet; */
@@ -143,13 +146,13 @@ onMounted(() => {
 .bannerLeft {
     width: 30%;
     height: 100%;
+    margin-left: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .imgBanner {
-    border: 1px solid white;
     width: 95%;
     height: 90%;
     display: flex;
@@ -172,6 +175,7 @@ onMounted(() => {
 }
 
 .infoBanner {
+    border-radius: 6px;
     border: 1px solid white;
     width: 95%;
     height: 90%;
