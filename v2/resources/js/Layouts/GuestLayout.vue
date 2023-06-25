@@ -4,22 +4,28 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <header class="header">
-        <div id="title">
-            <h1>Book</h1>
-            <h1>Club</h1>
+
+    <teleport to="body"> 
+        <div class="blocoHeader">
+            <header class="header">
+                <div id="title">
+                    <h1>Book</h1>
+                    <h1>Club</h1>
+                </div>
+        
+            </header>
         </div>
+    </teleport>
 
-    </header>
 
-    <div class="min-h-screen flex flex-col items-center pt-6 sm:pt-0 bg-gray-800">
+    <div class="min-h-screen flex flex-col items-center pt-6 sm:pt-0">
         <!-- <div>
                     <Link href="/">
                         <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
                     </Link>
                 </div> -->
 
-        <div class="">
+        <div >
             <slot />
         </div>
     </div>
@@ -31,16 +37,25 @@ import { Link } from '@inertiajs/vue3';
     max-width: 1200px;
     margin: 0 auto;
     padding: 15px;
+    text-shadow: 5px 5px 5px black;
+}
+
+.blocoHeader{
+    top: 0;
+    position: fixed;
+    max-width: none;
+    width: 100%;
+    padding: 0;
+    background-color: #1f2937;
+    box-shadow: 0px 5px 5px #131820;
 }
 
 .header {
-    color: #f1f1f1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     top: 0;
     right: 0;
-    border-bottom: 1px solid white;
 }
 
 #title {

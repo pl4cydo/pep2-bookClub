@@ -106,6 +106,16 @@ const submit = () => {
     display: flex;
     flex-direction: column;
     width: 400px;
+    
+}
+
+.form {
+    margin-top: 4em;
+    padding: 45px;
+    width: auto;
+    background-color: #1f2937;
+    box-shadow: 0px 5px 5px #131820;
+    border-radius: 6px;
 }
 
 .logoLogin h1 {

@@ -80,14 +80,14 @@ function changeBoo() {
                                 </template>
         
                                 <template #content>
-                                    <DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>
+                                    <DropdownLink class="drop" :href="route('profile.edit')"> Profile </DropdownLink>
                                     <div v-if="$page.props.auth.user.is_admin">
-                                        <DropdownLink :href="route('category.index')"> Category </DropdownLink>
-                                        <DropdownLink :href="route('message.create')"> Message </DropdownLink>
-                                        <DropdownLink :href="route('banner.index')"> Banner </DropdownLink>
+                                        <DropdownLink class="drop" :href="route('category.index')"> Category </DropdownLink>
+                                        <DropdownLink class="drop" :href="route('message.create')"> Message </DropdownLink>
+                                        <DropdownLink class="drop" :href="route('banner.index')"> Banner </DropdownLink>
                                     </div>
-                                    <DropdownLink :href="route('message.donate')"> Doar </DropdownLink>
-                                    <DropdownLink :href="route('logout')" method="post" as="button">
+                                    <DropdownLink class="drop" :href="route('message.donate')"> Doar </DropdownLink>
+                                    <DropdownLink class="drop" :href="route('logout')" method="post" as="button">
                                         Log Out
                                     </DropdownLink>
                                 </template>
@@ -169,6 +169,10 @@ function changeBoo() {
     margin: 0 auto;
     /* padding: 15px; */
     text-shadow: 5px 5px 5px black;
+}
+
+.drop {
+    text-shadow: none;
 }
 
 .large {

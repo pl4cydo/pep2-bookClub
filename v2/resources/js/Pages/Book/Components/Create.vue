@@ -114,7 +114,7 @@ const handleImageChange = (event) => {
 
 
                     <div class="divButton">
-                        <button type="submit" class="button"> Novo Livro </button>
+                        <button type="submit" class="button"> Confirmar </button>
                     </div>
                 </div>
 

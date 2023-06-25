@@ -65,10 +65,25 @@ const open = ref(false);
                 style="display: none; background-color: black"
                 @click="open = false"
             >
-                <div class="rounded-md ring-1 ring-black ring-opacity-5 p-2" :class="contentClasses">
+                <div class="drop" :class="contentClasses">
                     <slot name="content" />
                 </div>
             </div>
         </transition>
     </div>
 </template>
+
+<style scoped>
+
+.drop {
+    
+    border-radius: 0.375rem/* 6px */;
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(0 0 0 / var(--tw-ring-opacity));
+    --tw-ring-opacity: 0.05;
+    padding: 0.25rem/* 4px */;
+}
+</style>

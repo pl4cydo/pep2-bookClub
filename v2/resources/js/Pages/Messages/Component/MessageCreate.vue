@@ -70,10 +70,13 @@ const handleImageChange = (event) => {
     padding: 15px;
     padding-left: 20px;
     padding-right: 20px;
+    border-radius: 6px;
 }
 
 .button:hover {
-    background-color: #3e3ec5;
+    border-radius: 6px;
+    background-color: #2c3b4e;
+    border: 1px solid #3e3ec5;
     transition: 0.8s ease;
 }
 

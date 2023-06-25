@@ -9,11 +9,11 @@ import MessageCreate from '../Messages/Component/MessageCreate.vue';
     <Head title="Doar" />
 
     <AuthenticatedLayout>
-        <template #header>
+        <!-- <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Book</h2>
-        </template>
+        </template> -->
 
-        <div class="py-12 text-white">
+        <div class="pt-6 text-white">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bloco">
                     <div class="blocoLeft">
@@ -35,8 +35,8 @@ import MessageCreate from '../Messages/Component/MessageCreate.vue';
 <style scoped>
 .bloco {
     overflow: hidden;
-    border: 1px solid white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #1f2937;
+    box-shadow: 0px 5px 5px #131820;
     border-radius: 0.25rem;
     display: flex;
 }
