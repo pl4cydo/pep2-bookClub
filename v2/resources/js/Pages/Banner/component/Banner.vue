@@ -80,8 +80,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <h2 class="highlights-title">Tchucas</h2>
     <div class="highlights-slider">
+        <h2 class="highlights-title">Tchucas</h2>
         <div class="test" :style="{ marginLeft: marginS }">
             <div class="boxSlider" v-for="banner in banners" v-bind:key="banner.id">
                 <div class="banner">
@@ -107,19 +107,26 @@ onMounted(() => {
                 </div>
             </div>
         </div>
+        <button @click="jj()"> > </button> 
     </div>
-    <button @click="jj()"> > </button>
 </template>
 
 <style scoped>
 .highlights-slider {
     background-color: #1f2937;
     display: flex;
+    flex-direction: column;
     width: 760px;
     overflow: hidden;
     position: relative;
     border-radius: 6px;
     box-shadow: 5px 5px 5px #131820; 
+    margin: 20px;
+}
+
+.highlights-title {
+    padding: 10px;
+    padding-bottom: 0;
 }
 
 .test {

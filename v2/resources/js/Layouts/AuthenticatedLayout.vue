@@ -168,6 +168,7 @@ function changeBoo() {
     max-width: 1200px;
     margin: 0 auto;
     /* padding: 15px; */
+    text-shadow: 5px 5px 5px black;
 }
 
 .large {
@@ -206,6 +207,7 @@ function changeBoo() {
 #title h1 {
     font-weight: 200;
     padding: 15px;
+    text-shadow: 5px 5px 5px black;
 }
 
 .jorge {
@@ -265,18 +267,14 @@ function changeBoo() {
 
 .button {
     color: white;
-    border-bottom: 1px solid white;
-    border-radius: 50px;
-    padding: 15px;
+    padding: 10px;
     border-left: none;
-    border-top-left-radius: 0%;
-    border-bottom-left-radius: 0%;
 }
 
-
 .button:hover {
-    border-top: 1px solid white;
-    transition: 1s ease;
-    background-color: #3e3ec5;
+    border-radius: 6px;
+    background-color: #2c3b4e;
+    border: 1px solid #3e3ec5;
+    transition: 0.8s ease;
 }
 </style>
