@@ -55,19 +55,15 @@ const handleImageChange = (event) => {
         <div class="formPopUp">
 
             <div class="formHeader">
-                <div class="headerTitle">
-                    <h1>New Book</h1>
-                </div>
-
                 <div class="headerExit">
                     <Link class="headerExitLink" :href="route('dashboard')">x</Link>
                 </div>
             </div>
 
-            <div class="formBody">
+            <form @submit.prevent="submit">
+                <div class="form">
 
-                <form @submit.prevent="submit">
-                    <div class="formLeft">
+                    <div class="bloquinho">
                         <div>
                             <label class="label" for="title">Titulo</label>
                             <input id="title" class="input" v-model="form.title" placeholder="Titulo" />
@@ -75,45 +71,57 @@ const handleImageChange = (event) => {
 
                         <div>
                             <label class="label" for="year">Ano de Lançamento</label>
-                            <input type="number" id="year" class="input" v-model="form.year" />
+                            <input type="number" id="year" class="input" v-model="form.year" placeholder="Lançamento" />
                         </div>
+                    </div>
 
+                    <div class="bloquinho">
                         <div>
                             <label class="label" for="writer">Escritor</label>
-                            <input id="writer" class="input" v-model="form.writter" />
+                            <input id="writer" class="input" v-model="form.writter" placeholder="Escritor" />
                         </div>
 
                         <div>
 
                             <label class="label" for="category_id">Categoria</label>
-                            <select name="category_id" id="category_id" class="input" v-model="form.category_id">
-                                <option class="option" value="1">Select a category</option>
-                                <option class="option" v-for="category in categories" :value="category.id" :key="category.id">
+                            <select name="category_id" id="category_id" class="input jorge" v-model="form.category_id" >
+                                <option class="option" value="" disabled selected hidden>Categoria</option>
+                                <option class="option" v-for="category in categories" :value="category.id"
+                                    :key="category.id">
                                     {{ category.name }}
                                 </option>
                             </select>
 
                         </div>
-
-                        <div>
-                            <label class="label" for="image">Image</label>
-                            <input id="image" type="file" class="input" @change="handleImageChange" />
-                        </div>
                     </div>
 
-                    <div class="formRigth">
-                        <div>
-                            <label class="label" for="synopsis">Sinopse</label>
-                            <textarea class="textarea" name="synopsis" id="synopsis" cols="23" rows="3" v-model="form.synopsis"></textarea>
-                        </div>
-                        <div>
-                            <label class="label" for="selfComment">Comentário sobre o estado do livro</label>
-                            <textarea class="textarea" name="seflComment" id="seflComment" cols="23" rows="2" v-model="form.selfComment"></textarea>
-                        </div>
+
+                    <div class="mt-2">
+                        <label class="label" for="image">Image</label>
+                        <input id="image" type="file" class="input" @change="handleImageChange" />
+                    </div>
+
+                    <div class="divText">
+                        <label class="label" for="synopsis">Sinopse</label>
+                        <textarea class="textarea" name="synopsis" id="synopsis" v-model="form.synopsis"></textarea>
+                    </div>
+
+                    <div class="divText">
+                        <label class="label" for="selfComment">Comentário sobre o estado do livro</label>
+                        <textarea class="textarea" name="seflComment" id="seflComment"
+                            v-model="form.selfComment"></textarea>
+                    </div>
+
+
+                    <div class="divButton">
                         <button type="submit" class="button"> Novo Livro </button>
                     </div>
-                </form>
-            </div>
+                </div>
+
+                <!-- <div class="formRigth">
+                        
+                    </div> -->
+            </form>
         </div>
     </div>
 </template>
@@ -130,124 +138,89 @@ const handleImageChange = (event) => {
     background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
-    transition: 0.8s ease;
-    
 }
 
 .formPopUp {
-    height: 400px;
-    width: 700px;
+    height: 500px;
+    width: 400px;
     background-color: #1f2937;
     transition: all 0.3s ease;
     border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
 .formHeader {
     border-bottom: none;
-    height: 20%;
     width: auto;
-    border-radius: 20px;
     display: flex;
-    align-items: center;
-}
-
-.formHeader h1 {
-    font-size: 50px;
-    color: white;
-    margin-left: 5%;
-}
-
-.formBody {
-    border-top: none;
-    border-radius: 20px;
-    border-top-left-radius: 0%;
-    border-top-right-radius: 0%;
-    height: 80%;
+    justify-content: end;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.formBody form {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.formLeft {
-    width: 40%;
-    height: 100%;
-    border: 1px solid white;
-}
-
-.formLeft * {
-    padding: 15px;
-    padding-bottom: 0%;
-    display: flex;
-    flex-direction: column;
-}
-
-.formRigth {
-    width: 40%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid white;
-}
-
-.formRigth * {
-    padding: 15px;
-    padding-left: 5px;
-    padding-bottom: 0%;
+form {
+    width: 90%;
+    height: 85%;
 }
 
 .textarea {
-    margin-top: 10px;
-    margin-left: 30px;
     background-color: transparent;
     resize: none;
 }
 
+.divButton {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
 .button {
-    margin-top: 20px;
+    margin-top: 5px;
     color: white;
-    border: 1px solid white;
+    border-bottom: 1px solid white;
     margin-left: 40px;
-    width: 180px;
-    padding: 10px   ;
+    padding: 10px;
+
 }
 
 .button:hover {
-    background-color: #3e3ec5;
+    background-color: #2c3b4e;
     transition: 0.8s ease;
 }
 
 .label {
-    position: absolute;
-    font-size: 12px;
-    margin-top: -25px;
+    font-size: 13px;
 }
 
 .option {
-    background-color: #3e3ec5; 
+    background-color: #3e3ec5;
+}
+
+.bloquinho {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bloquinho * {
+    width: 48%;
 }
 
 .input {
-    margin-top: 6px;
-    left: 10%;
     color: white;
-    position: relative;
     border: 0;
     border-bottom: 1px solid white;
     background: transparent;
-    width: 70%;
-    height: 10%;
-    padding: 8px 0 5px 0;
-    font-size: 13px;
+    width: 100%;
+    height: 25px;
+    padding: 4px 0 5px 0;
+    font-size: 13px; 
+}
+
+.jorge {
+    height: 26px;
 }
 
 .input:focus {
@@ -265,13 +238,6 @@ const handleImageChange = (event) => {
     color: gray;
 }
 
-.headerTitle {
-    height: 100%;
-    width: 90%;
-    display: flex;
-    align-items: center;
-}
-
 .headerExit {
     height: 100%;
     width: 10%;
@@ -283,4 +249,13 @@ const handleImageChange = (event) => {
     font-size: 30px;
     color: white;
 }
+
+.divText {
+    padding-top: 10px;
+}
+
+.divText textarea {
+    width: 100%;
+}
+
 </style>

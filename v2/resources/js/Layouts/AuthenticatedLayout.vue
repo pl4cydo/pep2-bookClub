@@ -24,7 +24,7 @@ function changeBoo() {
 
 <template>
     <div>
-        <Createbook v-if="boo" />
+        <Createbook class="test" v-if="boo" />
         <div class="vasco">
             <nav class="header">
                 <!-- Primary Navigation Menu -->
@@ -168,6 +168,7 @@ function changeBoo() {
     margin: 0 auto;
     /* padding: 15px; */
 }
+
 
 .header {
     color: #f1f1f1;
