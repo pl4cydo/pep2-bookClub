@@ -10,9 +10,9 @@ const count = ref(0);
 const countNext = ref(0);
 // const cateogori = ref(category)
 
-let a = defineProps({
-    categoryNumber: Object
-})
+// let a = defineProps({
+//     categoryNumber: Object
+// })
 
 const next = () => {
     const currentMargin = parseInt(margin.value);
@@ -69,7 +69,7 @@ onMounted(async () => {
 
 <template>
     <div class="flex">
-        <h1 class="mr-1">
+        <h1 class="mr-1 color-white">
             Livros
         </h1>
         <div v-for="category in categories" v-bind:key="category.id">
@@ -83,18 +83,18 @@ onMounted(async () => {
     <div class="small-slider-container">
         <div class="small-slider" :style="{ left: margin }">
             <div class="books" v-for="(book) in books" :key="book.id">
-                <div class="blocoBook" v-if="categoryNumber.a != null && book.category_id == categoryNumber.a">
+                <div class="blocoBook">
                     <Link :href="route('book.bookView', { id: book.id })">
                         <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
                         <p class="title">{{ book.title }}</p>
                     </Link>
                 </div>
-                <div class="blocoBook" v-if="categoryNumber.a == null">
+                <!-- <div class="blocoBook" v-if="categoryNumber.a == null">
                     <Link :href="route('book.bookView', { id: book.id })">
                         <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
                         <p class="title">{{ book.title }}</p>
                     </Link>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="small-button-container">

@@ -70,7 +70,7 @@ const handleImageChange = (event) => {
                     <div class="formLeft">
                         <div>
                             <label class="label" for="title">Titulo</label>
-                            <input id="title" class="input" v-model="form.title" />
+                            <input id="title" class="input" v-model="form.title" placeholder="Titulo" />
                         </div>
 
                         <div>
@@ -104,16 +104,15 @@ const handleImageChange = (event) => {
                     <div class="formRigth">
                         <div>
                             <label class="label" for="synopsis">Sinopse</label>
-                            <textarea class="textarea" name="synopsis" id="synopsis" cols="25" rows="3" v-model="form.synopsis"></textarea>
+                            <textarea class="textarea" name="synopsis" id="synopsis" cols="23" rows="3" v-model="form.synopsis"></textarea>
                         </div>
                         <div>
                             <label class="label" for="selfComment">Comentário sobre o estado do livro</label>
-                            <textarea class="textarea" name="seflComment" id="seflComment" cols="25" rows="2" v-model="form.selfComment"></textarea>
+                            <textarea class="textarea" name="seflComment" id="seflComment" cols="23" rows="2" v-model="form.selfComment"></textarea>
                         </div>
                         <button type="submit" class="button"> Novo Livro </button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
@@ -128,18 +127,19 @@ const handleImageChange = (event) => {
     position: fixed;
     z-index: 9998;
     display: flex;
-    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
+    align-items: center;
     transition: 0.8s ease;
+    
 }
 
 .formPopUp {
-    margin-top: 10%;
     height: 400px;
     width: 700px;
-    border: 1px solid white;
     background-color: #1f2937;
     transition: all 0.3s ease;
+    border-radius: 6px;
 }
 
 
@@ -175,12 +175,13 @@ const handleImageChange = (event) => {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .formLeft {
-    border: 1px solid white;
-    width: 50%;
+    width: 40%;
     height: 100%;
+    border: 1px solid white;
 }
 
 .formLeft * {
@@ -191,15 +192,16 @@ const handleImageChange = (event) => {
 }
 
 .formRigth {
-    border: 1px solid white;
-    width: 50%;
+    width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    border: 1px solid white;
 }
 
 .formRigth * {
     padding: 15px;
+    padding-left: 5px;
     padding-bottom: 0%;
 }
 

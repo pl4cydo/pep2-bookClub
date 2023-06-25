@@ -10,6 +10,7 @@ import IconMessage from '../Messages/Component/IconMessage.vue';
 import Message from '../Messages/Message.vue';
 import SelfComments from '../Comment/Components/SelfComments.vue';
 import FavBook from '../Favorite/Component/FavBooks.vue'
+import BookSliderPersonal from '../Book/Components/BookSliderPersonal.vue';
 
 defineProps({
     mustVerifyEmail: Boolean,
@@ -38,16 +39,14 @@ defineProps({
                         <div>
                             <FavBook />
                         </div>
+
+                        <div >
+                            <!-- <PersonalBooks :books="books" :user="user" /> -->
+                            <BookSliderPersonal />
+                        </div>
+
                         <!-- <div >
                             <SelfComments />
-                        </div>
-
-                        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                            
-                        </div>
-
-                        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                            <PersonalBooks :books="books" :user="user" />
                         </div>
 
                         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
@@ -97,6 +96,10 @@ defineProps({
     display: flex;
     flex-direction: column;
     padding: 20px;
+}
+
+.right * {
+    padding-bottom: 20px;
 }
 
 .blocoMsg {
