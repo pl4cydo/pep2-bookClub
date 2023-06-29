@@ -32,55 +32,54 @@ const handleImageChange = (event) => {
 
 <template>
     <AuthenticatedLayout>
-        <div class="py-12 ">
+        <div class="py-4">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="formBody">
 
                         <form @submit.prevent="submit">
-                            <div class="bloco">
-                                <div>
-                                    <label for="title">Titulo</label>
-                                    <input class="input" id="title" v-model="form.title"/>
-                                </div>
-    
-                                <div>
-                                    <label for="title">Informações</label>
-                                    <input class="input" id="info" v-model="form.info"/>
-                                </div>
-
-                                <div>
-                                    <label for="value">Valor</label>
-                                    <input class="input" id="value" v-model="form.value"/>
-                                </div>
-
-                                <div>
-                                    <label for="link">Link</label>
-                                    <input class="input" id="link" v-model="form.link"/>
-                                </div>
-
-                                <div>
-                                    <label for="company">Empresa</label>
-                                    <input class="input" id="company" v-model="form.company"/>
-                                </div>
-
-                                <div class="select">
-    
-                                    <label class="label" for="ad">Ad / Banner</label>
-                                    <select class="text-black" name="ad" id="form.ad"  v-model="form.ad">
-                                        <option class="option" value="1" > AD </option>
-                                        <option class="option" value="0" > Banner </option>
-                                    </select>
-    
-                                </div>
-    
-                                <div>
-                                    <label class="label" for="image">Image</label>
-                                    <input class="input" id="image" type="file"  @change="handleImageChange" />
-                                </div>
-    
-                                <button type="submit" class="button"> Novo banner </button>
+                            <div>
+                                <label for="title">Titulo</label>
+                                <input class="input" id="title" v-model="form.title" />
                             </div>
+
+                            <div>
+                                <label for="title">Informações</label>
+                                <input class="input" id="info" v-model="form.info" />
+                            </div>
+
+                            <div>
+                                <label for="value">Valor</label>
+                                <input class="input" id="value" v-model="form.value" />
+                            </div>
+
+                            <div>
+                                <label for="link">Link</label>
+                                <input class="input" id="link" v-model="form.link" />
+                            </div>
+
+                            <div>
+                                <label for="company">Empresa</label>
+                                <input class="input" id="company" v-model="form.company" />
+                            </div>
+
+                            <div class="select">
+
+                                <label class="label" for="ad">Ad / Banner</label>
+                                <select class="text-black" name="ad" id="form.ad" v-model="form.ad">
+                                    <option class="option" value="1"> AD </option>
+                                    <option class="option" value="0"> Banner </option>
+                                </select>
+
+                            </div>
+
+                            <div>
+                                <label class="label" for="image">Image</label>
+                                <input class="input" id="image" type="file" @change="handleImageChange" />
+                            </div>
+
+                            <button type="submit" class="button"> Novo banner </button>
+
                         </form>
 
                     </div>
@@ -92,11 +91,6 @@ const handleImageChange = (event) => {
 </template>
 
 <style scoped>
-.bloco {
-    border: 1px solid white;
-    width: 70%;
-}
-
 .formBody {
     border-top: none;
     border-radius: 20px;
@@ -108,15 +102,27 @@ const handleImageChange = (event) => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid white;
 }
 
-.formBody form {
-    height: 100%;
-    width: 100%;
+form {
+    height: auto;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #1f2937;
+    box-shadow: 5px 5px 5px #131820;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+form div {
+    padding: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .select {
@@ -128,7 +134,7 @@ const handleImageChange = (event) => {
 }
 
 .button {
-    margin-top: 20px;
+    margin: 20px;
     color: white;
     border: 1px solid white;
     margin-left: 40px;
@@ -136,6 +142,7 @@ const handleImageChange = (event) => {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 15px;
 }
 
 .button:hover {
@@ -146,15 +153,13 @@ const handleImageChange = (event) => {
 
 .option {
     background-color: #3e3ec5;
-    
+
 }
 
 .input {
-
     margin-top: 6px;
     left: 10%;
     color: white;
-    position: relative;
     border: 0;
     border-bottom: 1px solid white;
     background: transparent;

@@ -85,7 +85,7 @@ const handleImageChange = (event) => {
 
                             <label class="label" for="category_id">Categoria</label>
                             <select name="category_id" id="category_id" class="input jorge" v-model="form.category_id" >
-                                <option class="option" value="" disabled selected hidden>Categoria</option>
+                                <option class="optionCategory" value="" disabled selected hidden>Categoria</option>
                                 <option class="option" v-for="category in categories" :value="category.id"
                                     :key="category.id">
                                     {{ category.name }}
@@ -200,6 +200,11 @@ form {
     background-color: #3e3ec5;
 }
 
+.optionCategory {
+    font-size: 1px;
+    text-align: justify;
+}
+
 .bloquinho {
     display: flex;
     justify-content: space-between;
@@ -215,13 +220,13 @@ form {
     border-bottom: 1px solid white;
     background: transparent;
     width: 100%;
-    height: 25px;
+    height: 29px;
     padding: 4px 0 5px 0;
     font-size: 13px; 
 }
 
 .jorge {
-    height: 26px;
+    height: 29px;
 }
 
 .input:focus {

@@ -30,7 +30,7 @@ const messageUpdate = (id) => {
 <template>
     <div class="messageFlow">
         <h1 class="ml-4">Mensages Vistas</h1>
-        <div class="messages" v-for="message in Messages">
+        <div class="messages" v-for="message in Messages" v-bind:key="message.id">
             <div class="bloco" v-if="message.notification">
                 <div class="infoMessage">
                     <h1> User: {{ message.user_id }} </h1>
@@ -53,31 +53,36 @@ const messageUpdate = (id) => {
 </template>
 
 <style scoped>
+
 .messageFlow {
-    border: 1px solid white;
+    width: 95%;
 }
 
 .messages {
     height: auto;
+    width: 100%;
     display: flex;
+    justify-content: center;
 }
 
 .bloco {
+    border-radius: 6px;
     width: 90%;
-    border: 1px solid white;
     display: flex;
     justify-content: space-between;
+    box-shadow: 5px 5px 5px #131820;
+    background-color: #242f3f;
 }
 
 .messages div {
-    margin: 30px;
+    margin: 15px;
     margin-bottom: none;
 }
 
 .imageMessage img {
     width: 150px;
     height: auto;
-    border: solid white;
+    border: 1px solid white;
     border-radius: 6px;
 }
 
