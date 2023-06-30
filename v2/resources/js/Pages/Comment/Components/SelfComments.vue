@@ -36,13 +36,16 @@ onMounted(async () => {
           </thead>
           <tbody>
             <tr v-for="comment in comments" :key="comment.id" >
-                <td v-if="$page.props.auth.user.id == comment.user_id">{{ comment.comment }}</td>
+                <td v-if="$page.props.auth.user.id == comment.user_id">
+                    <h1>Message:</h1>
+                    {{ comment.comment }}
+                </td>
                 <!-- <td v-if="$page.props.auth.user.id == comment.user_id">{{ comment.user_id }}</td> -->
                 <td v-if="$page.props.auth.user.id == comment.user_id">
-                    <div v-for="book in books">
+                    <div v-for="book in books" v-bind:key="book.id">
                         <div v-if="comment.book_id == book.id">
                             <!-- {{ comment.book_id }} -->
-                            <div>
+                            <div class="blocImg">
                                 <Link class="link" :href="route('book.bookView', { id:book.id })"><img :src="'/storage/images/' + book.image" alt="Book Image"></Link>
                                 {{ book.title }}
                             </div>
@@ -59,13 +62,20 @@ onMounted(async () => {
 
 <style scoped>
     .bloco {
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
+    table, tbody {
+        width: 100%;
+        border-radius: 6px;
+    }
+    
     tr {
-        border: 1px solid black;
+        width: 100%;
+        border: 1px solid gray;
         display: flex;
         justify-content: space-between;
     }
@@ -74,12 +84,15 @@ onMounted(async () => {
         margin: 20px;
     }
 
-    table {
-        width: 60%;
+    .link img {
+        height: 90px;
+        width: 70px;
     }
 
-    .link img {
-        height: 230px;
-        width: 150px;
+    .blocImg {
+
+        overflow: hidden;
+        max-width: 70px;
+        max-height: 120px;
     }
 </style>

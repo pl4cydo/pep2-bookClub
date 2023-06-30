@@ -11,6 +11,7 @@ import Message from '../Messages/Message.vue';
 import SelfComments from '../Comment/Components/SelfComments.vue';
 import FavBook from '../Favorite/Component/FavBooks.vue'
 import BookSliderPersonal from '../Book/Components/BookSliderPersonal.vue';
+import { ref } from 'vue';
 
 defineProps({
     mustVerifyEmail: Boolean,
@@ -18,6 +19,8 @@ defineProps({
     books: Array,
     user: Number
 });
+
+const navProfile = ref('fav')
 
 </script>
 
@@ -29,51 +32,50 @@ defineProps({
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Profile</h2>
         </template>
 
-        <div class="py-12 text-black">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                <div class="bloco">
-                    <div class="left">
-                        <InfoPerfil />
-                    </div>
-                    <div class="right">
-                        <div>
-                            <FavBook />
-                        </div>
-
-                        <div >
-                            <!-- <PersonalBooks :books="books" :user="user" /> -->
-                            <BookSliderPersonal />
-                        </div>
-
-                        <!-- <div >
-                            <SelfComments />
-                        </div>
-
-                        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                            <UpdateProfileInformationForm :must-verify-email="mustVerifyEmail" :status="status"
-                                class="max-w-xl" />
-                        </div>
-
-                        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                            <UpdatePasswordForm class="max-w-xl" />
-                        </div>
-
-                        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                            <DeleteUserForm class="max-w-xl" />
-                        </div> -->
-                    </div>
-
+        <div class="bloco">
+            <div class="left">
+                <InfoPerfil />
+            </div>
+            <div class="right">
+                <div class="navProfile">
+                    <button class="button" @click=" navProfile = 'fav'">Favoritos</button>
+                    <button class="button" @click=" navProfile = 'mybook'">Meus Livros</button>
+                    <button class="button" @click=" navProfile = 'comment'">Comentários já feitos</button>
+                    <button class="button" @click=" navProfile = 'option'">Opções</button>
                 </div>
-                <!-- <IconMessage /> -->
+
+                <div class="navFlow">
+                    <div v-if="navProfile == 'fav'">
+                        <FavBook />
+                    </div>
+    
+                    <div v-if="navProfile == 'mybook'">
+                        <!-- <PersonalBooks :books="books" :user="user" /> -->
+                        <BookSliderPersonal />
+                    </div>
+    
+                    <div v-if="navProfile == 'comment'">
+                        <SelfComments />
+                    </div>
+    
+                    <div class="p-2" v-if="navProfile == 'option'" >
+                        <UpdateProfileInformationForm :must-verify-email="mustVerifyEmail" :status="status" class="max-w-xl" />
+                        <UpdatePasswordForm class="max-w-xl" />
+                        <DeleteUserForm class="max-w-xl" />
+                    </div>
+                </div>
 
 
             </div>
         </div>
+        <!-- <IconMessage /> -->
+
     </AuthenticatedLayout>
 </template>
 
 <style scoped>
 .bloco {
+    margin-top: 5px;
     width: 100%;
     height: auto;
     /* border: 1px solid white; */
@@ -81,25 +83,71 @@ defineProps({
     justify-content: space-between;
 }
 
+.bloco * {
+    margin-top: 0;
+    margin: 5px;
+}
+
 .left {
+    min-width: 360px;
     width: 30%;
     height: 600px;
-    border: 1px solid white;
     display: flex;
     justify-content: center;
     padding-top: 15px;
+    background-color: #1f2937;
+    box-shadow: 0px 5px 5px #131820;
+    border-radius: 6px;
 }
 
 .right {
     width: 70%;
-    border: 1px solid white;
+    height: auto;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    align-items: center;
 }
 
 .right * {
-    padding-bottom: 20px;
+    margin-left: 0;
+    margin-bottom: 20px;
+}
+
+.navProfile {
+    min-height: 48px;
+    width: 100%;
+    height: 8%;
+    margin: 0;
+    background-color: #1f2937;
+    box-shadow: 0px 5px 5px #131820;
+    border-radius: 6px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.navFlow {
+    margin-top: 10px;
+    padding: 15px;
+    max-width: 98%;
+    min-width: 98%;
+    background-color: #1f2937;
+    box-shadow: 0px 5px 5px #131820;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    padding: 5px;
+    margin: 0;
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.button:hover {
+    border-bottom: 1px solid white;
+    transition: 0.8s ease;
 }
 
 .blocoMsg {

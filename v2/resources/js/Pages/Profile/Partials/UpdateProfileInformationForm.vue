@@ -19,7 +19,7 @@ const form = useForm({
 </script>
 
 <template>
-    <section>
+    <section class="opa">
         <header>
             <h2 class="text-lg font-medium text-gray-900">Profile Information</h2>
 
@@ -32,7 +32,7 @@ const form = useForm({
             <div>
                 <InputLabel for="name" value="Name" />
 
-                <TextInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus
+                <TextInput id="name" type="text" class="mt-1 block w-full text-black" v-model="form.name" required autofocus
                     autocomplete="name" />
 
                 <InputError class="mt-2" :message="form.errors.name" />
@@ -71,3 +71,11 @@ const form = useForm({
         </form>
     </section>
 </template>
+
+
+<style scoped>
+
+* {
+    color: white;
+}
+</style>

@@ -97,8 +97,7 @@ onMounted(() => {
     width: 100%;
     height: 320px;
     overflow-y: scroll;
-
-    border: 1px solid white;
+    margin: 0;
 }
 
 .bloco {
@@ -122,7 +121,12 @@ onMounted(() => {
     padding: 15px;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid white;
+    background-color: #283446;
+    transition: 0.5s ease-in-out;
+}
+
+.book:hover {
+    width: 105%;
 }
 
 .book img {
