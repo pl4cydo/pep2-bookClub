@@ -30,12 +30,12 @@ onMounted(async () => {
         <table>
           <thead>
             <tr>
-              <th>Comment</th>
-              <th>Book</th>
+              <th>Comentários</th>
+              <th>Livro</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="comment in comments" :key="comment.id" >
+            <tr class="tr" v-for="comment in comments" :key="comment.id" >
                 <td v-if="$page.props.auth.user.id == comment.user_id">
                     <h1>Message:</h1>
                     {{ comment.comment }}
@@ -72,12 +72,25 @@ onMounted(async () => {
         width: 100%;
         border-radius: 6px;
     }
-    
+
     tr {
         width: 100%;
-        border: 1px solid gray;
         display: flex;
         justify-content: space-between;
+        background-color: #283446;
+        box-shadow: 0px 5px 5px #131820;
+        border-radius: 6px;
+        margin-bottom: 10px;
+    }
+    
+    .tr {
+        background-color: #283446;
+        box-shadow: 0px 5px 5px #131820;
+        border-radius: 6px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
     }
 
     td, th {
@@ -87,6 +100,8 @@ onMounted(async () => {
     .link img {
         height: 90px;
         width: 70px;
+        box-shadow: 5px 5px 5px #131820;
+        border-radius: 3px;
     }
 
     .blocImg {

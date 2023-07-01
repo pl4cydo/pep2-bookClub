@@ -21,9 +21,9 @@ const form = useForm({
 <template>
     <section class="opa">
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Profile Information</h2>
+            <h2 class="text-lg font-medium text-white">Profile Information</h2>
 
-            <p class="mt-1 text-sm text-gray-600">
+            <p class="mt-1 text-sm text-white">
                 Update your account's profile information and email address.
             </p>
         </header>
@@ -41,7 +41,7 @@ const form = useForm({
             <div>
                 <InputLabel for="email" value="Email" />
 
-                <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required
+                <TextInput id="email" type="email" class="mt-1 block w-full text-black" v-model="form.email" required
                     autocomplete="username" />
 
                 <InputError class="mt-2" :message="form.errors.email" />
@@ -62,7 +62,7 @@ const form = useForm({
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+                <PrimaryButton class="button" :disabled="form.processing">Save</PrimaryButton>
 
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
                     <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
@@ -75,7 +75,8 @@ const form = useForm({
 
 <style scoped>
 
-* {
-    color: white;
+.button {
+    background-color: blue;
 }
+
 </style>

@@ -36,9 +36,9 @@ const updatePassword = () => {
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Update Password</h2>
+            <h2 class="text-lg font-medium text-white">Update Password</h2>
 
-            <p class="mt-1 text-sm text-gray-600">
+            <p class="mt-1 text-sm text-white">
                 Ensure your account is using a long, random password to stay secure.
             </p>
         </header>
@@ -67,7 +67,7 @@ const updatePassword = () => {
                     ref="passwordInput"
                     v-model="form.password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full text-black"
                     autocomplete="new-password"
                 />
 
@@ -81,7 +81,7 @@ const updatePassword = () => {
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full text-black"
                     autocomplete="new-password"
                 />
 
@@ -89,8 +89,8 @@ const updatePassword = () => {
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
-
+                <PrimaryButton class="button" :disabled="form.processing">Save</PrimaryButton>
+ 
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
                     <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
                 </Transition>
@@ -101,7 +101,8 @@ const updatePassword = () => {
 
 <style scoped>
 
-* {
-    color: white;
+.button {
+    background-color: blue;
 }
+
 </style>

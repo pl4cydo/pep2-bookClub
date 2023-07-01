@@ -73,7 +73,6 @@ const searchBooks = async () => {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         border: 1px solid white;
-        border-left: none; 
         box-shadow: 5px 5px 5px #131820;
     }
 

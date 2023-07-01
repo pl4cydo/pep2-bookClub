@@ -122,7 +122,9 @@ onMounted(() => {
     align-items: center;
     justify-content: space-between;
     background-color: #283446;
+    box-shadow: 0px 5px 5px #131820;
     transition: 0.5s ease-in-out;
+    border-radius: 6px;
 }
 
 .book:hover {
