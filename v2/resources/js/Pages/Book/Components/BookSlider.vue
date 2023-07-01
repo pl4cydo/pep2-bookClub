@@ -187,6 +187,7 @@ onMounted(async () => {
     height: 230px;
     padding-top: 10px;
     margin: 5px;
+    transition: 300ms ease;
 }
 
 .blocoBook:hover {

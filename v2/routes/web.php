@@ -69,6 +69,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/banner', BannerController::class);
     Route::get('bannerlist', [BannerController::class, 'list'])->name('banner.list');
     
+    Route::get('/user-id', function () {
+        return auth()->id();
+    });
 });
 
 

@@ -1,13 +1,18 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import axios from 'axios';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref} from 'vue';
+
 
 const categories = ref([]);
 const margin = ref('0px')
 const books = ref([]);
 const count = ref(0);
 const countNext = ref(0);
+
+
+
+
 // const cateogori = ref(category)
 
 // let a = defineProps({
@@ -15,6 +20,7 @@ const countNext = ref(0);
 // })
 
 const next = () => {
+    console.log('aqui')
     const currentMargin = parseInt(margin.value);
     if (count.value > 7 && countNext.value > 0) {
         margin.value = (currentMargin - 150) + 'px';
@@ -53,15 +59,19 @@ const listCategory = async () => {
 }
 
 onMounted(async () => {
+    
     await list()
     await listCategory()
+    const response = await axios.get('/user-id');
+    const userId = response.data;
+    count.value = books.value.filter(book => book.user_id == userId).length
+    console.log(count.value)
     // console.log(books.value.length)
-    if (a.categoryNumber.a) {
-        count.value = books.value.filter(book => book.category_id == a.categoryNumber.a).length
-    } else {
-        count.value = books.value.length
-    }
-    countNext.value = count.value < 7 ? (count.value - 7) * -1 : count.value - 7;
+    // count.value = books.value.length
+    // if (a.categoryNumber.a) {
+    // } else {
+    // }
+    countNext.value = count.value < 5 ? (count.value - 5) * -1 : count.value - 5;
     // console.log(count.value, countNext.value)
 })
 
@@ -69,21 +79,21 @@ onMounted(async () => {
 
 <template>
     <div class="flex">
-        <h1 class="mr-1 color-white">
-            Livros
-        </h1>
-        <div v-for="category in categories" v-bind:key="category.id">
+        <!-- <div v-for="category in categories" v-bind:key="category.id">
             <div v-if="categoryNumber.a != null">
                 <h1 v-if="category.id == categoryNumber.a">
                     de: {{ category.name }}
                 </h1>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="small-slider-container">
+        <h1 class=" p-2 color-white">
+            Livros
+        </h1>
         <div class="small-slider" :style="{ left: margin }">
             <div class="books" v-for="(book) in books" :key="book.id">
-                <div class="blocoBook">
+                <div class="blocoBook" v-if="book.user_id == $page.props.auth.user.id">
                     <Link :href="route('book.bookView', { id: book.id })">
                         <img :src="'/storage/images/' + book.image" alt="Book Image" class="small-slider-img">
                         <p class="title">{{ book.title }}</p>
@@ -116,7 +126,8 @@ onMounted(async () => {
     
     width: 100%;
     border-radius: 8px;
-    border: 1px solid white;
+    background-color: #283446;
+    box-shadow: 0px 5px 5px #131820;
     color: rgb(255, 255, 255);
 }
 
@@ -141,6 +152,7 @@ onMounted(async () => {
     margin-right: 10px;
     transition: transform 0.1s;
     border: solid white;
+    border-radius: 6px;
 }
 
 /*
@@ -167,11 +179,11 @@ onMounted(async () => {
 }
 
 #prev-button {
-    left: 10px;
+    margin-left: 10px;
 }
 
 #next-button {
-    right: 10px;
+    margin-right: 10px;
 }
 
 
@@ -183,6 +195,7 @@ onMounted(async () => {
     height: 230px;
     padding-top: 10px;
     margin: 5px;
+    transition: 300ms ease;
 }
 
 .blocoBook:hover {
