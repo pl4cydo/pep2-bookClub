@@ -75,7 +75,7 @@ const navProfile = ref('fav')
 
 <style scoped>
 .bloco {
-    margin-top: 5px;
+    margin-top: 15px;
     width: 100%;
     height: auto;
     /* border: 1px solid white; */
@@ -91,7 +91,7 @@ const navProfile = ref('fav')
 .left {
     min-width: 360px;
     width: 30%;
-    height: 600px;
+    height: 300px;
     display: flex;
     justify-content: center;
     padding-top: 15px;

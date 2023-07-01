@@ -19,9 +19,9 @@ const searchBooks = async () => {
 <template>
     <div class="searchBloco">
         <div class="searchDiv">
-            <label for="searchValue">Buscar Livros</label>
+            <label for="searchValue" hidden>Buscar Livros</label>
             <div class="flex">
-                <input type="text" v-model="searchValue" @value="Livros">
+                <input type="text" placeholder="Buscar Livros" v-model="searchValue" @value="Livros">
                 <button @click="searchBooks">Search</button>
             </div>
         </div>
@@ -45,6 +45,7 @@ const searchBooks = async () => {
 /* Estilos opcionais para o componente */
 
     .searchBloco {
+        margin-top: -4px ;
         display: flex;
         height: 100%;
         width: 100%;
@@ -52,7 +53,6 @@ const searchBooks = async () => {
         justify-content: center;
         position: relative;
         margin-left: 40px;
-      /*  border: 1px solid white; */
     }
     .searchDiv {
         display: flex;
@@ -60,6 +60,7 @@ const searchBooks = async () => {
         width: 100%;
         height: 60%;
         justify-content: center;
+        box-sizing: border-box;
     }
 
     .searchDiv label {
@@ -67,13 +68,18 @@ const searchBooks = async () => {
     }
 
     .searchDiv button {
-        width: 20%;
+        margin-top: 3px;
+        width: 100px;
+        height: 34px;
+        font-size: 12px;
         color: white;
-        border-radius: 20px;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border: 1px solid white;
-        box-shadow: 5px 5px 5px #131820;
+        border-radius: 6px;
+        text-align: left;
+        padding-left: 5px;
+        box-sizing: border-box;
+
+       /*  border: 1px solid white;
+       box-shadow: 5px 5px 5px #131820; */
     }
 
     .searchDiv button:hover {
@@ -88,10 +94,11 @@ const searchBooks = async () => {
         border: 0;
         border-bottom: 1px solid white;
         background: transparent;
-        width: 70%;
+        width: 50%;
+        height: 34px;
         padding: 8px 0 5px 0;
-        font-size: 16px;
-        box-shadow: 0px 5px 5px #131820;
+        font-size: 12px;
+        box-shadow: 0px 5px 3px #131820;
     }
     
     .searchDiv input:focus {

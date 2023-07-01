@@ -37,7 +37,7 @@ function changeBoo() {
                                 <h1>Club</h1>
                             </div>
                             <!-- Navigation Links -->
-                            <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                            <NavLink class="inicio" :href="route('dashboard')" :active="route().current('dashboard')">
                                 Início
                             </NavLink>
                             <!-- <div v-if="$page.props.auth.user.is_admin" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -155,7 +155,7 @@ function changeBoo() {
                     </header> -->
 
         <!-- Page Content -->
-        <main class="py-28 ">
+        <main class="py-14 ">
             <slot />
         </main>
     </div>
@@ -197,8 +197,9 @@ function changeBoo() {
     width: 100%;
     top: 0;
     right: 0;
+    height: auto;
     padding: 0%;
-    padding: 15px;
+    padding: 5px;
 }
 
 #title {
@@ -209,8 +210,9 @@ function changeBoo() {
 }
 
 #title h1 {
-    font-weight: 200;
-    padding: 15px;
+    font-size: 20px;
+    padding: 3px;
+    padding-left: 15px ;
     text-shadow: 5px 5px 5px black;
 }
 
@@ -228,14 +230,20 @@ function changeBoo() {
 
 .flexDiv {
     display: flex;
-
+    width: 20%;
     padding: 0%;
-    margin: 0%;
+    margin-right: 10%;
+}
+
+.inicio {
+    width: auto;
 }
 
 .SeachBloc {
     height: 100%;
     width: 40%;
+    display: flex;
+    align-items: center;
 }
 
 .nav {
@@ -251,7 +259,7 @@ function changeBoo() {
     margin: 0%;
     display: flex;
     justify-content: space-between;
-
+    height: auto;
     width: 100%;
 }
 
@@ -271,8 +279,13 @@ function changeBoo() {
 
 .button {
     color: white;
-    padding: 10px;
+    border-radius: 6px;
+    text-align: left;
     border-left: none;
+    width: 100px;
+    height: 34px;
+    font-size: 12px;
+    padding-left: 5px;
 }
 
 .button:hover {

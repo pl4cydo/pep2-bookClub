@@ -6,44 +6,6 @@ import { onMounted, ref } from 'vue';
 const countS = ref(null);
 const marginS = ref('0px');
 const banners = ref([])
-// const banners = ref([
-//     {
-//         title: 'Banner 1 (ad)',
-//         info: 'Informações do banner 1',
-//         valor: '2,01',
-//         link: 'Link do banner 1',
-//         empresa: 'Empresa do banner 1',
-//         backgroundColor: 'white',
-//         ad: 1
-//     },
-//     {
-//         title: 'Informativo 2',
-//         info: 'Informações do banner 2',
-//         valor: '',
-//         link: 'Link do banner 2',
-//         empresa: '',
-//         backgroundColor: 'black',
-//         ad: 0
-//     },
-//     {
-//         title: 'Informativo 3',
-//         info: 'Informações do banner 3',
-//         valor: '2,03',
-//         link: 'Link do banner 3',
-//         empresa: 'Empresa do banner 3',
-//         backgroundColor: 'white',
-//         ad: 0
-//     },
-//     {
-//         title: 'Banner 4 (ad)',
-//         info: 'Informações do banner 4',
-//         valor: '2,04',
-//         link: 'Link do banner 4',
-//         empresa: 'Empresa do banner 4',
-//         backgroundColor: 'black',
-//         ad: 1
-//     }
-// ]);
 
 const listBanner = async () => {
     try {
@@ -54,7 +16,6 @@ const listBanner = async () => {
         console.error(error)
     }
 }
-
 
 const jj = () => {
     const currentMarginS = parseInt(marginS.value);
@@ -67,15 +28,12 @@ const jj = () => {
     }
 }
 
-
 onMounted(() => {
     listBanner()
     setInterval(() => {
         jj()
     }, 5000)
 })
-
-
 
 </script>
 

@@ -53,87 +53,81 @@ const commentDestroy = (a) => {
 
 <template >
     <AuthenticatedLayout>
-        <div class="py-12 text-white">
-            <div class="">
-                <div class="overflow-hidden shadow-sm sm:rounded-lg">
-                    <!-- <h1>{{ id }}</h1> -->
-                    <div class="bookView">
+        <div class="blocao">
+            <div class="bloco">
+                <!-- <h1>{{ id }}</h1> -->
+                <div class="bookView">
 
-                        <div class="test1">
-                            <img class="m-5" :src="'/storage/images/' + books[0].image" alt="Books Image">
-                        </div>
-                        <div class="test2">
+                    <div class="test1">
+                        <img class="m-5" :src="'/storage/images/' + books[0].image" alt="Books Image">
+                    </div>
+                    <div class="test2">
 
-                            <div class="intraTest2">
-                                <div class="titleBloco">
-                                    <h1 class="title">{{ books[0].title }}</h1>
-                                    <div
-                                        v-if="a.books[0].user_id == $page.props.auth.user.id || $page.props.auth.user.is_admin">
-                                        <button class="opcoes">Opções</button>
-                                        <div v-if="boo">
-                                            
-                                        </div>
+                        <div class="intraTest2">
+                            <div class="titleBloco">
+                                <h1 class="title">{{ books[0].title }}</h1>
+                                <div
+                                    v-if="a.books[0].user_id == $page.props.auth.user.id || $page.props.auth.user.is_admin">
+                                    <button class="opcoes">Opções</button>
+                                    <div v-if="boo">
+
                                     </div>
                                 </div>
-                                <p> Publicado em: {{ books[0].year }} </p>
-                                <div v-for="user in userBook" v-bind:key="user.id">
-                                    <p v-if="user.id == books[0].user_id" class="mt-2 mb-3">
-                                        Proprietário: {{ user.name }}
-                                    </p>
-                                </div>
-                                <div v-for="category in categories" v-bind:key="category.id">
-                                    <h3 v-if="category.id == books[0].category_id" class="mt2 mb-3">Categoria: {{
-                                        category.name }}</h3>
-                                </div>
-                                <div class="dealFav">
-                                    <p class="flex">Status:
-                                        <CheckCircleIcon v-if="!(books[0].deal)" class="check" />
-                                    </p>
-
-                                    <ButtonFav :bookId="books[0].id" />
-                                </div>
-                                <p class="mt-2 mb-3">Cometário do proprietário: {{ books[0].selfComment }} </p>
-                                <p>Sinopse: "{{ books[0].synopsis }}"</p>
                             </div>
+                            <p> Publicado em: {{ books[0].year }} </p>
+                            <div v-for="user in userBook" v-bind:key="user.id">
+                                <p v-if="user.id == books[0].user_id" class="mt-2 mb-3">
+                                    Proprietário: {{ user.name }}
+                                </p>
+                            </div>
+                            <div v-for="category in categories" v-bind:key="category.id">
+                                <h3 v-if="category.id == books[0].category_id" class="mt2 mb-3">Categoria: {{
+                                    category.name }}</h3>
+                            </div>
+                            <div class="dealFav">
+                                <p class="flex">Status:
+                                    <CheckCircleIcon v-if="!(books[0].deal)" class="check" />
+                                </p>
 
+                                <ButtonFav :bookId="books[0].id" />
+                            </div>
+                            <p class="mt-2 mb-3">Cometário do proprietário: {{ books[0].selfComment }} </p>
+                            <p>Sinopse: "{{ books[0].synopsis }}"</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="commentForm">
+                        <div class="form">
+                            <legend>Escreva um comentario</legend>
+                            <form class="flex" name="commentForm" @submit.prevent="submit">
+                                <textarea class="textarea" rows="4" cols="80" name="comments" id="comments"
+                                    v-model="form.comments">
+                                                        </textarea>
+                                <PrimaryButton class="PrimaryButton">Send</PrimaryButton>
+                            </form>
                         </div>
                     </div>
 
-                    <div class="comment">
-                        <div class="commentForm">
-
-                            <div class="form">
-                                <legend>Escreva um comentario</legend>
-                                <form class="flex" name="commentForm" @submit.prevent="submit">
-                                    <textarea class="textarea" rows="4" cols="80" name="comments" id="comments"
-                                        v-model="form.comments">
-                                                        </textarea>
-                                    <PrimaryButton class="PrimaryButton">Send</PrimaryButton>
-                                </form>
-
-                            </div>
-
-
-                        </div>
-
-                        <div class="commentFlow">
-                            <div class="comment2">
-                                <div v-for=" comment in comments" v-bind:key="comment.id">
-                                    <div class="commentlist" v-if="comment.book_id == ab">
-                                        <div v-for=" userB in userBook" v-bind:key="userB.id">
-                                            <div v-if="comment.user_id == userB.id">
-                                                <h1>{{ userB.name }}:</h1>
-                                            </div>
+                    <div class="commentFlow">
+                        <div class="comment2">
+                            <div v-for=" comment in comments" v-bind:key="comment.id">
+                                <div class="commentlist" v-if="comment.book_id == ab">
+                                    <div v-for=" userB in userBook" v-bind:key="userB.id">
+                                        <div v-if="comment.user_id == userB.id">
+                                            <h1>{{ userB.name }}:</h1>
                                         </div>
-                                        <div class="option">
-                                            <h1> {{ comment.comment }}</h1>
-                                            <div
-                                                v-if="a.books[0].user_id == $page.props.auth.user.id || $page.props.auth.user.is_admin">
-                                                <!-- {{ comment.id }} -->
-                                                <form @submit.prevent="commentDestroy(comment.id)">
-                                                    <button>Deletar</button>
-                                                </form>
-                                            </div>
+                                    </div>
+                                    <div class="option">
+                                        <h1> {{ comment.comment }}</h1>
+                                        <div
+                                            v-if="a.books[0].user_id == $page.props.auth.user.id || $page.props.auth.user.is_admin">
+                                            <!-- {{ comment.id }} -->
+                                            <form @submit.prevent="commentDestroy(comment.id)">
+                                                <button>Deletar</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -147,6 +141,25 @@ const commentDestroy = (a) => {
 </template>
 
 <style scoped>
+
+.blocao {
+    padding-top: 0.75rem/* 12px */;
+    padding-bottom: 0.75rem/* 12px */;
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+}
+.bloco {
+    border-radius: 6px;
+    background-color: #1f2937;
+    box-shadow: 0px 5px 5px #131820;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .check {
     margin-left: 10px;
     color: rgb(10, 187, 10);
@@ -178,8 +191,13 @@ const commentDestroy = (a) => {
 
 .bookView {
     display: flex;
-    width: 100%;
+    width: 95%;
     text-align: justify;
+    background-color: #283446;
+    box-shadow: 0px 5px 5px #131820;
+    transition: 0.5s ease-in-out;
+    border-radius: 6px;
+    margin: 20px;
 }
 
 /* .bookView div {
@@ -188,12 +206,13 @@ const commentDestroy = (a) => {
 } */
 
 .test1 {
-    border: 1px solid white;
-    width: 30%;
+    width: 40%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .test2 {
-    border: 1px solid white;
     width: 70%;
     display: flex;
     align-items: center;
@@ -218,6 +237,7 @@ const commentDestroy = (a) => {
     width: 320px;
     border: solid white;
     border-radius: 6px;
+    box-shadow: 5px 5px 5px #131820;
 }
 
 .title {
@@ -229,7 +249,11 @@ const commentDestroy = (a) => {
 
 
 .comment {
-    border: 1px solid white;
+    background-color: #283446;
+    box-shadow: 0px 5px 5px #131820;
+    transition: 0.5s ease-in-out;
+    border-radius: 6px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -239,6 +263,7 @@ const commentDestroy = (a) => {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    
 }
 
 .commentFlow {
@@ -259,6 +284,9 @@ const commentDestroy = (a) => {
     display: flex;
     margin: 15px;
     width: 100%;
+    padding: 10px;
+    box-shadow: 0px 5px 5px #131820;
+    background-color: #1f2937;
 }
 
 .PrimaryButton {
@@ -276,6 +304,7 @@ const commentDestroy = (a) => {
 .textarea {
     background-color: transparent;
     border: 2px solid white;
+    border-radius: 6px;
     color: white;
     resize: none;
 }

@@ -24,7 +24,7 @@ import Banner from '../Pages/Banner/component/Banner.vue'
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
         </template>
 
-        <div class="py-5 text-black ">
+        <div class="text-black ">
             <div class="max-w-7xl mx-auto">
                 <div class="bloco">
                     <div class="blocoN">
