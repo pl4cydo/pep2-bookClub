@@ -11,7 +11,13 @@ import PrimaryButton from '../Components/PrimaryButton.vue';
 import Search from '../Pages/Book/Components/Search.vue'
 import IconMessage from '../Pages/Messages/Component/IconMessage.vue'
 
+
+const larguraTela = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 const showingNavigationDropdown = ref(false);
+const margin = ref(larguraTela > 1440 ? '8%' : '5%')
+
+
+console.log(larguraTela)
 
 let boo = ref(false);
 
@@ -155,7 +161,7 @@ function changeBoo() {
                     </header> -->
 
         <!-- Page Content -->
-        <main class="py-14 ">
+        <main :style="{ marginTop: margin }">
             <slot />
         </main>
     </div>
@@ -171,6 +177,10 @@ function changeBoo() {
     text-shadow: 5px 5px 5px black;
 }
 
+.main {
+    margin-top: 8%;
+}
+
 .drop {
     text-shadow: none;
 }
@@ -178,7 +188,7 @@ function changeBoo() {
 .large {
     width: 100%;
     max-width: none;
-    height: auto;
+    height: 8%;
     top: 0;
     position: fixed;
     display: flex;

@@ -2,14 +2,17 @@
 import { ref } from 'vue';
 import axios from 'axios';
 import { Link } from '@inertiajs/vue3';
+import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid'
 
 const searchValue = ref('');
 const books = ref([]);
+const boo = ref(false)
 
 const searchBooks = async () => {
     try {
         const response = await axios.get(`/book/search/${searchValue.value}`);
         books.value = response.data;
+        boo.value = true
     } catch (error) {
         console.error(error);
     }
@@ -25,13 +28,14 @@ const searchBooks = async () => {
                 <button @click="searchBooks">Search</button>
             </div>
         </div>
-
-        <div class="searchBook">
+        
+        <div class="searchBook" v-if="boo">
             <ul>
                 <li v-for="book in books" :key="book.id">
                     <Link class="liBook" :href="route('book.bookView', { id:book.id })">
-                        <img class="bookImg" :src="'/storage/images/' + book.image" alt="Book Image">
-                        {{ book.title }}
+                        <!-- <img class="bookImg" :src="'/storage/images/' + book.image" alt="Book Image"> -->
+                        <MagnifyingGlassIcon class="icon" />
+                          {{ book.title }}
                     </Link>
                 </li>
             </ul>
@@ -61,6 +65,14 @@ const searchBooks = async () => {
         height: 60%;
         justify-content: center;
         box-sizing: border-box;
+    }
+
+    .icon {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+        color: white;
+        
     }
 
     .searchDiv label {
@@ -115,9 +127,12 @@ const searchBooks = async () => {
     .searchBook {
         height: auto;
         width: 100%;
-        margin-top: 175px ;
+        margin-left: -40%;
+        margin-top: 25%;
         position: absolute;
-        background-color: cadetblue;
+        background-color: #1f2937;
+        box-shadow: 0 0 10px #131820;
+        padding: 10px;
     }
 
     .searchBook ul {
@@ -126,8 +141,20 @@ const searchBooks = async () => {
         align-items: center;
     }
 
+    .searchBook li {
+        width: 100%;
+        transition: 300ms ease;
+    }
+
+    .searchBook li:hover {
+        opacity: 0.5;
+    }
+
+
     .liBook {
+
         display: flex;
+        width: 100%;
     }
 
     .bookImg {
