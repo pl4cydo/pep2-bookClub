@@ -7,8 +7,10 @@ import PrimaryButton from '../../../Components/PrimaryButton.vue';
 import ButtonFav from '../../Favorite/Component/ButtonFav.vue';
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/solid'
 import Swal from 'sweetalert2'
+import UpdateBook from './UpdateBook.vue';
 
 const boo = ref(false);
+const update = ref(false);
 
 let a = defineProps({
     books: Array,
@@ -53,6 +55,10 @@ const commentDestroy = (a) => {
 
 <template >
     <AuthenticatedLayout>
+
+        <Teleport to="body ">
+            <UpdateBook v-if="update" :book="books" />
+        </Teleport>
         <div class="blocao">
             <div class="bloco">
                 <!-- <h1>{{ id }}</h1> -->
@@ -68,13 +74,16 @@ const commentDestroy = (a) => {
                                 <h1 class="title">{{ books[0].title }}</h1>
                                 <div
                                     v-if="a.books[0].user_id == $page.props.auth.user.id || $page.props.auth.user.is_admin">
-                                    <button class="opcoes">Opções</button>
+                                    <button class="opcoes" :onclick="() => update = true">Opções</button>
                                     <div v-if="boo">
 
                                     </div>
                                 </div>
                             </div>
-                            <p> Publicado em: {{ books[0].year }} </p>
+                            <div class="flex">
+                                <p class="mr-5"> Publicado em: {{ books[0].year }} </p>
+                                <p> Escritor: {{ books[0].writter }} </p>
+                            </div>
                             <div v-for="user in userBook" v-bind:key="user.id">
                                 <p v-if="user.id == books[0].user_id" class="mt-2 mb-3">
                                     Proprietário: {{ user.name }}

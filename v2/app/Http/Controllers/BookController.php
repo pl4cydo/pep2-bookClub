@@ -160,9 +160,48 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, $id)
     {
+        // dd( $request->title,
+        //     $request->writter,
+        //     $request->synopsis,
+        //     $request->year,
+        //     $request->category_id,
+        //     $request->selfComment,
+        //     $id
+        // );
+
         //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'writter' => 'required',
+            'synopsis' => 'required',
+            'year' => 'required',
+            'category_id' => 'required',
+            'selfComment' => 'required',
+            // 'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $book = Book::findOrFail($id);
+
+        // $imageName = $book->image;
+
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $imageName = time().'.'.$image->getClientOriginalExtension();
+        //     $image->storeAs('public/images', $imageName);
+        // }
+
+        $book->update([
+            'title' => $request->title,
+            'writter' => $request->writter,
+            'synopsis' => $request->synopsis,
+            'year' => $request->year,
+            'category_id' => $request->category_id,
+            'selfComment' => $request->selfComment,
+        ]);
+
+        return $this->bookView($id);
     }
 
     /**
@@ -171,8 +210,11 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy($id)
     {
         //
+        Book::find($id)->delete();
+
+        return redirect(route('profile.edit'));
     }
 }

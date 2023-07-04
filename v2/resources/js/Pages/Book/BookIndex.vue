@@ -117,7 +117,7 @@ defineProps({
                                     <button type="submit" class="button" > Send </button>
                                 </form> -->
 
-                                <div v-for="category in categories">
+                                <div v-for="category in categories" v-bind:key="category.id">
                                     {{ category.value  }}
                                 </div>
                             </div>
