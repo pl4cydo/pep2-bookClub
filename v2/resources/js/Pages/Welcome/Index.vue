@@ -17,18 +17,18 @@ defineProps({
         <div class="blocoHeader">
             <header class="header">
         
-                <div id="title">
+                <div class="title">
                     <h1>Book</h1>
                     <h1>Club</h1>
                 </div>
         
                 <div v-if="canLogin" class="canLogin">
-                    <Link v-if="$page.props.auth.user" :href="route('dashboard')" id="login-btn">Dashboard</Link>
+                    <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="button">Dashboard</Link>
         
                     <template v-else>
-                        <Link :href="route('login')" id="login-btn">Log in</Link>
+                        <Link :href="route('login')" class="button">Log in</Link>
         
-                        <Link v-if="canRegister" :href="route('register')" id="register-btn">Register</Link>
+                        <Link v-if="canRegister" :href="route('register')" class="button">Register</Link>
                     </template>
                 </div>
         
@@ -68,7 +68,7 @@ defineProps({
     color: #f1f1f1;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 6px;
     text-shadow: 5px 5px 5px black;
 }
 
@@ -90,16 +90,15 @@ defineProps({
     right: 0;
 }
 
-#title {
+.title {
     margin-left: 0;
     flex-direction: column;
     line-height: 10px;
-    font-size: 2em;
     padding: 0%;
 }
 
-#title h1 {
-    font-weight: 200;
+.title h1 {
+    font-size: 20px;
     text-shadow: 5px 5px 5px black;
 }
 
@@ -135,7 +134,8 @@ defineProps({
 }
 
 .bloco {
-    padding-top: 8em;
+
+    margin-top: 80px;
   /*  border: 1px solid white; */
     display: flex;
     justify-content: space-between;
@@ -171,23 +171,27 @@ defineProps({
 }
 
 .aside h2 {
+    padding: 15px;
     font-size: 50px;
     line-height: 10px;
     margin-left: 10px;
 }
 
 .aside span {
+    padding: 15px;
     color: #3e3ec5;
     margin-left: -20px;
 }
 
 .aside p {
+    padding: 15px;
     line-height: 20px;
     max-width: 500px;
     font-size: medium;
 }
 
 .blocoImg {
+    padding: 15px;
     overflow: hidden;
     height: 385px;
     position:relative;
@@ -197,7 +201,26 @@ defineProps({
 }
 
 .blocoImg img {
+    padding: 15px;
     margin-top: -48px;
 }
 
+.button {
+    color: white;
+    border-radius: 6px;
+    text-align: left;
+    border-left: none;
+    width: 100px;
+    height: 34px;
+    font-size: 12px;
+    padding-left: 5px;
+    margin-left: 10px;
+}
+
+.button:hover {
+    border-radius: 6px;
+    background-color: #2c3b4e;
+    border: 1px solid #3e3ec5;
+    transition: 0.8s ease;
+}
 </style>

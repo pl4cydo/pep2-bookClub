@@ -36,9 +36,9 @@ const submit = () => {
                 {{ status }}
             </div>
     
-            <div class="logoLogin">
+            <!-- <div class="logoLogin">
                 <h1>Login</h1>
-            </div>
+            </div> -->
     
             <form class="form" @submit.prevent="submit">
                 <div>

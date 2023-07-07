@@ -73,16 +73,16 @@ const currentDiv = ref(null)
               <h1 class="text-xl">{{ category.name }}</h1>
             </div>
   
-            <div class="flex">
+            <div class="blocoButton">
               <button @click="currentDiv = category.id; boo = !boo"
-                class="px-4 py-2 mr-4 text-white bg-blue-500 rounded-md hover:bg-blue-600">
+                class="button2">
                 Opções
               </button>
   
               <div class="flex" v-if="boo == false && currentDiv === category.id">
                 <form name="updateForm" @submit.prevent="submitUpdate((category.id).toString())" class="flex">
   
-                  <input id="name" class="border border-gray-300 rounded-md px-3 py-2" v-model="formUpdate.name" />
+                  <input id="name" class="input2" v-model="formUpdate.name" />
                   <button @click="boo = true" type="submit"
                     class="px-4 py-2 ml-4 text-white bg-blue-500 rounded-md hover:bg-blue-600"> Confirmar </button>
                 </form>
@@ -172,5 +172,31 @@ const currentDiv = ref(null)
 .button:hover {
   background-color: #3e3ec5;
   transition: 0.8s ease;
+}
+
+.button2 {
+  height: 60px;
+  padding: 8px 16px; /* Equivalente a px-4 py-2 */
+  margin-right: 16px; /* Equivalente a mr-4 */
+  color: white;
+  background-color: #3b82f6; /* Equivalente a bg-blue-500 */
+  border-radius: 4px; /* Equivalente a rounded-md */
+}
+
+.button2:hover {
+  background-color: #2563eb; /* Equivalente a hover:bg-blue-600 */
+}
+
+.blocoButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input2 {
+  color: black;
+  border: 1px solid #ccc; /* Equivalente a border border-gray-300 */
+  border-radius: 4px; /* Equivalente a rounded-md */
+  padding: 8px 12px; /* Equivalente a px-3 py-2 */
 }
 </style>

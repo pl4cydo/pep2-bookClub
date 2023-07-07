@@ -36,7 +36,7 @@ import { Link } from '@inertiajs/vue3';
     color: white;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 6px;
     text-shadow: 5px 5px 5px black;
 }
 
@@ -67,7 +67,7 @@ import { Link } from '@inertiajs/vue3';
 }
 
 #title h1 {
-    font-weight: 200;
+    font-size: 20px;
 }
 
 #register-btn,

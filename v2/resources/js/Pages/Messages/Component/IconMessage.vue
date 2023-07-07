@@ -38,7 +38,7 @@ const notificationChange = (a) => {
         <div v-if="num > 0" class="notfic">
             <p>{{ num }}</p>
         </div>
-        <Link :href="route('message.create')">
+        <Link class="link" :href="route('message.create')">
             <EnvelopeIcon class="msg"  />
         </Link>
         <!-- <button :onclick="() => num++">D</button> -->
@@ -49,7 +49,6 @@ const notificationChange = (a) => {
 <style scoped>
     .blocoMsg {
         width: 100px;
-        padding: 1rem;
       /*  background-color: #fff;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
         border-radius: 0.5rem;
@@ -60,9 +59,16 @@ const notificationChange = (a) => {
         justify-content: center;
     }
     
+    .link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
     .msg {
-        margin-top: 10px;
-        width: 35px;
+        width: 25px;
         border-radius: 50%;
         margin-left: 5px;
     }
