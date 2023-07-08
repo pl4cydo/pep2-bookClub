@@ -12,6 +12,7 @@ import SelfComments from '../Comment/Components/SelfComments.vue';
 import FavBook from '../Favorite/Component/FavBooks.vue'
 import BookSliderPersonal from '../Book/Components/BookSliderPersonal.vue';
 import { ref } from 'vue';
+import DealPerfil from './Partials/DealPerfil.vue';
 
 defineProps({
     mustVerifyEmail: Boolean,
@@ -41,6 +42,7 @@ const navProfile = ref('fav')
                     <button class="button" @click=" navProfile = 'fav'">Favoritos</button>
                     <button class="button" @click=" navProfile = 'mybook'">Meus Livros</button>
                     <button class="button" @click=" navProfile = 'comment'">Comentários já feitos</button>
+                    <button class="button" @click=" navProfile = 'deal'">Transações</button>
                     <button class="button" @click=" navProfile = 'option'">Opções</button>
                 </div>
 
@@ -58,6 +60,10 @@ const navProfile = ref('fav')
                         <SelfComments />
                     </div>
     
+                    <div v-if="navProfile == 'deal'">
+                        <DealPerfil />
+                    </div>
+
                     <div class="p-2" v-if="navProfile == 'option'" >
                         <UpdateProfileInformationForm :must-verify-email="mustVerifyEmail" :status="status" class="max-w-xl" />
                         <UpdatePasswordForm class="max-w-xl" />

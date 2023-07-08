@@ -8,9 +8,11 @@ import ButtonFav from '../../Favorite/Component/ButtonFav.vue';
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/solid'
 import Swal from 'sweetalert2'
 import UpdateBook from './UpdateBook.vue';
+import DealBook from './DealBook.vue';
 
 const boo = ref(false);
 const update = ref(false);
+const deal = ref(false);
 
 let a = defineProps({
     books: Array,
@@ -59,6 +61,9 @@ const commentDestroy = (a) => {
         <Teleport to="body ">
             <UpdateBook v-if="update" :book="books" />
         </Teleport>
+        <Teleport to="body ">
+            <DealBook v-if="deal" :id="ab" />
+        </Teleport>
         <div class="blocao">
             <div class="bloco">
                 <!-- <h1>{{ id }}</h1> -->
@@ -99,6 +104,10 @@ const commentDestroy = (a) => {
                                 </p>
 
                                 <ButtonFav :bookId="books[0].id" />
+
+                                <div>
+                                    <button class="opcoes" :onclick="() => deal = true" >Desejo</button>
+                                </div>
                             </div>
                             <p class="mt-2 mb-3">Cometário do proprietário: {{ books[0].selfComment }} </p>
                             <p>Sinopse: "{{ books[0].synopsis }}"</p>
@@ -234,11 +243,12 @@ const commentDestroy = (a) => {
 }
 
 .dealFav {
-    width: 60%;
+    width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
+
 }
 
 .test1 img {

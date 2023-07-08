@@ -10,9 +10,6 @@ const books = ref([]);
 const count = ref(0);
 const countNext = ref(0);
 
-
-
-
 // const cateogori = ref(category)
 
 // let a = defineProps({
@@ -38,11 +35,11 @@ const back = () => {
     }
 }
 
-
 const list = async () => {
     try {
         const responseBook = await axios.get('listBooks');
         books.value = responseBook.data;
+        // console.log(books.value)
         count.value = books.value.length
     } catch (error) {
         console.error(error);
@@ -65,7 +62,7 @@ onMounted(async () => {
     const response = await axios.get('/user-id');
     const userId = response.data;
     count.value = books.value.filter(book => book.user_id == userId).length
-    console.log(count.value)
+    // console.log(count.value)
     // console.log(books.value.length)
     // count.value = books.value.length
     // if (a.categoryNumber.a) {

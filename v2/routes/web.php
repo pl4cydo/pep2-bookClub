@@ -4,6 +4,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DealController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
@@ -49,8 +50,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('/category', CategoryController::class);
 
     Route::resource('/book', BookController::class);
+
     Route::get('book/bookView/{id}', [BookController::class, 'bookView'])->name('book.bookView');
+
     Route::get('book/search/{name}', [BookController::class, 'bookSearch'])->name('book.bookSearch');
+    
     Route::get('listBooks', [BookController::class, 'listBooks'])->name('book.listBooks');
 
     Route::resource('/comments', CommentController::class);
@@ -72,9 +76,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/user-id', function () {
         return auth()->id();
     });
+
+    Route::resource('deal', DealController::class);
 });
-
-
-
 
 require __DIR__.'/auth.php';

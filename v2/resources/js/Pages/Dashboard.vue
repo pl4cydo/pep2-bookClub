@@ -35,6 +35,7 @@ import Banner from '../Pages/Banner/component/Banner.vue'
                         <BookSlider :categoryNumber="{ a: 1 }"/>
                         <BookSlider :categoryNumber="{ a: 2 }"/>
                         <BookSlider :categoryNumber="{ a: 3 }"/>
+                        <BookSlider :categoryNumber="{ a: 8 }"/>
 
                     </div>
                 </div>
