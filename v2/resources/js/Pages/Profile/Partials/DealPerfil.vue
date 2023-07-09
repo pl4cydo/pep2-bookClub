@@ -2,6 +2,7 @@
 import { Link, useForm, usePage } from "@inertiajs/vue3";
 import axios from "axios";
 import { onMounted, ref } from "vue";
+import { LinkIcon } from '@heroicons/vue/24/solid'
 
 const wishs = ref([]);
 const user = usePage().props.auth.user;
@@ -89,24 +90,15 @@ const finshDeal = (id) => {
         <div class="bloco">
             <h1>Livros em Transações</h1>
 
-            <div class="blocodobloco opa" v-for="wish in deals" :key="wish.id">
+            <div class="blocodobloco opa" v-for="wish in deals.slice().reverse()" :key="wish.id">
                 <!-- {{ wish }} -->
-                <div>
+                <div class="info1">
                     <h1 class="flex">Livro:
                         <div class="absolute ml-12" v-for="fil2 in filterMyBook" v-bind:key="fil2.id">
                             <div v-if="fil2.id == wish.book_id">{{ fil2.title }}</div>
                         </div>
                     </h1>
-                    <h1 class="flex">Livro para troca:
-                        <div class="absolute ml-32" v-for="fil2 in books" v-bind:key="fil2.id">
-                            <div v-if="fil2.id == wish.deal_book_id">
-                                <Link :href="route('book.bookView', { id: fil2.id })">
-                                    {{ fil2.title }}
-                                </Link>
-                            </div>
-                        </div>
- 
-                    </h1>
+                    
                     <div v-for="owner in bookOwners" v-bind:key="owner.id">
                         <div v-if="owner.id === wish.user_id">
                             <h1>Usuário Interessado: {{ owner.name }} </h1>
@@ -114,8 +106,20 @@ const finshDeal = (id) => {
                             <h1>Instagram: @{{ owner.instagram }}</h1>
                         </div>
                     </div>
+
+                    <h1 class="flex">Livro para troca:
+                        <div class="absolute ml-32" v-for="fil2 in books" v-bind:key="fil2.id">
+                            <div v-if="fil2.id == wish.deal_book_id">
+                                <Link class="flex" :href="route('book.bookView', { id: fil2.id })">
+                                    {{ fil2.title }}
+                                    <LinkIcon class="icon"/>
+                                </Link>
+                            </div>
+                        </div>
+ 
+                    </h1>
                 </div>
-                <div>
+                <div class="info2">
                     <h1 class="flex">Estado: <div class="ml-2" v-if="wish.finish == true" > Finalizado </div> <div class="ml-2" v-else> Em aberto</div></h1>
                     <h1>Text: {{ wish.text }}</h1>
                 </div>
@@ -146,10 +150,12 @@ const finshDeal = (id) => {
                 </div>
                 <div class="blocoDeal">
                     <div v-for="fil in books" v-bind:key="fil.id">
-                        <h1 v-if="wish.deal_book_id == fil.id">Livro para troca: {{ fil.title }}</h1>
+                        <h1 v-if="wish.deal_book_id == fil.id">Livro para troca: {{ fil.title }}
+                            
+                        </h1>
                     </div>
-                    <form @submit.prevent="destroy(wish.id)">
-                        <button class="button" type="submit">Cancelar</button>
+                    <form class="formButton" @submit.prevent="destroy(wish.id)">
+                        <button class="button button2" type="submit">Cancelar</button>
                     </form>
                 </div>
             </div>
@@ -200,26 +206,34 @@ const finshDeal = (id) => {
     height: auto;
     display: flex;
     justify-content: center;
-
-    border: 1px solid white;
+    background-color: #283446;
+    box-shadow: 0px 5px 5px #131820;
+    border-radius: 6px;
     margin: 5px;
 }
 
 .opa {
-    padding: 10px;
-    justify-content: space-between;
+    padding: 15px;
+    justify-content: left;
 }
 
-.opa div {
-    width: auto;
-    height: auto;
+.icon {
+    width: 15px;
+    color: white;
+
 }
 
 .blocoDeal {
 
     height: 100%;
-    width: 45%;
+    width: 50%;
     padding: 10px;
+}
+
+.formButton {
+
+    display: flex;
+    justify-content: right;
 }
 
 .button {
@@ -230,6 +244,8 @@ const finshDeal = (id) => {
     border: 1px solid white;
     color: white;
 }
+
+.button2 {margin: 20px}
 
 .button:hover {
     background-color: #3e3ec5;
@@ -244,5 +260,15 @@ const finshDeal = (id) => {
 
 .jorge * {
     margin-bottom: 10px;
+}
+
+.info1 {
+    overflow: hidden;
+    width: 60%;
+}
+
+.info2 {
+
+    width: 40%;
 }
 </style>
