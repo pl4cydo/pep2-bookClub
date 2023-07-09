@@ -19,7 +19,7 @@ const getBooks = async () => {
     books.value = response.data;
     const responseId = await axios.get('/user-id');
     const userId = responseId.data;
-    books.value = books.value.filter(book => book.user_id == userId)
+    books.value = books.value.filter(book => book.user_id == userId && !book.deal )
     // console.log(books.value)
   } catch (error) {
     console.error(error);
@@ -35,6 +35,7 @@ const form = useForm({
 
 const submit = () => {
     form.post(route('deal.store'))
+    location.reload();
 }
 
 
@@ -74,7 +75,7 @@ onMounted(() => {
                                 <option class="optionCategory" value="" disabled selected hidden>Meus Livros</option>
                                 <option class="option" v-for="book in books" :value="book.id"
                                     :key="book.id">
-                                    {{ book.title }}
+                                        {{ book.title }}
                                 </option>
                             </select>
 
@@ -83,6 +84,7 @@ onMounted(() => {
 
                     <div class="divButton">
                         <button type="submit" class="button"> Confirmar </button>
+                       
                     </div>
                 </div>
             </form>

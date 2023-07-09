@@ -1,5 +1,5 @@
 <script setup>
-import { useForm, usePage } from "@inertiajs/vue3";
+import { Link, useForm, usePage } from "@inertiajs/vue3";
 import axios from "axios";
 import { onMounted, ref } from "vue";
 
@@ -80,6 +80,7 @@ const finshDeal = (id) => {
 }
 
 
+
 </script>
 
 <template>
@@ -98,7 +99,11 @@ const finshDeal = (id) => {
                     </h1>
                     <h1 class="flex">Livro para troca:
                         <div class="absolute ml-32" v-for="fil2 in books" v-bind:key="fil2.id">
-                            <div v-if="fil2.id == wish.deal_book_id">{{ fil2.title }}</div>
+                            <div v-if="fil2.id == wish.deal_book_id">
+                                <Link :href="route('book.bookView', { id: fil2.id })">
+                                    {{ fil2.title }}
+                                </Link>
+                            </div>
                         </div>
  
                     </h1>
@@ -114,8 +119,9 @@ const finshDeal = (id) => {
                     <h1 class="flex">Estado: <div class="ml-2" v-if="wish.finish == true" > Finalizado </div> <div class="ml-2" v-else> Em aberto</div></h1>
                     <h1>Text: {{ wish.text }}</h1>
                 </div>
-                <div >
+                <div class="jorge" v-if="!wish.finish" >
                     <button class="button" @click="finshDeal(wish.id)">Confirmar</button>
+                    <button class="button" @click="destroy(wish.id)" > Negar</button>
                 </div>
             </div>
         </div>
@@ -228,5 +234,15 @@ const finshDeal = (id) => {
 .button:hover {
     background-color: #3e3ec5;
     transition: 0.8s ease;
+}
+
+.jorge {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.jorge * {
+    margin-bottom: 10px;
 }
 </style>

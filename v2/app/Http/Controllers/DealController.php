@@ -50,21 +50,16 @@ class DealController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // dd(
-        //     $request->idBook,
-        //     $request->idUser,
-        //     $request->text,
-        //     $request->dealBookId            
-        // );
-
-        $deal = Deal::create([
-            'book_id' => $request->idBook, 
-            'user_id' => $request->idUser,
-            'text' => $request->text,
-            'deal_book_id' => $request->dealBookId,            
-        ]);
-
+        $deal = Deal::firstOrCreate(
+            [
+                'book_id' => $request->idBook,
+                'user_id' => $request->idUser,
+                'deal_book_id' => $request->dealBookId,
+            ],
+            [
+                'text' => $request->text,
+            ]
+        );
     }
 
     /**
@@ -84,9 +79,10 @@ class DealController extends Controller
      * @param  \App\Models\Deal  $deal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Deal $deal)
+    public function edit(Deal $deal, $id)
     {
         //
+        dd($id);
     }
 
     /**
@@ -126,4 +122,12 @@ class DealController extends Controller
         $wish = Deal::find($id);
         $wish->delete();
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Deal  $deal
+     * @return \Illuminate\Http\Response
+     */
+    
 }

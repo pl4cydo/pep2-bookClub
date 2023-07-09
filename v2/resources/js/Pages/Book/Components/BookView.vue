@@ -5,7 +5,8 @@ import Comment from '../../Comment/Comment.vue';
 import { onMounted, ref } from 'vue';
 import PrimaryButton from '../../../Components/PrimaryButton.vue';
 import ButtonFav from '../../Favorite/Component/ButtonFav.vue';
-import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/solid'
+import { CheckCircleIcon } from '@heroicons/vue/24/solid'
+import { XCircleIcon } from '@heroicons/vue/24/outline'
 import Swal from 'sweetalert2'
 import UpdateBook from './UpdateBook.vue';
 import DealBook from './DealBook.vue';
@@ -104,7 +105,8 @@ const commentDestroy = (a) => {
                                         <CheckCircleIcon class="check"/>
                                     </div>
                                     <div class="ml-2" v-else>
-                                        Indisponivel
+                                        <!-- Indisponivel -->
+                                        <XCircleIcon class="uncheck"/>
                                     </div>
                                 </div>
 
@@ -191,6 +193,16 @@ const commentDestroy = (a) => {
     margin-left: 10px;
     color: rgb(10, 187, 10);
     background-color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+
+}
+
+.uncheck {
+    margin-left: 10px;
+    color: white;
+
     border-radius: 50%;
     width: 30px;
     height: 30px;
