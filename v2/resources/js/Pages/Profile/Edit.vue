@@ -21,7 +21,7 @@ defineProps({
     user: Number
 });
 
-const navProfile = ref('fav')
+const navProfile = ref('deal')
 
 </script>
 
@@ -39,10 +39,10 @@ const navProfile = ref('fav')
             </div>
             <div class="right">
                 <div class="navProfile">
+                    <button class="button" @click=" navProfile = 'deal'">Transações</button>
                     <button class="button" @click=" navProfile = 'fav'">Favoritos</button>
                     <button class="button" @click=" navProfile = 'mybook'">Meus Livros</button>
                     <button class="button" @click=" navProfile = 'comment'">Comentários já feitos</button>
-                    <button class="button" @click=" navProfile = 'deal'">Transações</button>
                     <button class="button" @click=" navProfile = 'option'">Opções</button>
                 </div>
 

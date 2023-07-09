@@ -99,14 +99,19 @@ const commentDestroy = (a) => {
                                     category.name }}</h3>
                             </div>
                             <div class="dealFav">
-                                <p class="flex">Status:
-                                    <CheckCircleIcon v-if="!(books[0].deal)" class="check" />
-                                </p>
+                                <div class="flex">Status:
+                                    <div v-if="!(books[0].deal)">
+                                        <CheckCircleIcon class="check"/>
+                                    </div>
+                                    <div class="ml-2" v-else>
+                                        Indisponivel
+                                    </div>
+                                </div>
 
                                 <ButtonFav :bookId="books[0].id" />
 
                                 <div>
-                                    <button class="opcoes" :onclick="() => deal = true" >Desejo</button>
+                                    <button class="opcoes" :onclick="() => deal = true">Desejo</button>
                                 </div>
                             </div>
                             <p class="mt-2 mb-3">Cometário do proprietário: {{ books[0].selfComment }} </p>
@@ -159,14 +164,18 @@ const commentDestroy = (a) => {
 </template>
 
 <style scoped>
-
 .blocao {
-    padding-top: 0.75rem/* 12px */;
-    padding-bottom: 0.75rem/* 12px */;
+    padding-top: 0.75rem
+        /* 12px */
+    ;
+    padding-bottom: 0.75rem
+        /* 12px */
+    ;
     display: flex;
     justify-content: center;
     border-radius: 6px;
 }
+
 .bloco {
     border-radius: 6px;
     background-color: #1f2937;
@@ -282,7 +291,7 @@ const commentDestroy = (a) => {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    
+
 }
 
 .commentFlow {
@@ -326,5 +335,4 @@ const commentDestroy = (a) => {
     border-radius: 6px;
     color: white;
     resize: none;
-}
-</style>
+}</style>

@@ -78,6 +78,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::resource('deal', DealController::class);
+    Route::get('dealUsers', [DealController::class, 'users'])->name('deal.users');
 });
 
 require __DIR__.'/auth.php';
