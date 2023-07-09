@@ -112,8 +112,8 @@ const commentDestroy = (a) => {
 
                                 <ButtonFav :bookId="books[0].id" />
 
-                                <div v-if="!(a.books[0].user_id == $page.props.auth.user.id)">
-                                    <button class="opcoes" :onclick="() => deal = true">Desejo</button>
+                                <div>
+                                    <button v-if="!(a.books[0].user_id == $page.props.auth.user.id)" class="opcoes" :onclick="() => deal = true">Desejo</button>
                                 </div>
                             </div>
                             <p class="mt-2 mb-3">Cometário do proprietário: {{ books[0].selfComment }} </p>
