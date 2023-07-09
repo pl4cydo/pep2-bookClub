@@ -4,10 +4,15 @@ import axios from 'axios';
 import { Link } from '@inertiajs/vue3';
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid'
 
+
 const searchValue = ref([]);
 const books = ref([]);
 const boo = ref(false);
 const searchBook = ref([]);
+const margin = ref('110px');
+const quant = ref(0);
+const quant2 = ref(0)
+const distan = ref(110);
 
 const searchBooks = async () => {
     try {
@@ -33,13 +38,36 @@ watch(searchBook, async (value) => {
             return title.includes(searchQuery);
         });
         boo.value = true;
+        quant.value = searchValue.value.length
+        console.log(quant.value)
+        calcDis()
     } else {
         searchValue.value = [];
         boo.value = false;
+        calcDis()
     }
-    console.log(searchQuery)
-    console.log(searchValue.value)
+    // calcDis()
+    // console.log(searchQuery)
+    // console.log(searchValue.value)
 });
+
+const calcDis = () => {
+    // console.log(quant.value + 'ssdd')
+    // margin.value = '110px'
+    if(quant.value > 2) {
+        quant2.value = (quant.value - 1) / 2
+        console.log(quant2.value + 'sd')
+        for(let i = 0; i < quant2.value; i++) {
+            distan.value += 45;
+            // console.log(distan.value)
+        }
+        // console.log(((distan.value ) + 'px').toString())
+        margin.value = ((distan.value) + 'px').toString()
+        distan.value = 110;
+    } else {
+        margin.value = '110px'
+    }
+}
 
 </script>
 
@@ -53,7 +81,7 @@ watch(searchBook, async (value) => {
             </div>
         </div>
         
-        <div class="searchBook" v-if="boo">
+        <div class="searchBook" :style="{ marginTop: margin }" v-if="boo">
             <ul>
                 <li v-for="a in searchValue" :key="a.id">
                     <!-- {{ a }} -->
@@ -153,7 +181,6 @@ watch(searchBook, async (value) => {
         height: auto;
         width: 100%;
         margin-left: -40%;
-        margin-top: 25%;
         position: absolute;
         background-color: #1f2937;
         box-shadow: 0 0 10px #131820;
