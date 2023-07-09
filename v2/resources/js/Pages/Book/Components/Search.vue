@@ -35,6 +35,7 @@ watch(searchBook, async (value) => {
         boo.value = true;
     } else {
         searchValue.value = [];
+        boo.value = false;
     }
     console.log(searchQuery)
     console.log(searchValue.value)
@@ -56,11 +57,6 @@ watch(searchBook, async (value) => {
             <ul>
                 <li v-for="a in searchValue" :key="a.id">
                     <!-- {{ a }} -->
-                    <Link class="liBook" :href="route('book.bookView', { id:a.id })">
-
-                        <MagnifyingGlassIcon class="icon" />
-                          {{ a.title }}
-                    </Link>
                     <Link class="liBook" :href="route('book.bookView', { id:a.id })">
 
                         <MagnifyingGlassIcon class="icon" />
@@ -167,12 +163,14 @@ watch(searchBook, async (value) => {
     .searchBook ul {
         height: auto;
         display: flex;
-        align-items: center;
+        align-items: left;
+        flex-direction: column;
     }
 
     .searchBook li {
-        width: 100%;
+        width: auto;
         transition: 300ms ease;
+        
     }
 
     .searchBook li:hover {
@@ -183,6 +181,7 @@ watch(searchBook, async (value) => {
     .liBook {
 
         display: flex;
+        
         width: 100%;
     }
 
