@@ -128,8 +128,8 @@ const submit = () => {
                         Already registered?
                     </Link>
     
-                    <PrimaryButton class="input-btn" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                        Register
+                    <PrimaryButton class="button" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        Registrar
                     </PrimaryButton>
                 </div>
             </form>
@@ -185,6 +185,25 @@ const submit = () => {
 .input:hover {
     border-bottom: 1px solid white;
     transition: 0.5s;
+}
+
+.button {
+    color: white;
+    border-radius: 6px;
+    text-align: left;
+    border-left: none;
+    width: 100px;
+    height: 34px;
+    font-size: 12px;
+    padding-left: 5px;
+    border: 1px solid white;
+}
+
+.button:hover {
+    border-radius: 6px;
+    background-color: #2c3b4e;
+    border: 1px solid #3e3ec5;
+    transition: 0.8s ease;
 }
 
 </style>
