@@ -75,21 +75,21 @@ const submit = () => {
                 <div class="block mt-4">
                     <label class="flex items-center">
                         <Checkbox name="remember" v-model:checked="form.remember" />
-                        <span class="ml-2 text-sm ">Remember me</span>
+                        <span class="ml-2 text-sm ">Lembre-me</span>
                     </label>
                 </div>
     
                 <div class="flex items-center justify-end mt-4">
-                    <Link  :href="route('register')" class="underline text-sm  hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2">Register</Link>
+                    <Link  :href="route('register')" class="underline text-sm  hover:text-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2">Registrar</Link>
                     <Link
                         v-if="canResetPassword"
                         :href="route('password.request')"
-                        class="underline text-sm  hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2"
+                        class="underline text-sm  hover:text-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2"
                     >
-                        Forgot your password?
+                        Esqueceu a senha?
                     </Link>
     
-                    <PrimaryButton class="input-btn" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <PrimaryButton class="button" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         Log in
                     </PrimaryButton>
                     
@@ -161,5 +161,24 @@ const submit = () => {
 .input:hover {
     border-bottom: 1px solid white;
     transition: 0.5s;
+}
+
+.button {
+    color: white;
+    border-radius: 6px;
+    text-align: left;
+    border-left: none;
+    width: 100px;
+    height: 34px;
+    font-size: 12px;
+    padding-left: 5px;
+    border: 1px solid white;
+}
+
+.button:hover {
+    border-radius: 6px;
+    background-color: #2c3b4e;
+    border: 1px solid #3e3ec5;
+    transition: 0.8s ease;
 }
 </style>

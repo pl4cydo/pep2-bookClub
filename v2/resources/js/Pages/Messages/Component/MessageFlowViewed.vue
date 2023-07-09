@@ -5,11 +5,15 @@ import { onMounted, ref } from 'vue';
 
 
 const Messages = ref([]);
+const users = ref([])
 
 onMounted(async () => {
     try {
         const response = await axios.get('/message');
         Messages.value = response.data;
+
+        const response2 = await axios.get(route('deal.users'))
+        users.value = response2.data;
     } catch (error) {
         console.error(error);
     }
@@ -33,8 +37,14 @@ const messageUpdate = (id) => {
         <div class="messages" v-for="message in Messages" v-bind:key="message.id">
             <div class="bloco" v-if="message.notification">
                 <div class="infoMessage">
-                    <h1> User: {{ message.user_id }} </h1>
-                    <h1> e-mail: {{ message.email }}</h1>
+                    <div class="meuovao" v-for="user in users" v-bind:key="user.id">
+                        <h1 class="meuovo" v-if="user.id == message.user_id">
+                            User: {{ user.name }}
+                        </h1>
+                    </div>
+                    <div>
+                        <h1> e-mail: {{ message.email }}</h1>
+                    </div>
                     <div>
                         <h1>Message:</h1>
                         <p>{{ message.textMessage }}</p>

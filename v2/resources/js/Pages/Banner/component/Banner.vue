@@ -39,7 +39,7 @@ onMounted(() => {
 
 <template>
     <div class="highlights-slider">
-        <h2 class="highlights-title">Tchucas</h2>
+        <h2 class="highlights-title">Destaques</h2>
         <div class="test" :style="{ marginLeft: marginS }">
             <div class="boxSlider" v-for="banner in banners" v-bind:key="banner.id">
                 <div class="banner">

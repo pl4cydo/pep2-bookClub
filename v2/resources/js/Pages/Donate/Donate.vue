@@ -18,8 +18,9 @@ import MessageCreate from '../Messages/Component/MessageCreate.vue';
                 <div class="bloco">
                     <div class="blocoLeft">
                         <div class="left">
-                            <h1>Doar Livros</h1>
-                            <p class="mt-3">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+                            <h1 class="font-bold">Doar Livros</h1>
+                            <p class="mt-3">Use essa área para se comunicar com a plataforma e facilitar a doação de livros para instituições</p>
+                            <p class="mt-3">Doar livros e fomentar a leitura é essencial para a sociedade. Ao compartilharmos livros, estamos oferecendo a oportunidade de explorar novos mundos e expandir o conhecimento. Além disso, a doação de livros promove o desenvolvimento humano, estimula a criatividade e fortalece a empatia. É uma forma de democratizar o acesso à informação e ao aprendizado, conectando pessoas de diferentes origens e realidades. A doação de livros também fortalece a solidariedade e a generosidade, promovendo a valorização da cultura e construindo uma comunidade colaborativa. Cada livro doado é um convite à descoberta e ao diálogo, um investimento no futuro. Vamos abrir espaço em nossas estantes e corações para a doação de livros, compartilhando o prazer da leitura e contribuindo para uma sociedade mais leitora, rica em cultura e humana.</p>
                         </div>
                     </div>
                     <div class="blocoRigth">

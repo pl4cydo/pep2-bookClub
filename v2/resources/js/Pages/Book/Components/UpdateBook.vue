@@ -115,7 +115,7 @@ const deleteBook = () => {
 
 
                     <div class="divButton">
-                        <button @click.prevent="deleteBook">Delete</button>
+                        <button @click.prevent="deleteBook">Deletar</button>
                         <button type="submit" class="button"> Confirmar </button>
                     </div>
                 </div>

@@ -87,20 +87,21 @@ const commentDestroy = (a) => {
                                 </div>
                             </div>
                             <div class="flex">
-                                <p class="mr-5"> Publicado em: {{ books[0].year }} </p>
-                                <p> Escritor: {{ books[0].writter }} </p>
+                                <p class="mr-5"><span class="font-bold">Publicado em:</span>  {{ books[0].year }} </p>
+                                <p> <span class="font-bold">Escritor:</span> {{ books[0].writter }} </p>
                             </div>
                             <div v-for="user in userBook" v-bind:key="user.id">
                                 <p v-if="user.id == books[0].user_id" class="mt-2 mb-3">
-                                    Proprietário: {{ user.name }}
+                                    <span class="font-bold">Proprietário:</span>
+                                     {{ user.name }}
                                 </p>
                             </div>
                             <div v-for="category in categories" v-bind:key="category.id">
-                                <h3 v-if="category.id == books[0].category_id" class="mt2 mb-3">Categoria: {{
+                                <h3 v-if="category.id == books[0].category_id" class="mt2 mb-3"><span class="font-bold">Categoria:</span> {{
                                     category.name }}</h3>
                             </div>
                             <div class="dealFav">
-                                <div class="flex">Status:
+                                <div class="flex"><span class="font-bold">Status:</span>
                                     <div v-if="!(books[0].deal)">
                                         <CheckCircleIcon class="check"/>
                                     </div>
@@ -116,8 +117,8 @@ const commentDestroy = (a) => {
                                     <button v-if="!(a.books[0].user_id == $page.props.auth.user.id)" class="opcoes" :onclick="() => deal = true">Desejo</button>
                                 </div>
                             </div>
-                            <p class="mt-2 mb-3">Cometário do proprietário: {{ books[0].selfComment }} </p>
-                            <p>Sinopse: "{{ books[0].synopsis }}"</p>
+                            <p class="mt-2 mb-3"><span class="font-bold">Cometário do proprietário:</span> {{ books[0].selfComment }} </p>
+                            <p><span class="font-bold">Sinopse:</span>  "{{ books[0].synopsis }}"</p>
                         </div>
 
                     </div>
@@ -131,7 +132,7 @@ const commentDestroy = (a) => {
                                 <textarea class="textarea" rows="4" cols="80" name="comments" id="comments"
                                     v-model="form.comments">
                                                         </textarea>
-                                <PrimaryButton class="PrimaryButton">Send</PrimaryButton>
+                                <PrimaryButton class="PrimaryButton">Comentar</PrimaryButton>
                             </form>
                         </div>
                     </div>
@@ -142,11 +143,11 @@ const commentDestroy = (a) => {
                                 <div class="commentlist" v-if="comment.book_id == ab">
                                     <div v-for=" userB in userBook" v-bind:key="userB.id">
                                         <div v-if="comment.user_id == userB.id">
-                                            <h1>{{ userB.name }}:</h1>
+                                            <h1 class="font-bold">{{ userB.name }}:</h1>
                                         </div>
                                     </div>
                                     <div class="option">
-                                        <h1> {{ comment.comment }}</h1>
+                                        <h1 class="ml-2" > {{ comment.comment }}</h1>
                                         <div
                                             v-if="a.books[0].user_id == $page.props.auth.user.id || $page.props.auth.user.is_admin">
                                             <!-- {{ comment.id }} -->
