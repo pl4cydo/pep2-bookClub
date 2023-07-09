@@ -1,22 +1,45 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import axios from 'axios';
 import { Link } from '@inertiajs/vue3';
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid'
 
-const searchValue = ref('');
+const searchValue = ref([]);
 const books = ref([]);
-const boo = ref(false)
+const boo = ref(false);
+const searchBook = ref([]);
 
 const searchBooks = async () => {
     try {
-        const response = await axios.get(`/book/search/${searchValue.value}`);
+        // const response = await axios.get(`/book/search/${searchValue.value}`);
+        const response = await axios.get(route('book.listBooks'));
         books.value = response.data;
-        boo.value = true
+        // console.log(books.value)
+        // boo.value = true
     } catch (error) {
         console.error(error);
     }
 };
+
+onMounted(() => {
+    searchBooks()
+})
+
+watch(searchBook, async (value) => {
+    const searchQuery = await value.toLowerCase();
+    if (searchQuery.length > 0) {
+        searchValue.value = books.value.filter((book) => {
+            const title = book.title.toLowerCase();
+            return title.includes(searchQuery);
+        });
+        boo.value = true;
+    } else {
+        searchValue.value = [];
+    }
+    console.log(searchQuery)
+    console.log(searchValue.value)
+});
+
 </script>
 
 <template>
@@ -24,18 +47,24 @@ const searchBooks = async () => {
         <div class="searchDiv">
             <label for="searchValue" hidden>Buscar Livros</label>
             <div class="flex">
-                <input type="text" placeholder="Buscar Livros" v-model="searchValue" @value="Livros">
+                <input type="text" placeholder="Buscar Livros" v-model="searchBook" >
                 <button @click="searchBooks">Search</button>
             </div>
         </div>
         
         <div class="searchBook" v-if="boo">
             <ul>
-                <li v-for="book in books" :key="book.id">
-                    <Link class="liBook" :href="route('book.bookView', { id:book.id })">
-                        <!-- <img class="bookImg" :src="'/storage/images/' + book.image" alt="Book Image"> -->
+                <li v-for="a in searchValue" :key="a.id">
+                    <!-- {{ a }} -->
+                    <Link class="liBook" :href="route('book.bookView', { id:a.id })">
+
                         <MagnifyingGlassIcon class="icon" />
-                          {{ book.title }}
+                          {{ a.title }}
+                    </Link>
+                    <Link class="liBook" :href="route('book.bookView', { id:a.id })">
+
+                        <MagnifyingGlassIcon class="icon" />
+                          {{ a.title }}
                     </Link>
                 </li>
             </ul>
