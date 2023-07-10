@@ -60,8 +60,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('/comments', CommentController::class);
 
     Route::resource('/message', MessageController::class);
-    // Route::get('messageCreate', [MessageController::class, 'create'])->name('message.create');
-    // Route::put('/message/{id}', [MessageController::class, 'update'])->name('message.update');
 
     Route::get('donate', [MessageController::class, 'donate'])->name('message.donate');
     

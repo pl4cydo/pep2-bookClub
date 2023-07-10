@@ -14,42 +14,7 @@ defineProps({
     books: Array
 });
 
-// let jorge = ;
 
-// let boo = ref(false);
-
-// function changeBoo(){
-//   boo.value = !boo.value;
-//   console.log(boo)
-// }
-
-
-// const form = useForm({
-//     title: '',
-//     year: '',
-//     writter: '',
-//     synopsis: '',
-//     image: null,
-//     category_id: ''
-// });
-
-// const submit = () => {
-//     form.post(route('book.store'))
-//     form.title = ''
-//     form.year = ''
-//     form.writter = ''
-//     form.synopsis = ''
-//     form.image = null
-//     form.category_id = ''
-// }
-
-// const handleImageChange = (event) => {
-//     form.image = event.target.files[0]
-// }
-
-// function getImageUrl(image) {
-//     return image ? asset('storage/images/' + image) : '';
-// }
 
 </script>
 

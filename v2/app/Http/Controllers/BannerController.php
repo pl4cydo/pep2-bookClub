@@ -78,7 +78,7 @@ class BannerController extends Controller
             $image->storeAs('public/images', $imageName);
         }
 
-        $banner = Banner::create([
+        $banner = Banner::firstOrCreate([
             'title' => $request->title,
             'info' => $request->info,
             'value' => $request->value,
@@ -88,7 +88,7 @@ class BannerController extends Controller
             'ad' => $request->ad,
         ]);
 
-        return redirect(route('banner'));
+
 
     }
 
